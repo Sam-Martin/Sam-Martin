@@ -1,7 +1,7 @@
 +++
 author = "Sam Martin"
 categories = ["Go", "Mondo", "YNAB"]
-date = 0001-01-01T00:00:00Z
+date = 2016-05-15T00:00:00Z
 description = ""
 draft = false
 image = "/images/2016/05/2016-05-15---GetMondo-1.png"

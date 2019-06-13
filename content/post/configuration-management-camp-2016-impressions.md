@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["cfgmgmtcamp", "devops", "hashicorp", "juju", "vault"]
-date = 0001-01-01T00:00:00Z
+date = 2016-02-15T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2016/02/2015-02-07-Juju.png"

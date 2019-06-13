@@ -1,6 +1,6 @@
 +++
 author = "toukakoukan"
-date = 0001-01-01T00:00:00Z
+date = 2011-08-29T00:00:00Z
 description = ""
 draft = false
 slug = "gmail-advanced-upload-wont-work-in-chrome-with-non-administrative-users"

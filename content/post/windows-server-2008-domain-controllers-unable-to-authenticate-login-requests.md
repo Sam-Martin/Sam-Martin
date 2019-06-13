@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["Active Directory", "Server 2003", "Server 2008"]
-date = 0001-01-01T00:00:00Z
+date = 2012-08-07T00:00:00Z
 description = ""
 draft = false
 slug = "windows-server-2008-domain-controllers-unable-to-authenticate-login-requests"

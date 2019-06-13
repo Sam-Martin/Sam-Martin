@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["docker", "ELK", "logtash"]
-date = 0001-01-01T00:00:00Z
+date = 2015-05-25T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2015/05/discover-kibana-4-google-chrome.png"

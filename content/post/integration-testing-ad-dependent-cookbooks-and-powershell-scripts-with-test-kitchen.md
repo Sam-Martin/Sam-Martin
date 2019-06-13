@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["Chef", "powershell", "test kitchen"]
-date = 0001-01-01T00:00:00Z
+date = 2016-02-22T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2016/02/2016-02-12-kitchen-template-repo.png"

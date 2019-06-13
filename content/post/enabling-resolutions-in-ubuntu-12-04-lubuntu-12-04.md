@@ -1,6 +1,6 @@
 +++
 author = "toukakoukan"
-date = 0001-01-01T00:00:00Z
+date = 2012-05-29T00:00:00Z
 description = ""
 draft = false
 slug = "enabling-resolutions-in-ubuntu-12-04-lubuntu-12-04"

@@ -1,6 +1,6 @@
 +++
 author = "toukakoukan"
-date = 0001-01-01T00:00:00Z
+date = 2009-10-05T00:00:00Z
 description = ""
 draft = false
 slug = "reading-list-for-oxford-brookes-philosophy-09"

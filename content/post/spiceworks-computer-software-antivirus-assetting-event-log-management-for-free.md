@@ -1,6 +1,6 @@
 +++
 author = "toukakoukan"
-date = 0001-01-01T00:00:00Z
+date = 2011-04-14T00:00:00Z
 description = ""
 draft = false
 slug = "spiceworks-computer-software-antivirus-assetting-event-log-management-for-free"

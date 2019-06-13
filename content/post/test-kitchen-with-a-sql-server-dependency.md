@@ -1,7 +1,7 @@
 +++
 author = "Sam Martin"
 categories = ["Chef", "ms sql", "sql server", "test kitchen", "Windows"]
-date = 0001-01-01T00:00:00Z
+date = 2016-03-04T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2016/03/Screenshot-from-2016-03-20-16-19-09.png"

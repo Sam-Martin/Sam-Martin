@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["Windows 8"]
-date = 0001-01-01T00:00:00Z
+date = 2012-11-18T00:00:00Z
 description = ""
 draft = false
 slug = "adding-internet-shortcuts-and-steam-games-to-the-start-screen-in-windows-8"

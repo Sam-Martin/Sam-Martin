@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["kanban", "leankit", "powershell"]
-date = 0001-01-01T00:00:00Z
+date = 2014-04-20T00:00:00Z
 description = ""
 draft = false
 slug = "using-the-leankit-api-with-powershell"

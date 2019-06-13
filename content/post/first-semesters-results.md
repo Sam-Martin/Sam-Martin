@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["university"]
-date = 0001-01-01T00:00:00Z
+date = 2010-01-25T00:00:00Z
 description = ""
 draft = false
 slug = "first-semesters-results"

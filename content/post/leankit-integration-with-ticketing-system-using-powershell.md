@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["devops", "kanban", "leankit", "powershell"]
-date = 0001-01-01T00:00:00Z
+date = 2014-04-20T00:00:00Z
 description = ""
 draft = false
 slug = "leankit-integration-with-ticketing-system-using-powershell"

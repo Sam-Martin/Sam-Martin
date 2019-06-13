@@ -1,6 +1,6 @@
 +++
 author = "Sam Martin"
-date = 0001-01-01T00:00:00Z
+date = 2018-07-02T00:00:00Z
 description = "As a model Chef user you're using Test Kitchen to test your Cookbooks. Let's ensure they always run before code gets merged into master in GitHub!"
 draft = false
 image = "/images/2018/07/Screen-Shot-2018-07-22-at-15.38.14.png"

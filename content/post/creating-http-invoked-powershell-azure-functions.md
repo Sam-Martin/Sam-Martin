@@ -1,7 +1,7 @@
 +++
 author = "toukakoukan"
 categories = ["Azure"]
-date = 0001-01-01T00:00:00Z
+date = 2016-04-16T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.png"

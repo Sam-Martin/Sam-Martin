@@ -1,6 +1,6 @@
 +++
 author = "toukakoukan"
-date = 0001-01-01T00:00:00Z
+date = 2016-04-24T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2016/04/2016-04-24-AWS-Config-Timeline.png"

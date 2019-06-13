@@ -1,4 +1,14 @@
 baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+languageCode = "en-gb"
+title = "Sam Martin"
 theme = "m10c"
+
+[params]
+    description = "Adventures in IT"
+    author = "Sam Martin"
+[params.style]
+  darkestColor = "#264d8f"
+  darkColor = "#ffff"
+  lightColor = "#000"
+  lightestColor = "#000"
+  primaryColor = "#000"

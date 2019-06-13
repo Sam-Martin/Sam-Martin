@@ -1,7 +1,7 @@
 +++
 author = "Sam Martin"
 categories = ["aws", "Terraform", "Infrastructure as Code"]
-date = 0001-01-01T00:00:00Z
+date = 2016-05-02T00:00:00Z
 description = ""
 draft = false
 image = "/images/2016/05/2016-05-02-Terraform-io-1.png"

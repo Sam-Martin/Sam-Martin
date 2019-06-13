@@ -1,0 +1,28 @@
+.app-header{
+    padding:0;
+    background-image: url(/images/2016/05/_s_a12Cb12Cc12Cd12Ce0f0g64h224990C6D8EAABCAE2iD1j15k43l1F4m1F4-2.jpg);
+}
+.app-header img {
+    margin: 2.5em;
+    border: none;
+}
+.app-header > h1 {
+ font-size: 1.9em;
+}
+.app-header > p, .app-header > h1 {
+    margin:0;
+    color: black;
+    background:rgba(255, 255, 255, .5);
+    width: 100%;
+    padding: .2em 2em;
+    text-transform: uppercase;
+}
+
+.posts-list-item-image {
+    max-width:100%;
+    display:block;
+}
+.posts-list-item:not(:last-child){
+    padding-bottom:2em;
+    border-bottom: double 7px #49adad
+}
