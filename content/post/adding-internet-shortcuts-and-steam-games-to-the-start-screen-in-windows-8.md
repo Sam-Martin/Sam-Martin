@@ -1,0 +1,38 @@
++++
+author = "toukakoukan"
+categories = ["Windows 8"]
+date = 0001-01-01T00:00:00Z
+description = ""
+draft = false
+slug = "adding-internet-shortcuts-and-steam-games-to-the-start-screen-in-windows-8"
+tags = ["Windows 8"]
+title = "Adding internet shortcuts and Steam games to the start screen in Windows 8"
+
++++
+
+With most programs, in Windows 8 you can simply right click and “Pin to start”
+
+[![](/wp-content/uploads/2012/11/pin-to-start1.png "pin to start")](/wp-content/uploads/2012/11/pin-to-start1.png)
+
+But with Steam games and internet shortcuts, you can’t do this.
+
+[![](/wp-content/uploads/2012/11/no-pin-to-start1.png "no pin to start")](/wp-content/uploads/2012/11/no-pin-to-start1.png)
+
+Instead, you simply move the shortcut to the following location:
+
+> C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+
+Once you’ve moved it, go into the start screen, right click, hit “all apps” in the bottom right.
+
+[![](/wp-content/uploads/2012/11/all-apps.png "all apps")](/wp-content/uploads/2012/11/all-apps.png)
+
+And then find your newly added shortcut, right click, hit “pin to start”
+
+[![](/wp-content/uploads/2012/11/pin-to-start-new.png "pin to start new")](/wp-content/uploads/2012/11/pin-to-start-new.png)
+
+And voila! You have your “internet shortcut” pinned to your start screen.
+
+[![](/wp-content/uploads/2012/11/pinned-to-start.png?w=1024 "Pinned to start")](/wp-content/uploads/2012/11/pinned-to-start.png)
+
+I hope you’re all enjoying Windows 8!
+
