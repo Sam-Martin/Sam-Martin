@@ -8,7 +8,7 @@ title = "Brookes PIP skin"
 
 +++
 
-I got bored of Â how the Brookes Personal Information Portal looked.
+I got bored of how the Brookes Personal Information Portal looked.
 
 ![How PIP Looked](http://imgur.com/0jUGnl.jpg "How PIP looked")
 

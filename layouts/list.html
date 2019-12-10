@@ -1,6 +1,5 @@
 {{ define "main" }}
   <article>
-    <h1>{{ .Title }}</h1>
     <ul class="posts-list">
       {{ range $index, $element := .Paginator.Pages }}
         <li class="posts-list-item">
@@ -12,6 +11,12 @@
           {{ if (isset .Params "image")}}
           <a class="posts-list-item-title" href="{{ .Permalink }}"><img class="posts-list-item-image" src={{ .Params.image }} /></a>
           {{ end }}
+          <p>
+            {{.Summary}}
+          </p>
+          <p>
+            <a href="{{ .Permalink }}" class="more">Continue Reading <span>>></span></a>
+          </p>
         </li>
       {{ end }}
     </ul>

@@ -3,7 +3,6 @@ author = "toukakoukan"
 date = 2016-04-24T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2016/04/2016-04-24-AWS-Config-Timeline.png"
 slug = "aws-config-intro-with-cloudformation"
 title = "AWS Config Intro with CloudFormation"
 
