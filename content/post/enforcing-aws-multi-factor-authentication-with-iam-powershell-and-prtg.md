@@ -3,7 +3,7 @@ author = "toukakoukan"
 date = 0001-01-01T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2014/09/loginwithmfa.png"
+image = "/2014/09/loginwithmfa.png"
 slug = "enforcing-aws-multi-factor-authentication-with-iam-powershell-and-prtg"
 title = "Enforcing AWS Multi-Factor Authentication with IAM, PowerShell and PRTG"
 
@@ -91,15 +91,15 @@ Okay, so far so good. Your AWS users can set their own MFA devices. But currentl
 
 Now we’re giving the user full access to everything but *only* if they have authenticated with MFA. So if they login with just a password and try to access, e.g. EC2, they’ll get a big fat access denied.
 
-[![accessdeniedwithoutmfa](/wp-content/uploads/2014/09/accessdeniedwithoutmfa1.png)](/wp-content/uploads/2014/09/accessdeniedwithoutmfa1.png)
+[![accessdeniedwithoutmfa](/images/2014/09/accessdeniedwithoutmfa1.png)](/images/2014/09/accessdeniedwithoutmfa1.png)
 
 Great! So they go and setup their MFA device, logout, login again with MFA.
 
-[![loginwithmfa](/wp-content/uploads/2014/09/loginwithmfa.png)](/wp-content/uploads/2014/09/loginwithmfa.png)
+[![loginwithmfa](/images/2014/09/loginwithmfa.png)](/images/2014/09/loginwithmfa.png)
 
 And voila! Access allowed.
 
-[![accessallowedwithmfa](/wp-content/uploads/2014/09/accessallowedwithmfa1.png)](/wp-content/uploads/2014/09/accessallowedwithmfa1.png)
+[![accessallowedwithmfa](/images/2014/09/accessallowedwithmfa1.png)](/images/2014/09/accessallowedwithmfa1.png)
 
 Which is great! Really secure, can’t get in with that policy without using using MFA.
 
@@ -222,7 +222,7 @@ This directory should be under your PRTG probe’s *Custom SensorsExeXML *direc
 
 Once you’ve done that, you can create a Script/Exe custom sensor in PRTG pointing at your new .ps1 file like so:
 
-[![PRTGsensorMFA](/wp-content/uploads/2014/09/prtgsensormfa.png)](/wp-content/uploads/2014/09/prtgsensormfa.png)
+[![PRTGsensorMFA](/images/2014/09/prtgsensormfa.png)](/images/2014/09/prtgsensormfa.png)
 
 Setting the arguments to reflect the access and secret keys of the AWS user you created earlier.
 
@@ -237,7 +237,7 @@ No problem, just create a *factory sensor* that references the first sensor, the
 #1:Users without MFA on AWS Channel(10101,2)
 ```
 Then set the threshold against the channel like so:  
-[![mfachannelthreshold](/wp-content/uploads/2014/09/mfachannelthreshold.png)](/wp-content/uploads/2014/09/mfachannelthreshold.png)  
+[![mfachannelthreshold](/images/2014/09/mfachannelthreshold.png)](/images/2014/09/mfachannelthreshold.png)  
  Voila! You will be alerted whenever you have a user that has a password, but no MFA device associated!
 
 How do you handle this issue in your environment? Any suggestions on how to do this better? Please let me know in the comments!
