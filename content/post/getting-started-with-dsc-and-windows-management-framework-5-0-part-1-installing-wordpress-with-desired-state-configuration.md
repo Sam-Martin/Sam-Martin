@@ -1,6 +1,6 @@
 +++
 author = "toukakoukan"
-date = 0001-01-01T00:00:00Z
+date = 2014-09-08T00:00:00Z
 description = ""
 draft = false
 image = "https://sammart.in/wp-content/uploads/2014/09/wmf-5-0-september-2014-preview.png"
@@ -31,7 +31,7 @@ We won’t need the VMs we created in the Chef series as we’ll be focussing o
 
 As the  [WordPress PowerShell/DSC module](http://gallery.technet.microsoft.com/scriptcenter/xWordPress-Module-5d007ff9) we’ll be using requires WMF 5.0 for OneGet, we need to go and grab the September 2014 Preview!
 
-Download WMF 5.0 to your 2012 VM from [http://www.microsoft.com/en-us/download/details.aspx?id=44070](http://www.microsoft.com/en-us/download/details.aspx?id=44070) [![WMF 5.0 September 2014 Preview](http://sammart.in/wp-content/uploads/2014/09/wmf-5-0-september-2014-preview.png)](http://sammart.in/wp-content/uploads/2014/09/wmf-5-0-september-2014-preview.png)
+Download WMF 5.0 to your 2012 VM from [http://www.microsoft.com/en-us/download/details.aspx?id=44070](http://www.microsoft.com/en-us/download/details.aspx?id=44070) [![WMF 5.0 September 2014 Preview](/images/2014/09/wmf-5-0-september-2014-preview.png)](/images/2014/09/wmf-5-0-september-2014-preview.png)
 
 Now we need to install the [xWordPress module](http://gallery.technet.microsoft.com/scriptcenter/xWordPress-Module-5d007ff9) and its dependencies.
 
@@ -43,7 +43,7 @@ Install-Module xWebAdministration -MinimumVersion 1.3.2 -Force
 ```
 and accept the offer to download NuGet_anycpu.exe.
 
-[![install-module xWebAdministration](http://sammart.in/wp-content/uploads/2014/09/install-module-xwebadministration.png)](http://sammart.in/wp-content/uploads/2014/09/install-module-xwebadministration.png)
+[![install-module xWebAdministration](/images/2014/09/install-module-xwebadministration.png)](/images/2014/09/install-module-xwebadministration.png)
 
 Now install the remaining modules.
 
@@ -53,7 +53,7 @@ Excellent! Okay, where did they go?
 ```
 $env:ProgramFiles\WindowsPowerShell\Modules folder
 ```
-[![Program Files WindowsPowerShell Modules](http://sammart.in/wp-content/uploads/2014/09/program-files-windowspowershell-modules.png)](http://sammart.in/wp-content/uploads/2014/09/program-files-windowspowershell-modules.png)
+[![Program Files WindowsPowerShell Modules](/images/2014/09/program-files-windowspowershell-modules.png)](/images/2014/09/program-files-windowspowershell-modules.png)
 
 Awesome! Since when has that been a thing? WMF 5.0? I assume, but I’m not sure. Getting modules to load automatically has always been a bit of a per-user PITA in the past, so if this is user-agnostic way of installing PowerShell modules, it’s only a good thing!
 
@@ -64,11 +64,11 @@ Now we need to grab the sample files from the xWordPress module and customise th
 
 Copy the contents of `C:\Program Files\WindowsPowerShellModules\xWordPresssamples` to your Documents folder
 
-[![samples in my documents](http://sammart.in/wp-content/uploads/2014/09/samples-in-my-documents.png)](http://sammart.in/wp-content/uploads/2014/09/samples-in-my-documents.png)
+[![samples in my documents](/images/2014/09/samples-in-my-documents.png)](/images/2014/09/samples-in-my-documents.png)
 
 Open up `SingleNodeEndToEndWordPress.ps1` in the PowerShell ISE and check that the Download URLs are still correct for PHP and MySQL.
 
-[![MySQL and PHP URLs](http://sammart.in/wp-content/uploads/2014/09/mysql-and-php-urls.png)](http://sammart.in/wp-content/uploads/2014/09/mysql-and-php-urls.png)
+[![MySQL and PHP URLs](/images/2014/09/mysql-and-php-urls.png)](/images/2014/09/mysql-and-php-urls.png)
 
 I only had to change PHP to [http://windows.php.net/downloads/releases/archives/php-5.5.14-nts-Win32-VC11-x64.zip](http://windows.php.net/downloads/releases/archives/php-5.5.14-nts-Win32-VC11-x64.zip), but double check MySQL as well, as it may have changed by the time you read this!
 
@@ -84,17 +84,17 @@ This will perform the following tasks (at least):
 3. Install MySQL
 4. Install WordPress into IIS with * port 80 HTTP bindings.
 
-[![SingleNodeEndToEndWordPress](http://sammart.in/wp-content/uploads/2014/09/singlenodeendtoendwordpress.png)](http://sammart.in/wp-content/uploads/2014/09/singlenodeendtoendwordpress.png)
+[![SingleNodeEndToEndWordPress](/images/2014/09/singlenodeendtoendwordpress.png)](/images/2014/09/singlenodeendtoendwordpress.png)
 
 After some time, your system will restart to complete the installation.
 
-[![DSC is Restarting the computer](http://sammart.in/wp-content/uploads/2014/09/dsc-is-restarting-the-computer.png)](http://sammart.in/wp-content/uploads/2014/09/dsc-is-restarting-the-computer.png)
+[![DSC is Restarting the computer](/images/2014/09/dsc-is-restarting-the-computer.png)](/images/2014/09/dsc-is-restarting-the-computer.png)
 
-Once it’s restarted, DSC will continue to configure the computer, to see the progress, go to the DSC event log.  (Event Viewer > Applications and Services Log > Microsoft > Windows > Desired State Configuration > Operational)![DSC Event Log](http://sammart.in/wp-content/uploads/2014/09/dsc-event-log.png)
+Once it’s restarted, DSC will continue to configure the computer, to see the progress, go to the DSC event log.  (Event Viewer > Applications and Services Log > Microsoft > Windows > Desired State Configuration > Operational)![DSC Event Log](/images/2014/09/dsc-event-log.png)
 
 Once you see “Warning” “The local configuration manager was shut down”, your new WordPress site should be ready! Check out Localhost in IE!
 
-[![WordPress 4.0 default](http://sammart.in/wp-content/uploads/2014/09/wordpress-4-0-default.png)](http://sammart.in/wp-content/uploads/2014/09/wordpress-4-0-default.png)
+[![WordPress 4.0 default](/images/2014/09/wordpress-4-0-default.png)](/images/2014/09/wordpress-4-0-default.png)
 
 Ooh, this is the first time I’ve seen WordPress 4.0 default installation! First impressions are very monochrome, but eh, that’s what themes are for!
 
