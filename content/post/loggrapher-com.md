@@ -1,5 +1,6 @@
 +++
 author = "toukakoukan"
+image="/images/2014/01/loggrapher.png"
 date = 2014-01-01T00:00:00Z
 description = ""
 draft = false
@@ -8,7 +9,7 @@ title = "LogGrapher.com"
 
 +++
 
-[![Image](/wp-content/uploads/2014/01/loggrapher.png?w=650)](/wp-content/uploads/2014/01/loggrapher.png)
+[![Image](/images/2014/01/loggrapher.png)](/images/2014/01/loggrapher.png)
 
 It’s finally here!
 

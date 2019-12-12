@@ -4,7 +4,7 @@ categories = ["Chef", "ms sql", "sql server", "test kitchen", "Windows"]
 date = 2016-03-04T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2016/03/Screenshot-from-2016-03-20-16-19-09.png"
+image = "/images/2016/03/Screenshot-from-2016-03-20-16-19-09.png"
 slug = "test-kitchen-with-a-sql-server-dependency"
 tags = ["Chef", "ms sql", "sql server", "test kitchen", "Windows"]
 title = "Test Kitchen with a SQL Server Dependency"
@@ -40,7 +40,7 @@ Enter our remote-execution saviour!
 
 ## [Boxstarter!](http://boxstarter.org/)
 
-[![2016-02-16 - Boxstarter](/wp-content/uploads/2016/02/2016-02-16-Boxstarter-1024x377.png)](/wp-content/uploads/2016/02/2016-02-16-Boxstarter.png)
+[![2016-02-16 - Boxstarter](/images/2016/02/2016-02-16-Boxstarter.png)](/images/2016/02/2016-02-16-Boxstarter.png)
 
 Wait, [Matt Wrock](http://hurryupandwait.io) made this? Wow, it seems like every problem I encounter recently that’s vaguely related to Chef on Windows has already been solved by him. Thanks Matt!
 
@@ -51,7 +51,7 @@ Particularly useful for us is the [Boxstarter cookbook](https://github.com/mwroc
 
 ## test\_kitchen\_mssql\_helpers
 
-[![Screenshot from 2016-03-20 16-19-09](/wp-content/uploads/2016/03/Screenshot-from-2016-03-20-16-19-09.png)](/wp-content/uploads/2016/03/Screenshot-from-2016-03-20-16-19-09.png)
+[![Screenshot from 2016-03-20 16-19-09](/images/2016/03/Screenshot-from-2016-03-20-16-19-09.png)](/images/2016/03/Screenshot-from-2016-03-20-16-19-09.png)
 
 Right. Yes! Testing MSSQL dependent cookbooks using Test Kitchen, that’s why we’re here!
 

@@ -1,6 +1,7 @@
 +++
 author = "toukakoukan"
 date = 2016-04-24T00:00:00Z
+image = "/images/2016/04/2016-04-24-aws-config-cfn-template-example-1.png"
 description = ""
 draft = false
 slug = "aws-config-intro-with-cloudformation"
@@ -22,7 +23,7 @@ The rules can also be triggered by the configuration change of an AWS resource 
 
 The snapshots allow you to look back through your resource’s “Config Timeline”, to see what configuration changed and when.
 
-[![2016-04-24 - AWS Config Timeline](/wp-content/uploads/2016/04/2016-04-24-AWS-Config-Timeline-1024x438.png)](/wp-content/uploads/2016/04/2016-04-24-AWS-Config-Timeline.png)
+[![2016-04-24 - AWS Config Timeline](/images/2016/04/2016-04-24-AWS-Config-Timeline.png)](/images/2016/04/2016-04-24-AWS-Config-Timeline.png)
 
 
 ## Managed Rules & Custom Rules
@@ -73,7 +74,7 @@ So what do we do when we get cyclic dependencies with CloudFormation? We bring i
 
 [Sam-Martin/aws-config-cfn-template-example](https://github.com/Sam-Martin/aws-config-cfn-template-example/blob/master/AWS%20Config%20Base.template).
 
-[![2016-04-24 - aws-config-cfn-template-example](/wp-content/uploads/2016/04/2016-04-24-aws-config-cfn-template-example-1-1024x887.png)](/wp-content/uploads/2016/04/2016-04-24-aws-config-cfn-template-example-1.png)
+[![2016-04-24 - aws-config-cfn-template-example](/images/2016/04/2016-04-24-aws-config-cfn-template-example-1.png)](/images/2016/04/2016-04-24-aws-config-cfn-template-example-1.png)
 
 Basically what the above does is create and trigger a Lambda Function to delete any existing DeliveryChannels and and stops the DeliveryRecorder so the path is cleared for the AWS Config Resources in the rest of the template to configure them as desired.
 

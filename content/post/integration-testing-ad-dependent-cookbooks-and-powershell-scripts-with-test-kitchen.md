@@ -4,7 +4,6 @@ categories = ["Chef", "powershell", "test kitchen"]
 date = 2016-02-22T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2016/02/2016-02-12-kitchen-template-repo.png"
 slug = "integration-testing-ad-dependent-cookbooks-and-powershell-scripts-with-test-kitchen"
 tags = ["Chef", "powershell", "test kitchen"]
 title = "Integration Testing AD Dependent Cookbooks and PowerShell Scripts with Test-Kitchen"
@@ -16,7 +15,7 @@ I remember a little while ago, well… over a couple of years ago now… that I�
 
 ## Introducing test\_kitchen\_ad\_helpers
 
-[![Screenshot from 2016-03-20 16-23-42](/wp-content/uploads/2016/02/Screenshot-from-2016-03-20-16-23-42.png)](/wp-content/uploads/2016/02/Screenshot-from-2016-03-20-16-23-42.png)
+[![Screenshot from 2016-03-20 16-23-42](/images/2016/02/Screenshot-from-2016-03-20-16-23-42.png)](/images/2016/02/Screenshot-from-2016-03-20-16-23-42.png)
 
 So what does it do? First let’s briefly explain [Test Kitchen](http://kitchen.ci/). Test Kitchen is a wrapper on top of Vagrant which manages the process of downloading dependent cookbooks, spinning up instances, provisioning them in accordance with your definition, and running integration tests against them using a variety of testing frameworks like [ServerSpec](http://serverspec.org/), [Pester](https://github.com/test-kitchen/kitchen-pester), [Bats](https://github.com/sstephenson/bats), etc. With one command you can download the vagrant box, spin up a variety of different OSes, run your cookbook against them, then validate they worked as expected.
 

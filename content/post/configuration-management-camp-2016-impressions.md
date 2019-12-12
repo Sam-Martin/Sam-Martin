@@ -4,7 +4,7 @@ categories = ["cfgmgmtcamp", "devops", "hashicorp", "juju", "vault"]
 date = 2016-02-15T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2016/02/2015-02-07-Juju.png"
+image = "/images/2016/02/2015-02-07-Juju.png"
 slug = "configuration-management-camp-2016-impressions"
 tags = ["cfgmgmtcamp", "devops", "hashicorp", "juju", "vault"]
 title = "Configuration Management Camp 2016 Impressions"
@@ -61,7 +61,7 @@ As far as I understand, [JuJu](https://jujucharms.com/) is the personification o
 
 Once these three components are defined and wrapped into a Charm, you can start that charm and start building relationships.
 
-[![2015-02-07 - Juju](/wp-content/uploads/2016/02/2015-02-07-Juju-1024x507.png)](/wp-content/uploads/2016/02/2015-02-07-Juju.png)
+[![2015-02-07 - Juju](/images/2016/02/2015-02-07-Juju.png)](/images/2016/02/2015-02-07-Juju.png)
 
 You might say to yourself “I want an Apache webserver with WordPress, backed by MySQL, fronted by HAProxy”, and you’ll be able to add charms from the store, and literally drag and drop relationships between these charms to build a working web application.
 

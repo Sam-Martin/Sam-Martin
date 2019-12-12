@@ -17,7 +17,7 @@ It’s been a fair few months since my last post in this series (or at all for t
 
 Since my last post, [HashiCorp has announced Atlas](https://hashicorp.com/blog/atlas.html "Atlas Announcement Post") as a tech preview, which (in part) replaces VagrantCloud which I referenced in [part 3](/2014/10/19/getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef/ "Getting Started with Chef on Windows Server &#128;&#147; Part 3 &#128;&#147; Vagrant, Windows, and Managed Chef"). HashiCorp are placing Atlas as a solution to a large portion of your DevOps deployment lifecycle.
 
-[![how-it-works-4a283ee2](/wp-content/uploads/2015/01/how-it-works-4a283ee2.png?w=660)](/wp-content/uploads/2015/01/how-it-works-4a283ee2.png)
+[![how-it-works-4a283ee2](/images/2015/01/how-it-works-4a283ee2.png?w=660)](/images/2015/01/how-it-works-4a283ee2.png)
 
 This is powered by four components:
 
@@ -32,13 +32,13 @@ Terraform looks *very* interesting to me as it’s placed in a CloudStack style 
 
 So what happened to [Vagrant Cloud](http://vagrantcloud.com "Vagrant Cloud")?
 
-[![vagrantcloudandatlas](/wp-content/uploads/2015/01/vagrantcloudandatlas.png?w=660)](/wp-content/uploads/2015/01/vagrantcloudandatlas.png)
+[![vagrantcloudandatlas](/images/2015/01/vagrantcloudandatlas.png?w=660)](/images/2015/01/vagrantcloudandatlas.png)
 
 Well the good news is that all existing VagrantCloud Boxes and URLs still work, so in theory Part 3 will still work for everyone!
 
 However, for some reason, when you search Atlas for “Windows” the *kensykora/windows_2012_r2_standard* box we were using [no longer shows up!](https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=&q=windows "Windows search on HashiCorp Atlas")
 
-[![windows search on hasicorp atlas](/wp-content/uploads/2015/01/windows-search-on-hasicorp-atlas.png?w=660)](/wp-content/uploads/2015/01/windows-search-on-hasicorp-atlas.png)
+[![windows search on hasicorp atlas](/images/2015/01/windows-search-on-hasicorp-atlas.png?w=660)](/images/2015/01/windows-search-on-hasicorp-atlas.png)
 
 No idea why [as it still exists](https://atlas.hashicorp.com/kensykora/boxes/windows_2012_r2_standard "kensykora/windows_2012_r2_standard"), but *anyway* this gave me a good excuse to play with Packer!
 
@@ -76,7 +76,7 @@ Where “C:\Users\smartin\Documents\packer” is the path you extracted packer t
 
 Go to [https://github.com/joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows "Joe FitzGerald's Packer Windows") and hit the “Download Zip” button.
 
-[![download zip github](/wp-content/uploads/2015/01/download-zip-github.png?w=660)](/wp-content/uploads/2015/01/download-zip-github.png)
+[![download zip github](/images/2015/01/download-zip-github.png?w=660)](/images/2015/01/download-zip-github.png)
 
 Then extract the Zip to wherever you like (though preferably on a hard disk with some space as this directory will be where the ISO is downloaded to AND where the resultant box file is created).
 
@@ -86,17 +86,17 @@ Okay you don’t *have * to disable Windows updates, in fact, if you’re buil
 
 Open the directory to which you *extracted packer-windows-master*.
 
-[![packer-windows-master](/wp-content/uploads/2015/01/packer-windows-master.png?w=660)](/wp-content/uploads/2015/01/packer-windows-master.png)
+[![packer-windows-master](/images/2015/01/packer-windows-master.png?w=660)](/images/2015/01/packer-windows-master.png)
 
 Find *answer\_files2012\_r2Autounattend.xml* and uncomment the section that starts “WITHOUT WINDOWS UPDATES” and comment *out* the section that says “WITH WINDOWS UPDATES”. It should look like the following screenshot once you’re done:
 
-[![comment out windows updates](/wp-content/uploads/2015/01/comment-out-windows-updates.png?w=660)](/wp-content/uploads/2015/01/comment-out-windows-updates.png)
+[![comment out windows updates](/images/2015/01/comment-out-windows-updates.png?w=660)](/images/2015/01/comment-out-windows-updates.png)
 
 This will cut out a lot of time for the packer build!
 
 Next, open up `packer-windows-masterwindows\_2012\_r2.json` and change the `virtualbox-iso` `headless` value to false. This isn’t strictly necessary, but helps you see what’s going on and appreciate how awesome it is that you don’t have to do all this by hand!
 
-[![headless false](/wp-content/uploads/2015/01/headless-false.png?w=660)](/wp-content/uploads/2015/01/headless-false.png)
+[![headless false](/images/2015/01/headless-false.png?w=660)](/images/2015/01/headless-false.png)
 
 Save, that, open a PowerShell window and CD to your packer-windows-master directory and run:
 ```
@@ -113,11 +113,11 @@ This will take a while to run as it does the following:
 2. Installs Windows 2012 R2 Trial to a temporary VirtualBox VM
 3. Packages that VM up into a Vagrant box and dumps it into your *packer-windows-master *directory
 
-![packer build](/wp-content/uploads/2015/01/packer-build.png?w=660)
+![packer build](/images/2015/01/packer-build.png?w=660)
 
 *snore*
 
-[![finished building vagrant box](/wp-content/uploads/2015/01/finished-building-vagrant-box.png?w=660)](/wp-content/uploads/2015/01/finished-building-vagrant-box.png)
+[![finished building vagrant box](/images/2015/01/finished-building-vagrant-box.png?w=660)](/images/2015/01/finished-building-vagrant-box.png)
 
 This will throw errors about VMwareapplication not existing, but that’s fine, we don’t want a VMware template.
 
@@ -129,7 +129,7 @@ Now, you’ve not had to do this in any of the previous guides because we always
 ```
 vagrant box add C:\Users\smartin\Downloads\packer-windows-masterwindows_2012_r2_virtualbox.box --name "smartin-2012r2"
 ```
-[![add vagrant box](/wp-content/uploads/2015/01/add-vagrant-box.png?w=660)](/wp-content/uploads/2015/01/add-vagrant-box.png)
+[![add vagrant box](/images/2015/01/add-vagrant-box.png?w=660)](/images/2015/01/add-vagrant-box.png)
 
 The name is completely arbitrary, do change it for your purposes, and the location obviously has to be amended to reflect where your *packer-windows-master* directory is!
 
@@ -139,7 +139,7 @@ The name is completely arbitrary, do change it for your purposes, and the locati
 ```
 vagrant plugin install vagrant-omnibus
 ```
-[![install vagrant omnibus](/wp-content/uploads/2015/01/install-vagrant-omnibus.png?w=660)](/wp-content/uploads/2015/01/install-vagrant-omnibus.png)
+[![install vagrant omnibus](/images/2015/01/install-vagrant-omnibus.png?w=660)](/images/2015/01/install-vagrant-omnibus.png)
 
 With that done you can create a new folder (wherever you like) for your vagrant project. Mine’s called *vagrant-base-2012R2* but it really doesn’t matter.
 
@@ -173,5 +173,5 @@ Most of this should be familiar from previous parts, but the important bit to ch
 
 Once that’s created, VAGRANT UP!
 
-[![vagrant up #1](/wp-content/uploads/2015/01/vagrant-up-1.png?w=660)](/wp-content/uploads/2015/01/vagrant-up-1.png) [![vagrant up #2](/wp-content/uploads/2015/01/vagrant-up-2.png?w=660)](/wp-content/uploads/2015/01/vagrant-up-2.png)Et Voila! One repeatable build from ISO > Vagrant Box with Chef installed!
+[![vagrant up #1](/images/2015/01/vagrant-up-1.png?w=660)](/images/2015/01/vagrant-up-1.png) [![vagrant up #2](/images/2015/01/vagrant-up-2.png?w=660)](/images/2015/01/vagrant-up-2.png)Et Voila! One repeatable build from ISO > Vagrant Box with Chef installed!
 

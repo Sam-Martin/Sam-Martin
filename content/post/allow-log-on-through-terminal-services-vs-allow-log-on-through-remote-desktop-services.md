@@ -22,7 +22,7 @@ Unfortunately, this setting, despite all the hype, is not what I was after.
 
 What I wanted, however, was simply to allow the group to log on to the servers the GPO was applied to via the *‘Remote Desktop’ *setting that is available in Advanced System Properties:
 
-![Advanced System Properties](/wp-content/uploads/2012/09/remote-desktop-advanced-system-properties1.gif)
+![Advanced System Properties](/images/2012/09/remote-desktop-advanced-system-properties1.gif)
 
 The only way I’ve been able to do this via group policy is by adding the group to the “Remote Desktop Users” local group on the servers, using the Restricted Groups policy option which can be found:
 

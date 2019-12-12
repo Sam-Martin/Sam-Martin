@@ -3,7 +3,7 @@ author = "toukakoukan"
 date = 2014-08-25T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2014/08/chef-server.png"
+image = "/images/2014/08/chef-server.png"
 slug = "getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping"
 title = "Getting Started with Chef on Windows Server - Part 2 - Chef Server & Bootstrapping"
 
@@ -56,17 +56,17 @@ To get these credentials, login to your new Chef Server ([https://<ip of ubuntu 
 **Password:** p@ssw0rd1
 
 Note the lowercase p in the password, this is not an MS educational sample!
-[![chef-server](/wp-content/uploads/2014/08/chef-server.png)](/wp-content/uploads/2014/08/chef-server.png)
+[![chef-server](/images/2014/08/chef-server.png)](/images/2014/08/chef-server.png)
 
 You will be immediately prompted to save the ‘admin’ user’s private key, save this to your desktop as chef-admin.psm.
 
-[![private-key](/wp-content/uploads/2014/08/private-key.png)](/wp-content/uploads/2014/08/private-key.png)
+[![private-key](/images/2014/08/private-key.png)](/images/2014/08/private-key.png)
 
 Now navigate to
 
 *Clients > chef-validator > Edit > Regenerate Private Key*
 
-[![chef-validator](/wp-content/uploads/2014/08/chef-validator.png)](/wp-content/uploads/2014/08/chef-validator.png)
+[![chef-validator](/images/2014/08/chef-validator.png)](/images/2014/08/chef-validator.png)
 
 To download the validator’s private key. Save it into a text file called *chef-validator.pem* on your desktop.
 
@@ -81,19 +81,19 @@ One of the big advantages configuration management is the fact that you can vers
 
 **On your 2012 VM** from the [previous article](http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/), download GIT from [http://www.git-scm.com/download/win](http://www.git-scm.com/download/win) ensuring you tick “Use GIT from the Windows Command Prompt” when asked.
 
-[![git install](/wp-content/uploads/2014/08/git-install.png)](/wp-content/uploads/2014/08/git-install.png)
+[![git install](/images/2014/08/git-install.png)](/images/2014/08/git-install.png)
 
 Once installed, open Powershell and CD into your Documents folder and run:
 ```
 git clone git://github.com/opscode/chef-repo.git
 ```
-[![clone-opscode-chef-repo](/wp-content/uploads/2014/08/clone-opscode-chef-repo.png)](/wp-content/uploads/2014/08/clone-opscode-chef-repo.png)
+[![clone-opscode-chef-repo](/images/2014/08/clone-opscode-chef-repo.png)](/images/2014/08/clone-opscode-chef-repo.png)
 
 This will pull down the latest copy of the Chef repo from Github and form the basis of our new working directory.
 
 Once complete, create a folder inside the new ‘chef-repo’ folder called *.chef*  (you’ll probably need to use mkdir as the Windows UI won’t let you create a folder starting with a ‘.’) and copy the two pem files you downloaded from the Chef server earlier into it:
 
-[![.chef](/wp-content/uploads/2014/08/chef1.png)](/wp-content/uploads/2014/08/chef1.png)
+[![.chef](/images/2014/08/chef1.png)](/images/2014/08/chef1.png)
 
 Because these files are secret, we don’t want to sync them with our source repo, so open up *.gitignore* and check that the *.chef* folder is already ignored.
 
@@ -115,7 +115,7 @@ Which will prompt for the following info:
 **Path to Chef Repo**: `C:\Users\<yourname>\Documents\chef-repo`  
 **Password for New User:** ``<your choice>``
 
-[![knife configure --initial](/wp-content/uploads/2014/08/knife-configure-initial.png)](/wp-content/uploads/2014/08/knife-configure-initial.png)
+[![knife configure --initial](/images/2014/08/knife-configure-initial.png)](/images/2014/08/knife-configure-initial.png)
 
 And you’re done! Your workstation is now setup to talk to your Chef Server. Next we need to upload the recipe we created previously and bootstrap an <del>unwitting victim</del> server.
 
@@ -135,7 +135,7 @@ On the same server, run:
 ```
 knife cookbook upload webserver
 ```
-[![knife cookbook upload webserver](/wp-content/uploads/2014/08/knife-cookbook-upload-webserver.png)](/wp-content/uploads/2014/08/knife-cookbook-upload-webserver.png)
+[![knife cookbook upload webserver](/images/2014/08/knife-cookbook-upload-webserver.png)](/images/2014/08/knife-cookbook-upload-webserver.png)
 
 Bam, simple as that! Your webserver recipe is now available to any server configured to talk to our Chef server.
 
@@ -190,15 +190,15 @@ knife bootstrap windows winrm [new 2012 server ip] -x [windows admin username]�
 ```
 (I’ve included -V for verbose because this took nearly ten minutes on my ageing-laptop-powered VMs and wanted some feedback during.)
 
-[![start bootstrap](/wp-content/uploads/2014/08/start-bootstrap1.png)](/wp-content/uploads/2014/08/start-bootstrap1.png)
+[![start bootstrap](/images/2014/08/start-bootstrap1.png)](/images/2014/08/start-bootstrap1.png)
 
-Some time later…[![finish bootstrap](/wp-content/uploads/2014/08/finish-bootstrap.png)](/wp-content/uploads/2014/08/finish-bootstrap.png)
+Some time later…[![finish bootstrap](/images/2014/08/finish-bootstrap.png)](/images/2014/08/finish-bootstrap.png)
 
 Knife has now reached out to your blank 2012 VM, downloaded the MSI for Chef Client, installed it, and applied your ‘webserver’ recipe, which in turn installed IIS and populated Default.htm.
 
 Did it work? The moment of truth… put [http://ip of your new server](http://<ip%20of your new server>)into your browser
 
-[![it worked!](/wp-content/uploads/2014/08/it-worked.png)](/wp-content/uploads/2014/08/it-worked.png)
+[![it worked!](/images/2014/08/it-worked.png)](/images/2014/08/it-worked.png)
 
 Holy crap it actually worked!
 

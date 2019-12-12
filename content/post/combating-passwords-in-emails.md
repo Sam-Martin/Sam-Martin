@@ -4,7 +4,7 @@ categories = ["API Gateway", "aws", "Ephemera", "lambda", "security"]
 date = 2016-02-06T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2016/02/2016-02-06-Ephemera-Demo.gif"
+image = "/images/2016/02/2016-02-06-Ephemera-Demo.gif"
 slug = "combating-passwords-in-emails"
 tags = ["API Gateway", "aws", "Ephemera", "lambda", "security"]
 title = "Combating Passwords in Emails"
@@ -28,7 +28,7 @@ So what do you do in the meantime? How do you provide at least a modicum of secu
 
 > Ephemera: things that exist or are used or enjoyed for only a short time.
 
-![2016-02-06 - Ephemera Demo](https://sammart.in/wp-content/uploads/2016/02/2016-02-06-Ephemera-Demo.gif)
+![2016-02-06 - Ephemera Demo](/images/2016/02/2016-02-06-Ephemera-Demo.gif)
 
 Enter [Ephemera](https://github.com/Sam-Martin/Ephemera) a transitional AWS based one time password transfer solution I’ve open sourced to allow people to safely share passwords until they have a better way of managing secrets.(http://ephemera.sammart.in) You can find a demo setup at [ephemera.sammart.in](http://ephemera.sammart.in). (Just don’t be daft and use it for transferring real secrets!)
 

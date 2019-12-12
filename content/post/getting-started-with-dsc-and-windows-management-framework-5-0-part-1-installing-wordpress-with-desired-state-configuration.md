@@ -3,7 +3,7 @@ author = "toukakoukan"
 date = 2014-09-08T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2014/09/wmf-5-0-september-2014-preview.png"
+image = "/images/2014/09/wmf-5-0-september-2014-preview.png"
 slug = "getting-started-with-dsc-and-windows-management-framework-5-0-part-1-installing-wordpress-with-desired-state-configuration"
 title = "Getting Started with DSC and PowerShell 5.0 - Part 1 - Installing WordPress with Desired State Configuration"
 

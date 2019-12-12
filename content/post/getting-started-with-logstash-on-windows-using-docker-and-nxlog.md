@@ -4,7 +4,7 @@ categories = ["docker", "ELK", "logtash"]
 date = 2015-05-25T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2015/05/discover-kibana-4-google-chrome.png"
+image = "/images/2015/05/discover-kibana-4-google-chrome.png"
 slug = "getting-started-with-logstash-on-windows-using-docker-and-nxlog"
 tags = ["docker", "ELK", "logtash"]
 title = "Getting Started with LogStash on Windows using Docker and nxlog"
@@ -26,7 +26,7 @@ To do this we’re going to use:
 
 # Setting up Docker & the ELK container
 
-[![Setup - Boot2Docker for Windows](/wp-content/uploads/2015/05/setup-boot2docker-for-windows.png)](/wp-content/uploads/2015/05/setup-boot2docker-for-windows.png)
+[![Setup - Boot2Docker for Windows](/images/2015/05/setup-boot2docker-for-windows.png)](/images/2015/05/setup-boot2docker-for-windows.png)
 
 Install [VirtualBox from here](https://www.virtualbox.org/wiki/Downloads).
 
@@ -38,9 +38,9 @@ Open a new PowerShell window and run
 
 Then execute the 3 lines of environment variables it prompts you to run
 
-[![boot2docker-up](/wp-content/uploads/2015/05/boot2docker-up.png?w=660)](/wp-content/uploads/2015/05/boot2docker-up.png)Now, because the [Boot2Docker VM automatically shares](https://github.com/boot2docker/boot2docker#virtualbox-guest-additions)*C:\Users* on your host machine as */c/users* internally, we’re going to create a “logstash” folder in your *Documents* folder, and a* logstash.conf*  text file within that.
+[![boot2docker-up](/images/2015/05/boot2docker-up.png?w=660)](/images/2015/05/boot2docker-up.png)Now, because the [Boot2Docker VM automatically shares](https://github.com/boot2docker/boot2docker#virtualbox-guest-additions)*C:\Users* on your host machine as */c/users* internally, we’re going to create a “logstash” folder in your *Documents* folder, and a* logstash.conf*  text file within that.
 
-[![logstash folder](/wp-content/uploads/2015/05/logstash-folder.png?w=660)](/wp-content/uploads/2015/05/logstash-folder.png)
+[![logstash folder](/images/2015/05/logstash-folder.png?w=660)](/images/2015/05/logstash-folder.png)
 
 Populate that log file with the following very simple config
 
@@ -52,7 +52,7 @@ Excellent! We can now download and start our container! In the same PowerShell w
 
 docker run -p 80:80 -p 3515:3515/udp ` -v /c/Users/smartin/Documents/logstash:/etc/logstash ` willdurand/elk
 
-[![docker run](/wp-content/uploads/2015/05/docker-run.png?w=660)](/wp-content/uploads/2015/05/docker-run.png)  
+[![docker run](/images/2015/05/docker-run.png?w=660)](/images/2015/05/docker-run.png)  
  (Yours will look different if you haven’t downloaded wildurand/elk previously.)
 
 Excellent! So long as logstash isn’t restarting every few seconds (which suggests you have a syntax error in your config) we can proceed to setup our Windows log agent!
@@ -60,7 +60,7 @@ Excellent! So long as logstash isn’t restarting every few seconds (which sugge
 
 # Setting up NxLog
 
-[![NXLOG-CE Setup](/wp-content/uploads/2015/05/nxlog-ce-setup.png)](/wp-content/uploads/2015/05/nxlog-ce-setup.png)
+[![NXLOG-CE Setup](/images/2015/05/nxlog-ce-setup.png)](/images/2015/05/nxlog-ce-setup.png)
 
 I chose to install NxLog on my host computer to save spinning up a Windows VM which takes forever. You can install it on a VM if you prefer, just make sure that you give it a NIC which has access to VirtualBox’s Host-Only Adapter, as we’ll be using that to communicate with LogStash!
 
@@ -153,13 +153,13 @@ Okay, hopefully all’s gone well so far! Now we can get to the good stuff (in t
 
 Then copy and paste the IP you retrieved earlier using *boot2docker ip* into your browser and… Voila!
 
-[![Settings - Kibana 4 - Google Chrome](/wp-content/uploads/2015/05/settings-kibana-4-google-chrome.png?w=660)](/wp-content/uploads/2015/05/settings-kibana-4-google-chrome.png)
+[![Settings - Kibana 4 - Google Chrome](/images/2015/05/settings-kibana-4-google-chrome.png?w=660)](/images/2015/05/settings-kibana-4-google-chrome.png)
 
 Select the only time-field name option available to you, click create and you are live.
 
 To see your logs, click the discover button.
 
-[![Discover - Kibana 4 - Google Chrome](/wp-content/uploads/2015/05/discover-kibana-4-google-chrome.png?w=660)](/wp-content/uploads/2015/05/discover-kibana-4-google-chrome.png)
+[![Discover - Kibana 4 - Google Chrome](/images/2015/05/discover-kibana-4-google-chrome.png?w=660)](/images/2015/05/discover-kibana-4-google-chrome.png)
 
 While it’s a relatively daunting interface to start off with, you’ll soon get used to it.
 
@@ -179,7 +179,7 @@ Message:panic
 
 Then click the search icon!
 
-[![Discover - Kibana 4 - Google Chrome - don't panic](/wp-content/uploads/2015/05/discover-kibana-4-google-chrome-dont-panic.png?w=660)](/wp-content/uploads/2015/05/discover-kibana-4-google-chrome-dont-panic.png)
+[![Discover - Kibana 4 - Google Chrome - don't panic](/images/2015/05/discover-kibana-4-google-chrome-dont-panic.png?w=660)](/images/2015/05/discover-kibana-4-google-chrome-dont-panic.png)
 
 Hurrah! We’re aggregating live logs!
 

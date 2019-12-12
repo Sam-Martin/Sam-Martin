@@ -4,7 +4,7 @@ categories = ["Azure"]
 date = 2016-04-16T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.png"
+image = "/images/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.png"
 slug = "creating-http-invoked-powershell-azure-functions"
 tags = ["Azure"]
 title = "Creating HTTP Invoked PowerShell Azure Functions"
@@ -15,21 +15,21 @@ Azure Functions ([introduced on the 31st of March 2016](https://azure.microsoft.
 
 It’s currently in Preview, and the [documentation is a little light](https://azure.microsoft.com/en-us/documentation/articles/functions-reference/) at the time of writing. In fact, it’s basically non-existent for PowerShell save for a single *QueueTrigger – PowerShell* example function for PS scripts triggered by a queue. So let’s work from this as our base script!
 
-[![2016-04-16 - PowerShell Example Function (Queue)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Queue-1024x305.png)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Queue.png)
+[![2016-04-16 - PowerShell Example Function (Queue)](/images/2016/04/2016-04-16-PowerShell-Example-Function-Queue.png)](/images/2016/04/2016-04-16-PowerShell-Example-Function-Queue.png)
 
 (See [Create your first Azure Function](https://azure.microsoft.com/en-us/documentation/articles/functions-create-first-azure-function/) for a guide on how to get to this point. Just make sure you select the *QueueTrigger – PowerShell *function instead of the NodeJS function he suggests.)
 
 Now you’re setup, go to the **Integrate** tab and change the Trigger and Output to HTTP (note that the parameter names are req and res now instead of input and output).
 
-[![2016-04-16 - PowerShell Example Function Trigger - Output](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output-1024x419.png)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.png)
+[![2016-04-16 - PowerShell Example Function Trigger - Output](/images/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.png)](/images/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.png)
 
 Now go back to the script and change *input* to *req* and *output* to *res* wherever you see them.
 
-[![2016-04-16 - PowerShell Example Function InputOutput](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-InputOutput-1024x241.png)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-InputOutput.png)
+[![2016-04-16 - PowerShell Example Function InputOutput](/images/2016/04/2016-04-16-PowerShell-Example-Function-InputOutput.png)](/images/2016/04/2016-04-16-PowerShell-Example-Function-InputOutput.png)
 
 Now change the word “queue” on line three to “HTTP” (‘cos we’re not reading from a queue anymore!), add a string of some description into the test field and click “Save and Run” at the bottom of the page.
 
-[![2016-04-16 - PowerShell Example Function Test Run](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Test-Run-1-1024x611.png)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-Example-Function-Test-Run-1.png)
+[![2016-04-16 - PowerShell Example Function Test Run](/images/2016/04/2016-04-16-PowerShell-Example-Function-Test-Run-1.png)](/images/2016/04/2016-04-16-PowerShell-Example-Function-Test-Run-1.png)
 
 Voila! Our writeline is logging our input!! But wait, nothing’s appeared in our output? What gives?
 
@@ -51,7 +51,7 @@ Now let’s update our test input to be a JSON string.
 ```
 Hit “Save and Run” at the bottom of the screen…
 
-[![2016-04-16 - PowerShell JSON Input](/wp-content/uploads/2016/04/2016-04-16-PowerShell-JSON-Input-1024x408.png)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-JSON-Input.png)
+[![2016-04-16 - PowerShell JSON Input](/images/2016/04/2016-04-16-PowerShell-JSON-Input.png)](/images/2016/04/2016-04-16-PowerShell-JSON-Input.png)
 
  
 
@@ -67,7 +67,7 @@ So how do we call this from our laptops? Easy! Grab the Function URL from the to
 Invoke-RestMethod "<yourfunctionurlhere>" -Method POST -Body '{"FirstName":"Sam","LastName":"Martin"}'
 ```
 
-[![2016-04-16 - PowerShell JSON invoke-restmethod](/wp-content/uploads/2016/04/2016-04-16-PowerShell-JSON-invoke-restmethod.png)](/wp-content/uploads/2016/04/2016-04-16-PowerShell-JSON-invoke-restmethod.png)
+[![2016-04-16 - PowerShell JSON invoke-restmethod](/images/2016/04/2016-04-16-PowerShell-JSON-invoke-restmethod.png)](/images/2016/04/2016-04-16-PowerShell-JSON-invoke-restmethod.png)
 
 Beautiful! We get our response back into our PowerShell Window!
 

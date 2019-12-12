@@ -4,7 +4,7 @@ categories = ["Chef", "Windows"]
 date = 2014-08-19T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2014/10/vagrantup.png"
+image = "/images/2014/10/vagrantup.png"
 slug = "getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef"
 tags = ["Chef", "Windows"]
 title = "Getting Started with Chef on Windows Server – Part 3 – Vagrant, Windows, and Managed Chef"
@@ -28,7 +28,7 @@ It allows you to easily spin up an environment based on any template found on [V
 
 So go and [download it](http://www.vagrantup.com/downloads.html "Vagrant Downloads"), I’m sure you’ve already got VirtualBox installed, but if not, [download that too](https://www.virtualbox.org/wiki/Downloads "VirtualBox Downloads").
 
-[![vagrantup](/wp-content/uploads/2014/10/vagrantup.png)](/wp-content/uploads/2014/10/vagrantup.png)
+[![vagrantup](/images/2014/10/vagrantup.png)](/images/2014/10/vagrantup.png)
 
 
 # Exercise
@@ -53,15 +53,15 @@ Managed Chef is Chef hosted by <del>OpsCode</del>, sorry Chef (the company), rel
 
 Visit [manage.opscode.com](https://manage.opscode.com/ "Managed Chef") and register for a free account ([up to 5 nodes](https://www.getchef.com/chef/#plans-and-pricing "Chef Plans & Pricing")).
 
-[![manage.opscode](/wp-content/uploads/2014/10/manage-opscode.png)](/wp-content/uploads/2014/10/manage-opscode.png)
+[![manage.opscode](/images/2014/10/manage-opscode.png)](/images/2014/10/manage-opscode.png)
 
 Once you’ve signed in, download the starter kit and extract the contents to a new directory called “vagrant-chef-windows” somewhere in your My Documents folder.
 
 **Important:** It is imperative that you create this folder in your My Documents, or some other subfolder within your user’s home directory. Vagrant, Chef, and other tools which have their roots in Linux, use the current working directory and sometimes the user’s home directory in order to figure out where to look for their configuration files. Always be aware of your CWD when executing Vagrant and Chef commands, as it’s surprisingly important!
 
-[![Download Starter Kit](/wp-content/uploads/2014/10/download-starter-kit.png)](/wp-content/uploads/2014/10/download-starter-kit.png)
+[![Download Starter Kit](/images/2014/10/download-starter-kit.png)](/images/2014/10/download-starter-kit.png)
 
-[![chef-repo](/wp-content/uploads/2014/10/chef-repo.png)](/wp-content/uploads/2014/10/chef-repo.png)
+[![chef-repo](/images/2014/10/chef-repo.png)](/images/2014/10/chef-repo.png)
 
 Now we’re setup, you’re ready to start with Vagrant!
 
@@ -72,13 +72,13 @@ Windows in Vagrant is pretty tried and tested now it seems. Although support for
 
 Nonetheless, the selection of “Boxes” (VM templates) on [vagrantcloud.com](http://vagrantcloud.com "Vagrant Cloud") is pretty limited right now, presumably due to licensing concerns.
 
-[![vagrantcloudsearch](/wp-content/uploads/2014/10/vagrantcloudsearch.png)](/wp-content/uploads/2014/10/vagrantcloudsearch.png)
+[![vagrantcloudsearch](/images/2014/10/vagrantcloudsearch.png)](/images/2014/10/vagrantcloudsearch.png)
 
 The most popular Windows 2012 R2 box is currently one provided by [OpenTable](https://vagrantcloud.com/opentable/boxes/win-2012r2-standard-amd64-nocm "opentable / win-2012r2-standard-amd64-nocm"), however it seems to have issues with password expiry, so, we’ll go with the *second* most popular, the one by [kensykora](https://vagrantcloud.com/kensykora/boxes/windows_2012_r2_standard "kensykora / windows_2012_r2_standard").
 
 If you open up the[ link to that box](https://vagrantcloud.com/kensykora/boxes/windows_2012_r2_standard "kensykora / windows_2012_r2_standard"), you’ll see a handy command in a textbox, ready for you to copy out.
 
-[![vagrantcloudcommand](/wp-content/uploads/2014/10/vagrantcloudcommand.png)](/wp-content/uploads/2014/10/vagrantcloudcommand.png)
+[![vagrantcloudcommand](/images/2014/10/vagrantcloudcommand.png)](/images/2014/10/vagrantcloudcommand.png)
 
 Copy that command, open a new PowerShell window on your computer, create a new folder in your My Documents called “vagrant-chef-windows”, then execute the command:
 
@@ -86,7 +86,7 @@ Copy that command, open a new PowerShell window on your computer, create a new f
 vagrant init kensykora/windows_2012_r2_standard
 ```
 
-[![vagrantinit](/wp-content/uploads/2014/10/vagrantinit.png)](/wp-content/uploads/2014/10/vagrantinit.png)This creates a *Vagrantfile* in the directory in which you’ve executed the command.
+[![vagrantinit](/images/2014/10/vagrantinit.png)](/images/2014/10/vagrantinit.png)This creates a *Vagrantfile* in the directory in which you’ve executed the command.
 
 ### 2.1) Setup Initial Vagrant Configuration
 
@@ -150,7 +150,7 @@ if(!(Test-Path "C:chef")){
 
 Ideally, we wouldn’t need to do this as Chef would already be installed in the Box we got from [VagrantCloud.com](http://vagrantcloud.com "VagrantCloud"), however, at the time of writing there are no Windows 2012 R2 boxes with Chef pre-installed.  
  Your folder should now look like this:  
-![folder with install chef.ps1](/wp-content/uploads/2014/10/folder-with-install-chef-ps11.png)
+![folder with install chef.ps1](/images/2014/10/folder-with-install-chef-ps11.png)
 
 ### 2.3) Power On – Vagrant Up
 
@@ -160,18 +160,18 @@ Now, ensure you’re in your *vagrant-chef-windows* folder in the PowerShell con
 vagrant up
 ```
 
-[![vagrant up #1](/wp-content/uploads/2014/10/vagrant-up-11.png)](/wp-content/uploads/2014/10/vagrant-up-11.png)
+[![vagrant up #1](/images/2014/10/vagrant-up-11.png)](/images/2014/10/vagrant-up-11.png)
 
 It will scurry off, download the kensykora 2012 R2 box (not shown as I already had it), power up a new VM and execute your ps1. Once complete, you should have a VirtualBox console pop up and allow you to sign in (right ctrl + del = Ctrl + Alt + Delete).
 
 **Username:** Vagrant  
 **Password:** vagrant
 
-[![2012 vagrant VM](/wp-content/uploads/2014/10/2012-vagrant-vm.png)](/wp-content/uploads/2014/10/2012-vagrant-vm.png)
+[![2012 vagrant VM](/images/2014/10/2012-vagrant-vm.png)](/images/2014/10/2012-vagrant-vm.png)
 
 If you login, you’ll see *C:\chef* exists, and if you browse into *C:vagrant*, you’ll see that the entirety of your *vagrant-chef-windows* folder is available within the VM!
 
-[![see c vagrant](/wp-content/uploads/2014/10/see-c-vagrant.png)](/wp-content/uploads/2014/10/see-c-vagrant.png)
+[![see c vagrant](/images/2014/10/see-c-vagrant.png)](/images/2014/10/see-c-vagrant.png)
 
 This is **important** because almost all file paths you’ll set in your Vagrantfile configuration will be relative to this directory.
 
@@ -199,7 +199,7 @@ You will, of course, need to replace *orgname* with your organisation name on t
 
 Your Vagrantfile should now look like this:
 
-[![Final Vagrantfile](/wp-content/uploads/2014/10/final-vagrantfile.png)](/wp-content/uploads/2014/10/final-vagrantfile.png)
+[![Final Vagrantfile](/images/2014/10/final-vagrantfile.png)](/images/2014/10/final-vagrantfile.png)
 
 This code uses the Chef Client we’ve already installed and the *orgname-validator.pem* which came with our Starter Kit in order to add this guest as a node to our managed Chef environment.
 
@@ -211,17 +211,17 @@ But wait, we haven’t got the cookbook *learn_chef_iis* (a simple Windows/IIS e
 knife cookbook site download learn_chef_iis
 ```
 
-[![download learn_chef_iis](/wp-content/uploads/2014/10/download-learn_chef_iis.png)](/wp-content/uploads/2014/10/download-learn_chef_iis.png)
+[![download learn_chef_iis](/images/2014/10/download-learn_chef_iis.png)](/images/2014/10/download-learn_chef_iis.png)
 
 Now extract the resulting tar.gz into your cookbooks subdir.
 
-[![learn_chef_iis extracted](/wp-content/uploads/2014/10/learn_chef_iis-extracted.png)](/wp-content/uploads/2014/10/learn_chef_iis-extracted.png)
+[![learn_chef_iis extracted](/images/2014/10/learn_chef_iis-extracted.png)](/images/2014/10/learn_chef_iis-extracted.png)
 
 And finally, upload it to your managed Chef environment.
 ```
 knife upload learn_chef_iis
 ```
-[![knife upload learn_chef_iis](/wp-content/uploads/2014/10/knife-upload-learn_chef_iis.png)](/wp-content/uploads/2014/10/knife-upload-learn_chef_iis.png)
+[![knife upload learn_chef_iis](/images/2014/10/knife-upload-learn_chef_iis.png)](/images/2014/10/knife-upload-learn_chef_iis.png)
 
 ### 2.6) Vagrant Provision
 
@@ -229,11 +229,11 @@ Excellent! The cookbook’s ready to go. Now CD up a level into your vagrant dir
 ```
 vagrant provision
 ```
-[![vagrant provision](/wp-content/uploads/2014/10/vagrant-provision1.png)](/wp-content/uploads/2014/10/vagrant-provision1.png)
+[![vagrant provision](/images/2014/10/vagrant-provision1.png)](/images/2014/10/vagrant-provision1.png)
 
 Vagrant has now kicked off a chef-client run with the learn_chef_iis cookbook as its runlist. Once it’s finished (and in combination with the [forwarded port ](https://docs.vagrantup.com/v2/networking/forwarded_ports.html "Vagrant Forwarded Ports")we setup earlier) you should now be able to open your favourite browser on your host machine and go to http://localhost:8080 and see…
 
-[![localhost8080](/wp-content/uploads/2014/10/localhost8080.png)](/wp-content/uploads/2014/10/localhost8080.png)Voila!
+[![localhost8080](/images/2014/10/localhost8080.png)](/images/2014/10/localhost8080.png)Voila!
 
 You’re seeing the results of the IIS webserver that [Chef configured](http://learn.getchef.com/windows "Learn Chef Windows") in the VirtualBox that Vagrant deployed and bootstrapped for you! ***Phew***
 
@@ -241,13 +241,13 @@ You’re seeing the results of the IIS webserver that [Chef configured](http://l
 
 Now for the moment of truth. Delete the node from the managed Chef environment, destroy the VM and redeploy a fresh one based on the configuration we’ve provided!
 
-[![delete node](/wp-content/uploads/2014/10/delete-node.png)](/wp-content/uploads/2014/10/delete-node.png)
+[![delete node](/images/2014/10/delete-node.png)](/images/2014/10/delete-node.png)
 
 ```
 vagrant destroy -f vagrant up
 ```
 
-[![vagrant destroy](/wp-content/uploads/2014/10/vagrant-destroy.png)](/wp-content/uploads/2014/10/vagrant-destroy.png)
+[![vagrant destroy](/images/2014/10/vagrant-destroy.png)](/images/2014/10/vagrant-destroy.png)
 
 Wait a little while for Vagrant and Chef to finish doing their thing and you should be able to go back to localhost:8080 again and see exactly the same thing on a fresh VM!
 

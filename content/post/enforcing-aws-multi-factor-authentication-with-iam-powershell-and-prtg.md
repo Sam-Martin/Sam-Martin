@@ -3,7 +3,7 @@ author = "toukakoukan"
 date = 2014-09-07T00:00:00Z
 description = ""
 draft = false
-image = "/2014/09/loginwithmfa.png"
+image = "/images/2014/09/loginwithmfa.png"
 slug = "enforcing-aws-multi-factor-authentication-with-iam-powershell-and-prtg"
 title = "Enforcing AWS Multi-Factor Authentication with IAM, PowerShell and PRTG"
 

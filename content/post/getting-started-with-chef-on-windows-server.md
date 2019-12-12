@@ -4,7 +4,7 @@ categories = ["Chef", "powershell", "Windows"]
 date = 2014-08-24T00:00:00Z
 description = ""
 draft = false
-image = "https://sammart.in/wp-content/uploads/2014/08/under-construction.png"
+image = "/images/2014/08/under-construction.png"
 slug = "getting-started-with-chef-on-windows-server"
 tags = ["Chef", "powershell", "Windows"]
 title = "Getting Started with Chef on Windows Server - Part 1 Intro"
@@ -13,7 +13,7 @@ title = "Getting Started with Chef on Windows Server - Part 1 Intro"
 
 I’ve never had the opportunity to work with configuration management software, but a recent project has pushed me over the edge from “Wow, that sounds really cool in theory!” to “Well, I’d better get my feet wet!”.
 
-As the [learnchef.com’s Windows page](learnchef.com/windows) is currently under construction![Under construction](/wp-content/uploads/2014/08/under-construction.png?w=300), I thought I’d write my efforts up to help anyone who might also be getting their feet wet for the first time in the configuration management space using Chef on Windows.
+As the [learnchef.com’s Windows page](learnchef.com/windows) is currently under construction![Under construction](/images/2014/08/under-construction.png?w=300), I thought I’d write my efforts up to help anyone who might also be getting their feet wet for the first time in the configuration management space using Chef on Windows.
 
 **IMPORTANT:** As I’m writing these posts while going along, it’s not to say that any of what’s reported adheres to Chef’s best practices. So if you notice any glaring errors, please say so in the comments!
 
@@ -65,7 +65,7 @@ The working directory for Chef in Windows looks to be C:Chef by default, so
 cd c:\chef\cookbooks chef generate cookbook webserver
 ```
 
-![chef generate cookbook webserver](/wp-content/uploads/2014/08/chef-generate-cookbook-webserver.png)This will generate the structure and default files for a cookbook named “webserver”.
+![chef generate cookbook webserver](/images/2014/08/chef-generate-cookbook-webserver.png)This will generate the structure and default files for a cookbook named “webserver”.
 
 ### 2) Configure the Default Resource File
 
@@ -109,7 +109,7 @@ This will execute `Add-WindowsFeature Web-Server` in a PowerShell context (ins
 chef generate template webserver Default.htm
 ```
 
-[![chef generate template webserver Default.htm](/wp-content/uploads/2014/08/chef-generate-template-webserver-default-htm.png)](/wp-content/uploads/2014/08/chef-generate-template-webserver-default-htm.png)
+[![chef generate template webserver Default.htm](/images/2014/08/chef-generate-template-webserver-default-htm.png)](/images/2014/08/chef-generate-template-webserver-default-htm.png)
 
 If this throws an error saying Chef was not found, ensure you’ve installed the Chef Development Kit.
 
@@ -131,11 +131,11 @@ All done! Now we can apply the configuration!
 chef-client –local-mode –runlist webserver
 ```
 
-[![chef-client --local-mode --runlist webserver](/wp-content/uploads/2014/08/chef-client-local-mode-runlist-webserver.png)](/wp-content/uploads/2014/08/chef-client-local-mode-runlist-webserver.png)
+[![chef-client --local-mode --runlist webserver](/images/2014/08/chef-client-local-mode-runlist-webserver.png)](/images/2014/08/chef-client-local-mode-runlist-webserver.png)
 
 All this does is kick off the Chef client in local mode specifying a runbook called ‘webserver’, but in the background Chef beavers away installing IIS, starting it, and customising the default.htm page.
 
-[![working website](/wp-content/uploads/2014/08/working-website.png)](/wp-content/uploads/2014/08/working-website.png)
+[![working website](/images/2014/08/working-website.png)](/images/2014/08/working-website.png)
 
 Voila!
 

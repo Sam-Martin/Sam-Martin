@@ -1,6 +1,7 @@
 +++
 author = "toukakoukan"
 date = 2011-04-14T00:00:00Z
+image = "/images/2011/04/spiceworks.jpg"
 description = ""
 draft = false
 slug = "spiceworks-computer-software-antivirus-assetting-event-log-management-for-free"
@@ -13,9 +14,9 @@ Nearly 7 years ago, at the tender age of 18 I spent about 6 months coding and pe
 
 I would have given my right arm for something along the lines of [SpiceWorks ](http://www.spiceworks.com "Spiceworks - Software and Computer Management")
 
-[![](/wp-content/uploads/2011/04/spiceworks.jpg?w=300 "Spiceworks")](/wp-content/uploads/2011/04/spiceworks.jpg)
+[![](/images//2011/04/spiceworks.jpg?w=300 "Spiceworks")](/images//2011/04/spiceworks.jpg)
 
-[](/wp-content/uploads/2011/04/spiceworks.jpg)It consists of a web-interface hosted by a discreet Apache server, from which you can configure & view:
+[](/images//2011/04/spiceworks.jpg)It consists of a web-interface hosted by a discreet Apache server, from which you can configure & view:
 
 - Network Range
 - Active Directory Users

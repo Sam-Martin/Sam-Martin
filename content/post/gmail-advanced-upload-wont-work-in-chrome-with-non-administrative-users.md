@@ -24,7 +24,7 @@ into the address bar and disabling it from there, but for administrators it’s 
 
 > -disable-internal-flash
 
-[![](/wp-content/uploads/2011/10/chrome-shortcut-properties.png "chrome shortcut properties")](/wp-content/uploads/2011/10/chrome-shortcut-properties.png)
+[![](/images/2011/10/chrome-shortcut-properties.png "chrome shortcut properties")](/images/2011/10/chrome-shortcut-properties.png)
 
 There’s probably a better solution, something that allows the inbuilt Flash plugin to work, but this was an improvement over the solutions posted on Google’s user-based tech support board!
 
