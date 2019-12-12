@@ -1,4 +1,4 @@
-baseURL = "http://sammart.in/"
+baseURL = "https://sammart.in/"
 languageCode = "en-gb"
 title = "Sam Martin"
 theme = "m10c"
