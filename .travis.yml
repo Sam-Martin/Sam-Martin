@@ -15,6 +15,8 @@ before_install:
   echo -e "\ntravis_fold:end:$1\r"
 script:
 - hugo
+after_script:
+- echo "sammart.in" > public/CNAME
 deploy:
   provider: pages
   local_dir: public
