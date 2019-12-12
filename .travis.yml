@@ -1,26 +1,24 @@
-# https://travis-ci.community/t/failed-to-deploy-because-of-ruby-error/1143/4
 dist: trusty
 language: python
 python:
-  - 3.6
+- 3.6
 env:
   global:
-    secure: "bsLix0MJXfUBgq/OpZ63k92dpIRQNMZA1VZRh1PYtUUzY4xz1zZg1Dki0YWTNvM9g38OIpl0we1ah+9bJ9PkxEw5m/1ulHVcqGukKVJf9YvqfPciLFbomPxQcFE+qnV8XmOl5tSGxNXOshMeD0TPoxu47ytflJ2ZU1NS5mj8ckqoJ4h06MW4EScTWT9oBUTTwUiDrlb9qzI3FHDjLYk92wVHCo+SggqYwU6ahvBHE0/BADsVn2TJMJJl1cLFA8Cwq8J4WZ+gDWh6U5V/u2ZTnkdURFXoppHfMyy3GKEwObndAtN3ZlJUzCO2wRvr/rQkh6LqAMFOeuqlZtsZBYw0FBb2dS86tqZT8q/caZQPnJzcDSyyRPcr3Iks2hiysiOIDb2C3WF3tQyO4BM2xyhH0ikTroJSCuBycFJrnzBDDVE+DbVN47Z0HzCdrKvGDa0Gf1roWL9xeb9DWOissGgT9oD4Vtb24ly3LjdcsrPuZ0TjcHbdmRSGCt9fMBACOG0xeKSkbp4cCJMzCq56s6uoWWJL3I/p+gLCKCK/zt0Q6kMezcE6GqiklwhOWgJLncu/f6mGOFdu1YG0OmplwvejxcKdvZEO7K/HhtdWMNF/QkkQH8O/ldB+p9v/hFED9sBZj4EzMOuVerK0KDjlc4KGpG3uKOfpkY+m2q0m7QAUJJE="
+  - secure: bsLix0MJXfUBgq/OpZ63k92dpIRQNMZA1VZRh1PYtUUzY4xz1zZg1Dki0YWTNvM9g38OIpl0we1ah+9bJ9PkxEw5m/1ulHVcqGukKVJf9YvqfPciLFbomPxQcFE+qnV8XmOl5tSGxNXOshMeD0TPoxu47ytflJ2ZU1NS5mj8ckqoJ4h06MW4EScTWT9oBUTTwUiDrlb9qzI3FHDjLYk92wVHCo+SggqYwU6ahvBHE0/BADsVn2TJMJJl1cLFA8Cwq8J4WZ+gDWh6U5V/u2ZTnkdURFXoppHfMyy3GKEwObndAtN3ZlJUzCO2wRvr/rQkh6LqAMFOeuqlZtsZBYw0FBb2dS86tqZT8q/caZQPnJzcDSyyRPcr3Iks2hiysiOIDb2C3WF3tQyO4BM2xyhH0ikTroJSCuBycFJrnzBDDVE+DbVN47Z0HzCdrKvGDa0Gf1roWL9xeb9DWOissGgT9oD4Vtb24ly3LjdcsrPuZ0TjcHbdmRSGCt9fMBACOG0xeKSkbp4cCJMzCq56s6uoWWJL3I/p+gLCKCK/zt0Q6kMezcE6GqiklwhOWgJLncu/f6mGOFdu1YG0OmplwvejxcKdvZEO7K/HhtdWMNF/QkkQH8O/ldB+p9v/hFED9sBZj4EzMOuVerK0KDjlc4KGpG3uKOfpkY+m2q0m7QAUJJE=
+  - secure: WcO+NeqUK1Adt+xklLNoYYAE3uLO0Z83uXUYl7xSzm96qFLIyIWwFBhEq10HoFj0+NpYA2mqGF7yXZzAUs4WQmvvYwfMF6EwkkVYMqUL3s28Wzpz4XAucacaMCq62j+zRs6ck3vIOGMuELwekl9i8bfyXI6bVC3tsqj1p/puKt4PqshfrpMchpZF/NrahMh17sGfAoIN3CnsZTtQObodZfSWYvmpdlacYZTOkpU40qUHK2n5YDIboBWyYwT8YZ0hXiwO7YiSBhqSdNv4z3rmZishpoDOT6frI7MzhWAge2Ww0TNlnwlzID9HGE4uASi0yHNvG9JMlbEe1V7EbXQ6y4HeBHOhgmbNXZMJInhY7ldg5STaP9jD6o8YUupLLzNMEcigazSy15UfNVol3EetzI4dJJh4KVcqCfmux5QCRXDS3NuDVLLVvDuC25lCgK+VjwDNRLL4XJRy53Mahu2g+sQbj+sHOyAhUHrO55eAGl0XfoUsf0ffzeaAj26B8D/LFm94rPe7ZrepRALKfHVZwz9OHWqbJTqnIDlC/lLkq2HsfEEn0YYIgRAaxcZon5jOU4Vq7iJwFb5BffACTARhgMu8bkyW22o/Jzp9+KVFwiVfRh5s47Np8yPnMD2CvF41kTXFPtUQI/XiW23dGyXlvYY1BFVSWhcTXY8sfghfmeM=
 git:
-    submodules: false
+  submodules: false
 before_install:
-  # Use sed to replace the SSH URL with the public URL, then initialize submodules
-  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  - git submodule update --init --recursive
-  # Install Hugo
-  - |
-    echo -e "travis_fold:start:$1\033[33;1m$2\033[0m"
-    wget https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.deb -O /tmp/hugo.deb &> /dev/null
-    sudo dpkg -i /tmp/hugo.deb &> /dev/null
-    hugo version
-    echo -e "\ntravis_fold:end:$1\r"
+- sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+- git submodule update --init --recursive
+- |
+  echo -e "travis_fold:start:$1\033[33;1m$2\033[0m"
+  wget https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.deb -O /tmp/hugo.deb &> /dev/null
+  sudo dpkg -i /tmp/hugo.deb &> /dev/null
+  hugo version
+  echo -e "\ntravis_fold:end:$1\r"
 script:
-  - hugo
+- hugo
 deploy:
   provider: pages
   local_dir: public
