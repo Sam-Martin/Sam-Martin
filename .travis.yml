@@ -20,3 +20,4 @@ deploy:
   skip_cleanup: true
   repo: Sam-Martin/sammartin.github.io
   fqdn: sammart.in
+  target_branch: master
