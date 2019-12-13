@@ -10,6 +10,8 @@ script:
 - ls -lha assets/css
 - hugo -D --debug --verbose
 - find . -name \*css\* | xargs -I '{}' shasum {}
+- echo $PWD
+- ls -lha /home/travis/build/Sam-Martin/Sam-Martin/public 
 deploy:
   provider: pages
   local_dir: public
