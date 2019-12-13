@@ -8,7 +8,7 @@ before_install:
   echo -e "\ntravis_fold:end:$1\r"
 script:
 - ls -lha assets/css
-- hugo -D --debug --verbos
+- hugo -D --debug --verbose
 - find . -name \*css\* | xargs -I '{}' md5 {}
 deploy:
   provider: pages
