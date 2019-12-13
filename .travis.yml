@@ -25,6 +25,7 @@ deploy:
   verbose: true
   keep_history: true
   repo: Sam-Martin/sammartin.github.io
+  fqdn: sammart.in
   target_branch: master
   on:
     branch: master
