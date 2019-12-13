@@ -12,13 +12,8 @@ script:
 - find . -name \*css\* | xargs -I '{}' shasum {}
 deploy:
   provider: pages
-  local_dir: public
-  skip_cleanup: true
+  local_dir: publice
   github_token: "$GITHUB_TOKEN"
   verbose: true
-  keep_history: true
   repo: Sam-Martin/sammartin.github.io
   fqdn: sammart.in
-  target_branch: master
-  on:
-    branch: master
