@@ -12,7 +12,7 @@ script:
 - find . -name \*css\* | xargs -I '{}' shasum {}
 deploy:
   provider: pages
-  local_dir: publice
+  local_dir: public
   github_token: "$GITHUB_TOKEN"
   verbose: true
   repo: Sam-Martin/sammartin.github.io
