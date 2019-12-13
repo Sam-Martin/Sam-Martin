@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "new-scientist-article-limit"
 title = "New Scientist article limit"
-
+aliases = ['/new-scientist-article-limit/']
 +++
 
 The New Scientist website has recently started imposing an article limit for non-paying users.

@@ -6,7 +6,7 @@ draft = false
 image = "/images/2014/08/chef-server.png"
 slug = "getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping"
 title = "Getting Started with Chef on Windows Server - Part 2 - Chef Server & Bootstrapping"
-
+aliases = ['/getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping/']
 +++
 
 Now that we’ve done[ Part 1 – Configure a Package & Service](http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/), we can start getting a little more into the meat of Chef: centralisation. In the previous scenario we had defined a single recipe and applied it locally. Very simple, not very useful. In this part, we’re going to create a Chef Server, upload the recipe we created in the previous part to it, and then bootstrap another VM using it.

@@ -6,7 +6,7 @@ description = ""
 draft = false
 slug = "aws-config-intro-with-cloudformation"
 title = "AWS Config Intro with CloudFormation"
-
+aliases = ['/aws-config-intro-with-cloudformation/']
 +++
 
 [AWS Config](https://aws.amazon.com/config/) is a tool from Amazon designed to help you audit your AWS infrastructure for best practice and security adherence.

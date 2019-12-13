@@ -6,7 +6,7 @@ draft = false
 image = "/images/2014/09/wmf-5-0-september-2014-preview.png"
 slug = "getting-started-with-dsc-and-windows-management-framework-5-0-part-1-installing-wordpress-with-desired-state-configuration"
 title = "Getting Started with DSC and PowerShell 5.0 - Part 1 - Installing WordPress with Desired State Configuration"
-
+aliases = ['/getting-started-with-dsc-and-windows-management-framework-5-0-part-1-installing-wordpress-with-desired-state-configuration/']
 +++
 
 So we’ve checked out the basics of Chef on Windows in [Part 1](http://sammart.in/2014/08/24/getting-started-with-chef-on-windows-server/) and [Part 2](http://sammart.in/2014/08/25/getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping/) of Chef On Windows, and with the recent release of the [Windows Management Framework 5.0 Preview September 2014 ](http://www.microsoft.com/en-us/download/details.aspx?id=44070) I thought it was time to stick a toe into the water of the Desired State Configuration side of configuration management on Windows.  

@@ -7,7 +7,7 @@ draft = false
 slug = "using-the-leankit-api-with-powershell"
 tags = ["kanban", "leankit", "powershell"]
 title = "Using the LeanKit API with PowerShell"
-
+aliases = ['/using-the-leankit-api-with-powershell/']
 +++
 
 As I alluded to [in an earlier post](http://samuelmartin.wordpress.com/2014/04/20/leankit-integration-with-ticketing-system-using-powershell/ "LeanKit integration with ticketing system (using PowerShell)"), I’ve been using PowerShell to interact with the[ LeanKit API](https://support.leankit.com/forums/20153741-LeanKit-API-Application-Programming-Interface- "LeanKit API"). You can find the rationale and overarching methodology in the post linked above. Here we’ll be dealing with the nuts and bolts.

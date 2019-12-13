@@ -7,7 +7,7 @@ draft = false
 slug = "windows-server-2008-domain-controllers-unable-to-authenticate-login-requests"
 tags = ["Active Directory", "Server 2003", "Server 2008"]
 title = "Windows Server 2008 Domain Controllers unable to authenticate login requests."
-
+aliases = ['/windows-server-2008-domain-controllers-unable-to-authenticate-login-requests/']
 +++
 
 Recently I was faced with a problem. My Window Server 2003 DCs could authenticate logins fine, but my Windows Server 2008 DCs didn’t work at all.

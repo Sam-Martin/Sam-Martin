@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "tedxoxford-2011"
 title = "TEDxOxford 2011"
-
+aliases = ['/tedxoxford-2011/']
 +++
 
 Yesterday I had the great pleasure of attending [TEDxOxford 2011](http://www.tedxoxford.com/).

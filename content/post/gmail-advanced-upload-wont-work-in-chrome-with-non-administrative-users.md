@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "gmail-advanced-upload-wont-work-in-chrome-with-non-administrative-users"
 title = "Gmail advanced upload won't work in Chrome with non administrative users."
-
+aliases = ['/gmail-advanced-upload-wont-work-in-chrome-with-non-administrative-users/']
 +++
 
 The other day some of my users complained of a very strange issue when using Gmail at work. When composing a new email, they could not upload attachments using the “Advanced Upload” function. When they clicked “Add File” to upload a new document, nothing happened, no error, nothing, it just sat there and refused to work.

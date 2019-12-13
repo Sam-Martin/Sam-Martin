@@ -6,7 +6,7 @@ draft = false
 image = "/images/2018/07/Screen-Shot-2018-07-22-at-15.38.14.png"
 slug = "automated-test-kitchen-checks-on-github-pull-requests-using-docker-teamcity-and-aws-spot-instances"
 title = "Automated Test Kitchen Checks on GitHub Pull Requests using Docker, TeamCity, and AWS Spot Instances"
-
+aliases = ['/automated-test-kitchen-checks-on-github-pull-requests-using-docker-teamcity-and-aws-spot-instances/']
 +++
 
 # Scenario

@@ -8,7 +8,9 @@ image = "/images/2016/05/2016-05-02-Terraform-io-1.png"
 slug = "a-week-with-terraform"
 tags = ["aws", "Terraform", "Infrastructure as Code"]
 title = "A Week with Terraform"
-
+aliases = [
+    '/a-week-with-terraform/'
+]
 +++
 
 As I mentioned in a [previous post](/aws-config-intro-with-cloudformation/), AWS Config is an excellent tool for ensuring compliance across your AWS accounts, but can be challenging to set up consistently across large numbers of regions and accounts. To ease this pain I attempted to set up AWS Config [using CloudFormation](](/aws-config-intro-with-cloudformation/)) but found this challenging when using custom rules due to the necessity of uploading the Lambda functions to an S3 bucket in each region first.  

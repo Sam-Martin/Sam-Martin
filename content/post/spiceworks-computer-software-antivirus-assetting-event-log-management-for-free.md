@@ -6,7 +6,7 @@ description = ""
 draft = false
 slug = "spiceworks-computer-software-antivirus-assetting-event-log-management-for-free"
 title = "Spiceworks Computer, Software & Antivirus Assetting + Event Log Management. For.. Free?!"
-
+aliases = ['/spiceworks-computer-software-antivirus-assetting-event-log-management-for-free/']
 +++
 
 Nearly 7 years ago, at the tender age of 18 I spent about 6 months coding and perfecting a VBScript/WMI software & computer assetting tool for Sysmex UK, the company I was working for at the time.  

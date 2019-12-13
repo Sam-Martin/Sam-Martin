@@ -8,7 +8,7 @@ image = "/images/2014/08/under-construction.png"
 slug = "getting-started-with-chef-on-windows-server"
 tags = ["Chef", "powershell", "Windows"]
 title = "Getting Started with Chef on Windows Server - Part 1 Intro"
-
+aliases = ['/getting-started-with-chef-on-windows-server/']
 +++
 
 I’ve never had the opportunity to work with configuration management software, but a recent project has pushed me over the edge from “Wow, that sounds really cool in theory!” to “Well, I’d better get my feet wet!”.

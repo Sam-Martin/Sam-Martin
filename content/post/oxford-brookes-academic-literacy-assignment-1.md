@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "oxford-brookes-academic-literacy-assignment-1"
 title = "Oxford Brookes: Academic Literacy - Assignment #1"
-
+aliases = ['/oxford-brookes-academic-literacy-assignment-1/']
 +++
 
 500 word summary of the following article:  

@@ -6,7 +6,7 @@ draft = false
 image = "/images/2016/05/logo.png"
 slug = "winops-conference-london-2"
 title = "WinOps Conference London #2"
-
+aliases = ['/winops-conference-london-2/']
 +++
 
 # Intro

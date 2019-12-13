@@ -7,7 +7,7 @@ draft = false
 slug = "adding-internet-shortcuts-and-steam-games-to-the-start-screen-in-windows-8"
 tags = ["Windows 8"]
 title = "Adding internet shortcuts and Steam games to the start screen in Windows 8"
-
+aliases = ['/adding-internet-shortcuts-and-steam-games-to-the-start-screen-in-windows-8/']
 +++
 
 With most programs, in Windows 8 you can simply right click and “Pin to start”

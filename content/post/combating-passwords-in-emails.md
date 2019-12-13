@@ -8,7 +8,7 @@ image = "/images/2016/02/2016-02-06-Ephemera-Demo.gif"
 slug = "combating-passwords-in-emails"
 tags = ["API Gateway", "aws", "Ephemera", "lambda", "security"]
 title = "Combating Passwords in Emails"
-
+aliases = ['/combating-passwords-in-emails/']
 +++
 
 Security is a thorny subject. One I stay away from making sweeping statements or recommendations about whenever possible. However, I’m willing to venture one assertion.

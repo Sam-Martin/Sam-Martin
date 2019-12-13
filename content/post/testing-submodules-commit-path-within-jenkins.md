@@ -6,7 +6,7 @@ draft = false
 image = "/images/2019/03/Screenshot-2019-03-10-at-18.12.40.png"
 slug = "testing-submodules-commit-path-within-jenkins"
 title = "Testing Submodules' Commit  Path within Jenkins Pipeline"
-
+aliases = ['/testing-submodules-commit-path-within-jenkins/']
 +++
 
 # Submodules?

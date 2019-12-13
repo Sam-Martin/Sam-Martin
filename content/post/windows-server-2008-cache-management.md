@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "windows-server-2008-cache-management"
 title = "Windows Server 2008 Cache Management"
-
+aliases = ['/windows-server-2008-cache-management/']
 +++
 
 # Or, “How explorer.exe used all my server’s RAM and caused it to die”

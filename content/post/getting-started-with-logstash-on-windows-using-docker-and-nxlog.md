@@ -8,7 +8,7 @@ image = "/images/2015/05/discover-kibana-4-google-chrome.png"
 slug = "getting-started-with-logstash-on-windows-using-docker-and-nxlog"
 tags = ["docker", "ELK", "logtash"]
 title = "Getting Started with LogStash on Windows using Docker and nxlog"
-
+aliases = ['/getting-started-with-logstash-on-windows-using-docker-and-nxlog/']
 +++
 
 # Summary

@@ -8,7 +8,7 @@ image = "/images/2014/10/vagrantup.png"
 slug = "getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef"
 tags = ["Chef", "Windows"]
 title = "Getting Started with Chef on Windows Server – Part 3 – Vagrant, Windows, and Managed Chef"
-
+aliases = ['/getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef/']
 +++
 
 In the previous two parts ([Intro](/2014/08/24/getting-started-with-chef-on-windows-server/ "Getting Started with Chef on Windows Server &#128;&#147; Part 1 Intro") and [Chef Server & Bootstrapping](/2014/08/25/getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping/ "Getting Started with Chef on Windows Server &#128;&#147; Part 2 &#128;&#147; Chef Server & Bootstrapping")) we used a plain old VirtualBox VM with Windows 2012 R2 as our Chef client, which required downloading VHDs, registering them as individual VMs and then installing Chef manually. Part 2 even required that you still had your old VM from the first session lying around in order to start where you left off!

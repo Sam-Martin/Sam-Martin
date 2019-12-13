@@ -8,7 +8,7 @@ image = "/images/2015/01/how-it-works-4a283ee2.png"
 slug = "getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus"
 tags = ["Chef", "devops", "Packer", "Vagrant", "Windows"]
 title = "Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus"
-
+aliases = ['/getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus/']
 +++
 
 ## Introduction – HashiCorp Atlas

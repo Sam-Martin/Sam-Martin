@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "enabling-resolutions-in-ubuntu-12-04-lubuntu-12-04"
 title = "Enabling Resolutions in Ubuntu 12.04 & Lubuntu 12.04"
-
+aliases = ['/enabling-resolutions-in-ubuntu-12-04-lubuntu-12-04/']
 +++
 
 Earlier I was setting up a new Lubuntu powered computer which was to be connected to a TV via HDMI as its primary display. When I set it up with my TV it recognised 1920×1080 as a viable resolution no problem at all.  

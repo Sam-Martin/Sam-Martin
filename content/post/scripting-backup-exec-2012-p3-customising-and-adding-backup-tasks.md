@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "scripting-backup-exec-2012-p3-customising-and-adding-backup-tasks"
 title = "Scripting Backup Exec 2012 - P3 - Customising and Adding Backup Tasks"
-
+aliases = ['/scripting-backup-exec-2012-p3-customising-and-adding-backup-tasks/']
 +++
 
 # Introduction

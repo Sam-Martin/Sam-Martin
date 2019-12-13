@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "brookes-pip-skin"
 title = "Brookes PIP skin"
-
+aliases = ['/brookes-pip-skin/']
 +++
 
 I got bored of how the Brookes Personal Information Portal looked.

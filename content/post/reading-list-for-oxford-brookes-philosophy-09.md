@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "reading-list-for-oxford-brookes-philosophy-09"
 title = "Reading list for Oxford Brookes Philosophy 09"
-
+aliases = ['/reading-list-for-oxford-brookes-philosophy-09/']
 +++
 
 I figured this was as good a place as any for me to post random crap about my first year of Philosophy at Brookes.  

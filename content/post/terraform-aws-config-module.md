@@ -5,7 +5,7 @@ description = ""
 draft = true
 slug = "terraform-aws-config-module"
 title = "Terraform AWS Config Module"
-
+aliases = ['/terraform-aws-config-module/']
 +++
 
 # Preamble

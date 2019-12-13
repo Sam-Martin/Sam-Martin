@@ -2,9 +2,13 @@
     padding:0;
     background-image: url(/background_pattern.jpg);
 }
-.app-header img {
+img.app-header-avatar {
     margin: 2.5em;
     border: none;
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    object-position: top;
 }
 .app-header > h1 {
  font-size: 1.9em;
@@ -57,4 +61,5 @@ article {
 }
 .page-item.active > .page-link  {
     color: white;
+    color: #353b43;
 }

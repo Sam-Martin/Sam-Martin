@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "scripting-backup-exec-2012-p2-creating-a-new-backup-with-powershell"
 title = "Scripting Backup Exec 2012 - P2 - Creating a New Backup with Powershell"
-
+aliases = ['/scripting-backup-exec-2012-p2-creating-a-new-backup-with-powershell/']
 +++
 
 # Introduction

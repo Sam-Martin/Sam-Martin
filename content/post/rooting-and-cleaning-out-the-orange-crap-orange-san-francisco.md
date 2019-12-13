@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "rooting-and-cleaning-out-the-orange-crap-orange-san-francisco"
 title = "Rooting and Cleaning out the Orange crap - Orange San Francisco"
-
+aliases = ['/rooting-and-cleaning-out-the-orange-crap-orange-san-francisco/']
 +++
 
 # WARNING

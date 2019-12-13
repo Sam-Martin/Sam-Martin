@@ -5,7 +5,7 @@ description = ""
 draft = true
 slug = "velocity-conf-amsterdam-2016"
 title = "Velocity Conf Amsterdam 2016"
-
+aliases = ['/velocity-conf-amsterdam-2016/']
 +++
 
 # Work as imagined and work as done: Mind the gap - Steven Shorrock

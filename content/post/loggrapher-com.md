@@ -6,7 +6,7 @@ description = ""
 draft = false
 slug = "loggrapher-com"
 title = "LogGrapher.com"
-
+aliases = ['/loggrapher-com/']
 +++
 
 [![Image](/images/2014/01/loggrapher.png)](/images/2014/01/loggrapher.png)

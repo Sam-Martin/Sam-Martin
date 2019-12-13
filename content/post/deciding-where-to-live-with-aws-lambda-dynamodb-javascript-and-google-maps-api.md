@@ -5,7 +5,7 @@ description = ""
 draft = true
 slug = "deciding-where-to-live-with-aws-lambda-dynamodb-javascript-and-google-maps-api"
 title = "Deciding Where to Live with AWS Lambda, DynamoDB, JavaScript, and Google Maps API"
-
+aliases = ['/deciding-where-to-live-with-aws-lambda-dynamodb-javascript-and-google-maps-api/']
 +++
 
 # Moving to London

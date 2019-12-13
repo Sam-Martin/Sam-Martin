@@ -6,7 +6,7 @@ draft = false
 image = "/images/2017/04/Nexus-Splash-Page-2.png"
 slug = "creating-your-own-powershell-repository-with-nexus-3"
 title = "Creating your own PowerShell Repository with Nexus 3"
-
+aliases = ['/creating-your-own-powershell-repository-with-nexus-3/']
 +++
 
 # Intro

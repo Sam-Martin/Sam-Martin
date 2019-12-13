@@ -8,7 +8,7 @@ image = "/images/2016/03/Screenshot-from-2016-03-20-16-19-09.png"
 slug = "test-kitchen-with-a-sql-server-dependency"
 tags = ["Chef", "ms sql", "sql server", "test kitchen", "Windows"]
 title = "Test Kitchen with a SQL Server Dependency"
-
+aliases = ['/test-kitchen-with-a-sql-server-dependency/']
 +++
 
 I want to be able to test my cookbooks/scripts without having to rely on independent testing infrastructure! I want to be able to do *kitchen converge* and have all my infrastructure ready to go without any further thought to the dependencies!

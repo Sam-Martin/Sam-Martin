@@ -8,7 +8,7 @@ image = "/images/2016/02/2015-02-07-Juju.png"
 slug = "configuration-management-camp-2016-impressions"
 tags = ["cfgmgmtcamp", "devops", "hashicorp", "juju", "vault"]
 title = "Configuration Management Camp 2016 Impressions"
-
+aliases = ['/configuration-management-camp-2016-impressions/']
 +++
 
 At the beginning of February I was lucky enough to attend [Configuration Management Camp](http://cfgmgmtcamp.eu) for the 3rd year running. The first year I attended (2013) it was my first introduction to the concept of configuration management, and god damn it was overwhelming. So many new concepts, new tools, new ideas, I left having been enlightened to a whole new world of automation.

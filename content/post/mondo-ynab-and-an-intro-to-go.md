@@ -8,7 +8,7 @@ image = "/images/2016/05/2016-05-15---GetMondo-1.png"
 slug = "mondo-ynab-and-an-intro-to-go"
 tags = ["Go", "Mondo", "YNAB"]
 title = "Mondo, YNAB, and an Intro to Go"
-
+aliases = ['/mondo-ynab-and-an-intro-to-go/']
 +++
 
 # Go

@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "allow-log-on-through-terminal-services-vs-allow-log-on-through-remote-desktop-services"
 title = "Allow log on through Terminal Services vs allow log on through Remote Desktop Services"
-
+aliases = ['/allow-log-on-through-terminal-services-vs-allow-log-on-through-remote-desktop-services/']
 +++
 
 Long story short, I was looking for a way to allow a group of users access to specific member servers in active directory.

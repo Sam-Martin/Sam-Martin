@@ -8,7 +8,7 @@ image = "/images/2016/04/2016-04-16-PowerShell-Example-Function-Trigger-Output.p
 slug = "creating-http-invoked-powershell-azure-functions"
 tags = ["Azure"]
 title = "Creating HTTP Invoked PowerShell Azure Functions"
-
+aliases = ['/creating-http-invoked-powershell-azure-functions/']
 +++
 
 Azure Functions ([introduced on the 31st of March 2016](https://azure.microsoft.com/en-us/blog/introducing-azure-functions/)) is Azure’s answer to AWS Lambda, but boasts a *much* wider range of supported languages, particularly PowerShell which piqued my interest.

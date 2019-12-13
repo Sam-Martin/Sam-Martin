@@ -7,7 +7,7 @@ draft = false
 slug = "integration-testing-ad-dependent-cookbooks-and-powershell-scripts-with-test-kitchen"
 tags = ["Chef", "powershell", "test kitchen"]
 title = "Integration Testing AD Dependent Cookbooks and PowerShell Scripts with Test-Kitchen"
-
+aliases = ['/integration-testing-ad-dependent-cookbooks-and-powershell-scripts-with-test-kitchen/']
 +++
 
 I remember a little while ago, well… over a couple of years ago now… that I’d just learned about Chef and Vagrant, and was introducing one of my co-workers to the ecosystem (somewhat over-enthusiastically), and wanted to help him perform his immediate deployment task using Chef. That deployment task happened to be to deploy and configure a Remote Desktop Gateway. So we spun up a Windows 2012R2 Vagrant box, use the Windows cookbook to add the appropriate Windows feature, ran it, and **bam**, brick wall. In order to install the feature the server must be a member of an AD domain. At the time I had to abandon the endeavour and relent that my co-worker had to install the system manually as I didn’t have a good story for creating a Vagrant test environment joined to a domain. But no more!

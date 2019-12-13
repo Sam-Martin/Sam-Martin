@@ -7,7 +7,7 @@ draft = false
 slug = "leankit-integration-with-ticketing-system-using-powershell"
 tags = ["devops", "kanban", "leankit", "powershell"]
 title = "LeanKit integration with ticketing system (using PowerShell)"
-
+aliases = ['/leankit-integration-with-ticketing-system-using-powershell/']
 +++
 
 I’m no expert on Kanban by any means, but ever since reading [The Phoenix Project](http://www.amazon.co.uk/Phoenix-Project-DevOps-Helping-Business-ebook/dp/B00AZRBLHO/ref=sr_1_1?ie=UTF8&qid=1398001142&sr=8-1&keywords=the+phoenix+project "Amazon: The Phoenix Project"), I’ve been dying to try it out in the workplace.

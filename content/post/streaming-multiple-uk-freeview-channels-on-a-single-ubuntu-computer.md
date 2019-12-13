@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "streaming-multiple-uk-freeview-channels-on-a-single-ubuntu-computer"
 title = "Streaming multiple UK Freeview channels on a single Ubuntu computer"
-
+aliases = ['/streaming-multiple-uk-freeview-channels-on-a-single-ubuntu-computer/']
 +++
 
 I was recently given the challenge of setting up an IP-TV system for a school’s accommodation block, approximately 40 rooms.

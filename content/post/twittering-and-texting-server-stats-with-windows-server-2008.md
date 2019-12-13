@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "twittering-and-texting-server-stats-with-windows-server-2008"
 title = "Twittering (and texting) Server Stats With Windows Server 2008"
-
+aliases = ['/twittering-and-texting-server-stats-with-windows-server-2008/']
 +++
 
 Even though the RAM usage issue is *hopefully* resolved, I’m not taking any chances. So I decided to set it so that the server will direct message me on Twitter when the RAM usage reaches a certain threshold.

@@ -6,7 +6,7 @@ draft = false
 image = "/images/2014/09/loginwithmfa.png"
 slug = "enforcing-aws-multi-factor-authentication-with-iam-powershell-and-prtg"
 title = "Enforcing AWS Multi-Factor Authentication with IAM, PowerShell and PRTG"
-
+aliases = ['/enforcing-aws-multi-factor-authentication-with-iam-powershell-and-prtg/']
 +++
 
 # Introduction: MFA

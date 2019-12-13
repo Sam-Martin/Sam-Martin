@@ -8,7 +8,7 @@ image = "/images/2016/05/2016-05-30---Splunk-Dashboard-1.png"
 slug = "reporting-on-pagerduty-call-outs-with-splunk"
 tags = ["splunk", "pagerduty", "python"]
 title = "Reporting on PagerDuty call outs with Splunk"
-
+aliases = ['/reporting-on-pagerduty-call-outs-with-splunk/']
 +++
 
 Pagerduty has a pretty kickass reporting feature, but my aim is to create a holistic dashboard for my team's operational work, and to do that I need to have all my data in one place. That one place? Splunk!

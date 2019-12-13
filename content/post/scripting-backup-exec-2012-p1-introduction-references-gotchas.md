@@ -5,7 +5,7 @@ description = ""
 draft = false
 slug = "scripting-backup-exec-2012-p1-introduction-references-gotchas"
 title = "Scripting Backup Exec 2012 - P1 - Introduction, References & Gotchas"
-
+aliases = ['/scripting-backup-exec-2012-p1-introduction-references-gotchas/']
 +++
 
 # Preamble
