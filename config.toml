@@ -2,6 +2,7 @@ baseURL = "https://sammart.in/"
 languageCode = "en-gb"
 title = "Sam Martin"
 theme = "m10c"
+googleAnalytics = "UA-66377745-1"
 
 [params]
     description = "Adventures in IT"
