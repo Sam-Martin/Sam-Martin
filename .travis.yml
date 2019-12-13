@@ -14,7 +14,7 @@ before_install:
   hugo version
   echo -e "\ntravis_fold:end:$1\r"
 script:
-- hugo
+- hugo -D
 deploy:
   provider: pages
   local_dir: public
