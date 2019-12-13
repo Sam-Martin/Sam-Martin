@@ -1,7 +1,4 @@
-git:
-  submodules: false
 before_install:
-- sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
 - git submodule update --init --recursive
 - |
   echo -e "travis_fold:start:$1\033[33;1m$2\033[0m"
@@ -10,7 +7,9 @@ before_install:
   hugo version
   echo -e "\ntravis_fold:end:$1\r"
 script:
-- hugo -D
+- ls -lha assets/css
+- hugo -D --debug --verbos
+- find public/ -name \*.css | xargs -I '{}' md5 {}
 deploy:
   provider: pages
   local_dir: public
