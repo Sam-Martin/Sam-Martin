@@ -9,7 +9,7 @@ before_install:
 script:
 - ls -lha assets/css
 - hugo -D --debug --verbose
-- find . -name \*css\* | xargs -I '{}' md5 {}
+- find . -name \*css\* | xargs -I '{}' shasum {}
 deploy:
   provider: pages
   local_dir: public
