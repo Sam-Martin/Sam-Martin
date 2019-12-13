@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>Twittering (and texting) Server Stats With Windows Server 2008 // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Twittering (and texting) Server Stats With Windows Server 2008"/>
+<meta name="twitter:description" content="Even though the RAM usage issue is hopefully resolved, I’m not taking any chances. So I decided to set it so that the server will direct message me on Twitter when the RAM usage reaches a certain threshold.
+Step 1: Perfmon To start the performance monitor, simply type ‘perfmon’ in the run command or open it up from ‘administrative tools’
+You’ll need to create a user defined Data Collector Set"/>
+
+    <meta property="og:title" content="Twittering (and texting) Server Stats With Windows Server 2008" />
+<meta property="og:description" content="Even though the RAM usage issue is hopefully resolved, I’m not taking any chances. So I decided to set it so that the server will direct message me on Twitter when the RAM usage reaches a certain threshold.
+Step 1: Perfmon To start the performance monitor, simply type ‘perfmon’ in the run command or open it up from ‘administrative tools’
+You’ll need to create a user defined Data Collector Set" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/twittering-and-texting-server-stats-with-windows-server-2008/" />
+<meta property="article:published_time" content="2011-04-04T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2011-04-04T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Twittering (and texting) Server Stats With Windows Server 2008</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 4, 2011
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>Even though the RAM usage issue is <em>hopefully</em> resolved, I’m not taking any chances. So I decided to set it so that the server will direct message me on Twitter when the RAM usage reaches a certain threshold.</p>
+
+<h1 id="step-1-perfmon">Step 1: Perfmon</h1>
+
+<p>To start the performance monitor, simply type ‘perfmon’ in the run command or open it up from ‘administrative tools’</p>
+
+<p>You’ll need to create a user defined <strong>Data Collector Set</strong></p>
+
+<ol>
+<li>Choose to create manually, hit next,</li>
+<li>Select ‘Performance Counter Alert’, next,</li>
+<li>Add the performance counter you’re interested in<br />
+(I chose Memory -&gt; Available Megabytes) and choose your alert conditions (I chose below 512mb).</li>
+<li>Choose the user to run it as (system should be fine)</li>
+</ol>
+
+<p>First edit the new Data Collector set and setup the schedule, else it’ll stop running the next time you restart your server!</p>
+
+<p>Now edit the newly created Data Collector inside the Data Collector Set and configure the following</p>
+
+<ol>
+<li>Sample Interval, 15 seconds will be <em>way</em> too often to to update twitter, choose a minute for the time being, you can change it to an hour or whatever you like once we’ve got it up and running</li>
+<li>Alert Task, this can be whatever you like, but <strong>remember</strong> what it is, as we’ll be creating a scheduled task with the same name in a moment</li>
+<li>Alert Task Argument, for the sake of simplicity set it as {value}</li>
+</ol>
+
+<h1 id="step-2-scheduled-tasks">Step 2: Scheduled Tasks</h1>
+
+<p>Open up the Task Scheduler MMC from Administrative tools, right click on the  Task Scheduler (local) and hit ‘create task’ <strong>(not ‘create basic task, that’s no use!)</strong></p>
+
+<ol>
+<li>Give it a name, the <strong>has to be</strong> same name you gave the Alert Task in the performance monitor</li>
+<li>Check to ‘run whether user is logged in or not’</li>
+<li>Actions -&gt; New Action</li>
+<li>Set the action as send an email to your <a href="http://www.twittermail.com">twittermail.com</a> address.</li>
+<li>Set the text to whatever you like, the important thing to know is that the argument you passed to the task earlier will pop up as <code>$(Arg0)</code>, so my message read:<br />
+<code>d &lt;twittername&gt; The server has  $(Arg0)Mbytes of physical memory free.</code></li>
+<li>Set the SMTP server to be whatever you’re going to use.<br />
+You can set up IIS and it’s SMTP server if you have no other, just put in localhost or 127.0.0.1 if you’re doing this. I did this and stumbled over the default behaviour of the “Simple Mail Transfer Protocol” service not starting up automatically, so make sure you go to services.msc and change that behaviour if you do this!</li>
+</ol>
+
+<p>Make sure you start the Data Collector Set you just created in perfmon, and bear in mind that when you make changes (such as the sample interval) you’ll need to stop and start it again.</p>
+
+<p><strong>That’s it!</strong></p>
+
+<p>If you need the nudge, you achieve the texting or SMSing by configuring twitter to send you an SMS every time you get a direct message.</p>
+
+<p>Let me know how you got on in the comments!</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

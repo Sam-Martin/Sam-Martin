@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>AWS Config Intro with CloudFormation // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS Config Intro with CloudFormation"/>
+<meta name="twitter:description" content="AWS Config is a tool from Amazon designed to help you audit your AWS infrastructure for best practice and security adherence.
+It’s ideal for maintaining an overview across multiple accounts (especially Dev accounts) to ensure that people aren’t accidentally leaving 3389 or 22 open to the entire world, and similar security ‘faux pas’.
+Multiple account management for AWS is still quite a shaky experience. Managing users, billing, connectivity, etc. is a fractured and often confusing process, so anything that offers a helping hand for standardisation is extremely welcome."/>
+
+    <meta property="og:title" content="AWS Config Intro with CloudFormation" />
+<meta property="og:description" content="AWS Config is a tool from Amazon designed to help you audit your AWS infrastructure for best practice and security adherence.
+It’s ideal for maintaining an overview across multiple accounts (especially Dev accounts) to ensure that people aren’t accidentally leaving 3389 or 22 open to the entire world, and similar security ‘faux pas’.
+Multiple account management for AWS is still quite a shaky experience. Managing users, billing, connectivity, etc. is a fractured and often confusing process, so anything that offers a helping hand for standardisation is extremely welcome." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/aws-config-intro-with-cloudformation/" />
+<meta property="article:published_time" content="2016-04-24T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2016-04-24T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">AWS Config Intro with CloudFormation</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 24, 2016
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p><a href="https://aws.amazon.com/config/">AWS Config</a> is a tool from Amazon designed to help you audit your AWS infrastructure for best practice and security adherence.</p>
+
+<p>It’s ideal for maintaining an overview across multiple accounts (especially Dev accounts) to ensure that people aren’t accidentally leaving 3389 or 22 open to the entire world, and similar security ‘faux pas’.<br />
+ Multiple account management for AWS is still quite a shaky experience. Managing users, billing, connectivity, etc. is a fractured and often confusing process, so anything that offers a helping hand for standardisation is extremely welcome.</p>
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>AWS Config will periodically push a “snapshot” (read gigantic json file) of your entire AWS configuration (instance IDs, security groups, bucket policies, IAM users, <em>everything</em>) to an S3 bucket, or SNS topic of your choice. This will then trigger Rules to evaluate the configuration and ensure that it’s in compliance. These rules can either be “Managed Rules” or “Custom Rules”. (There are only a handful of managed rules currently, and so the <em>real</em> power of AWS Config comes from the custom rules.)</p>
+
+<p>The rules can also be triggered by the configuration change of an AWS resource (e.g. AWS::EC2::Instance) which will then evaluate the configuration of the specific resource that’s changed.</p>
+
+<p>The snapshots allow you to look back through your resource’s “Config Timeline”, to see what configuration changed and when.</p>
+
+<p><a href="/images/2016/04/2016-04-24-AWS-Config-Timeline.png"><img src="/images/2016/04/2016-04-24-AWS-Config-Timeline.png" alt="2016-04-24 - AWS Config Timeline" /></a></p>
+
+<h2 id="managed-rules-custom-rules">Managed Rules &amp; Custom Rules</h2>
+
+<p>Okay, great! So what rules can we configure?</p>
+
+<p>At the time of writing there are 7 <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Managed Rules</a> which cover some common compliance scenarios.</p>
+
+<ul>
+<li>CLOUD_TRAIL_ENABLED</li>
+<li>EIP_ATTACHED</li>
+<li>ENCRYPTED_VOLUMES</li>
+<li>INCOMING_SSH_DISABLED</li>
+<li>INSTANCES_IN_VPC</li>
+<li>REQUIRED_TAGS</li>
+<li>RESTRICTED_INCOMING_TRAFFIC</li>
+</ul>
+
+<p>Each of these have different parameter requirements and are triggered on either Configuration Change or Periodic evaluation, but they’re easy to use and can be setup very simply by working through the wizard when you first go into the AWS Config console.</p>
+
+<p>Okay, good start! But how do we go about extending these? Why, Lambda of course!<br />
+ You can supplement the Managed Rules by creating a lambda function (<a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules_nodejs.html">following the tutorial</a>), creating a Custom Rule in the AWS Config UI, and supplying the ARN of the Lambda function.<br />
+ Better yet, there’s a whole host of Custom Rules being collaborated on in the <a href="https://github.com/awslabs/aws-config-rules/">awslabs/aws-config-rules Github</a> Repository which you can use as a guide, or just straight up consume as they are.</p>
+
+<p>Downside to this is of course that you can only run custom rules in regions which support Lambda, but that <em>has</em> to become universal soon… right?</p>
+
+<h2 id="aws-config-management-with-cloudformation">AWS Config Management with CloudFormation</h2>
+
+<p>So we’ve got a great framework for evaluating compliance across our AWS accounts, but if like me you want to roll a standard set of rules out over 50~ AWS accounts, you don’t want to do this clicking through the GUI, especially as AWS Config Rules are <em>per region</em>!</p>
+
+<p>So you dive into the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/">CloudFormation documentation</a> and discover there are two resources you need to create first.</p>
+
+<ol>
+<li><a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-deliverychannel.html">AWS::Config::DeliveryChannel</a></li>
+<li><a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configurationrecorder.html">AWS::Config::ConfigurationRecorder</a></li>
+</ol>
+
+<p>The first thing you note on those two pages is the following text:</p>
+
+<blockquote>
+<p>If you create this resource, you must also create or have an AWS::Config::DeliveryChannel/AWS::Config::ConfigurationRecorder resource already running in your account. These two interdependent resources must be present to successfully create both resources.</p>
+</blockquote>
+
+<p>Huh, interesting, oh well, I’ll just create them both without dependencies on each other, that should be fine right? If you setup AWS Config initially with CFN, and get the stack creation right the first time <em>maybe</em>.<br />
+ However, if you’ve configured AWS Config previously, you can’t guarantee that your CFN stack creation will succeed because the DeliveryChannel defines the destination S3 bucket for the Config Snapshots, and the ConfigurationRecorder defines the IAM role which provides access to that bucket.</p>
+
+<p>This means that if the DeliveryChannel gets created first and the IAM role which is specified in the existing ConfigurationRecorder does not have access to the bucket the DeliveryChannel defines, it will fail to create!<br />
+ Conversely if the ConfigurationRecorder gets created first and the IAM role which is specified in the new ConfigurationRecorder does not have access to the bucket the old DeliveryChannel defines, it will fail to create.<br />
+ Therefore using just the AWS Config CloudFormation Resources it’s impossible to create a reliable stack that changes from one bucket destination to another.</p>
+
+<p>So what do we do when we get cyclic dependencies with CloudFormation? We bring in Lambda and Custom Resources of course!<br />
+ To save the work of going through the whole process, I’ve created an example here</p>
+
+<p><a href="https://github.com/Sam-Martin/aws-config-cfn-template-example/blob/master/AWS%20Config%20Base.template">Sam-Martin/aws-config-cfn-template-example</a>.</p>
+
+<p><a href="/images/2016/04/2016-04-24-aws-config-cfn-template-example-1.png"><img src="/images/2016/04/2016-04-24-aws-config-cfn-template-example-1.png" alt="2016-04-24 - aws-config-cfn-template-example" /></a></p>
+
+<p>Basically what the above does is create and trigger a Lambda Function to delete any existing DeliveryChannels and and stops the DeliveryRecorder so the path is cleared for the AWS Config Resources in the rest of the template to configure them as desired.</p>
+
+<p>I wouldn’t call it terribly elegant, but it certainly works in all scenarios I’ve tested it. If anyone has found another way to make the AWS Config CloudFormation resources work reliably in all circumstances I’d be very happy to hear from you!</p>
+
+<h2 id="caveat-no-custom-rules-or-are-there">Caveat – No Custom Rules… Or are there?</h2>
+
+<p>The downside to the above example is that it only provides an example of how to work with Managed Rules. Custom Rules are much harder to configure with CloudFormation unless you embed each rule in the CloudFormation template itself, or are willing to populate an S3 bucket in the same region with zip files containing the rules you want.</p>
+
+<p>There is a way around this however! I’ve created a Terraform Module at <a href="https://github.com/Sam-Martin/terraform-aws-config-module">Sam-Martin/terraform-aws-config-modules</a> that allows you to do just that!</p>
+
+<p>I’ll write a blog post just on that at a later date, but in the meantime you can probably puzzle it out for yourself from the Readme ! :)
+Happy automation everyone!</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

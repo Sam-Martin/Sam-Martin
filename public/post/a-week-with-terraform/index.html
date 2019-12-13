@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>A Week with Terraform // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Week with Terraform"/>
+<meta name="twitter:description" content="As I mentioned in a previous post, AWS Config is an excellent tool for ensuring compliance across your AWS accounts, but can be challenging to set up consistently across large numbers of regions and accounts. To ease this pain I attempted to set up AWS Config using CloudFormation but found this challenging when using custom rules due to the necessity of uploading the Lambda functions to an S3 bucket in each region first."/>
+
+    <meta property="og:title" content="A Week with Terraform" />
+<meta property="og:description" content="As I mentioned in a previous post, AWS Config is an excellent tool for ensuring compliance across your AWS accounts, but can be challenging to set up consistently across large numbers of regions and accounts. To ease this pain I attempted to set up AWS Config using CloudFormation but found this challenging when using custom rules due to the necessity of uploading the Lambda functions to an S3 bucket in each region first." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/a-week-with-terraform/" />
+<meta property="article:published_time" content="2016-05-02T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2016-05-02T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">A Week with Terraform</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 2, 2016
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://sammart.in/tags/aws/">aws</a><a class="tag" href="https://sammart.in/tags/terraform/">Terraform</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>As I mentioned in a <a href="/aws-config-intro-with-cloudformation/">previous post</a>, AWS Config is an excellent tool for ensuring compliance across your AWS accounts, but can be challenging to set up consistently across large numbers of regions and accounts. To ease this pain I attempted to set up AWS Config <a href="](/aws-config-intro-with-cloudformation/)">using CloudFormation</a> but found this challenging when using custom rules due to the necessity of uploading the Lambda functions to an S3 bucket in each region first.<br />
+To get round this I decided to use HashiCorp&rsquo;s <a href="http://terraform.io">Terraform</a>!</p>
+
+<h1 id="what-is-terraform">What is Terraform?</h1>
+
+<p><img src="/images/2016/05/2016-05-02-Terraform-io.png" alt="" />
+Terraform is a cloud agnostic infrastructure-as-code tool which allows you to declare the configuration of your cloud environment as a text file, version that, and manage updates by making changes to the code. It&rsquo;s similar to CloudFormation in a lot of ways, but allows you to control not just AWS but Azure, Google Cloud, even vSphere!</p>
+
+<p>For example, to configure an AWS resource you would write something like:</p>
+
+<pre><code>resource &quot;aws_instance&quot; &quot;web&quot; {
+    ami = &quot;ami-408c7f28&quot;
+    instance_type = &quot;t1.micro&quot;
+    tags {
+        Name = &quot;HelloWorld&quot;
+    }
+}
+</code></pre>
+
+<h1 id="terraform-frustrations">Terraform Frustrations</h1>
+
+<p>I want to love Terraform, I want to love it so <em>badly</em> but the 3 days I spent creating the module made me want to throw it across the room and lament what felt like a missed opportunity of a tool.</p>
+
+<p>HashiCorp are known not just for creating great tools, but incredibly cleverly designed solutions to problems that people have been trying to solve badly for a very long time. With this pedigree in mind, I&rsquo;m sure that the design decisions I&rsquo;m about to complain about were extremely purposeful and had exceptionally good reasons behind them. This doesn&rsquo;t make them any less frustrating however.</p>
+
+<h2 id="conditional-logic">Conditional Logic</h2>
+
+<p>Terraform doesn&rsquo;t support it at all. Sure you can do some clever stuff with <a href="https://www.terraform.io/docs/configuration/interpolation.html">interpolation</a>, but when you&rsquo;re coming to Terraform having just coded a Chef cookbook, being totally unable to embed conditional logic into your templates is maddening.
+This means that - for example - you often can&rsquo;t have optional parameters for your modules as you don&rsquo;t have the flexibility in things like the <a href="https://www.terraform.io/docs/providers/template/">template resource</a> to exclude chunks of your template if a variable is empty.
+The way I had to get around it for things like the <code>custom_rule_input_parameters</code> parameter in the module was to force the module user to include the section of the template I&rsquo;d otherwise have conditionally included/exclude. (In this case a pair of empty JSON brackets <code>{}</code> if no parameters are being passed.)</p>
+
+<h2 id="iteration">Iteration</h2>
+
+<p>Terraform has a <a href="https://www.terraform.io/docs/configuration/interpolation.html#using-templates-with-count">count</a> function which goes some way to allow you to create multiples of the same resource (e.g. multiple EC2 instances, lambda functions, etc.) using different variables.
+This has some major issues however:</p>
+
+<ol>
+<li>Modules don&rsquo;t allow you to pass arrays or hashmaps as params so you have to comma/semicolon/tab separate your values and referencing them is pretty ugly.</li>
+<li>The index of the count ends up being tied to the resource, so if you add or remove a value at the beginning of your comma separated list, all the subsequent resources will change index and effectively be &lsquo;new&rsquo; thereby triggering complete destruction and recreation of those existing resources.</li>
+
+<li><p>You have to set the number of items of whatever you&rsquo;re iterating over manually. If you forget to update this you will either not create all your resources or accidentally create identical resources (depending on whether you&rsquo;re adding or removing respectively).</p>
+
+<h2 id="lack-of-freeform-scripting">Lack of Freeform Scripting</h2>
+
+<p>This is the biggest thing coming from a Chef cookbook.
+Say you want to deploy an Windows 2012 R2 Base instance from the latest Amazon AMI. In Cloudformation you have to have a pre-populated hashtable of IDs for each region which rapidly gets out of date and has to be refreshed manually. In <em>Terraform</em> on the other hand&hellip; it&rsquo;s&hellip; well&hellip; it&rsquo;s exactly the same. I was expecting to be able to throw in a reference directly to the AWS SDK or code in a nominated scripting language like Python or even call out in the OS and execute some PowerShell or Python or the AWS cmdline myself, but nope. That&rsquo;s not an option.<br />
+The closest you have are, you guessed it, the interpolation functions again. These are limited to being used inside strings/variables and as mentioned above get ugly <em>fast</em>. They&rsquo;re also relatively limited because (presumably) HashiCorp is having to code them themselves rather than leveraging an existing scripting language&rsquo;s functions.</p></li>
+</ol>
+
+<h2 id="failed-application-of-configuration">Failed Application of  Configuration</h2>
+
+<p>Every time I ran <code>terraform apply</code> it felt like there was a <sup>50</sup>&frasl;<sub>50</sub> chance I&rsquo;d get an error deploying it. This was always due to my own screw up (badly named resource, didn&rsquo;t supply a necessary parameter, etc.), but when that happened it often left the Terraform <code>.tfstate</code> in a state where either it didn&rsquo;t know about the resource it had just created, or thought it had created a resource, but hadn&rsquo;t.<br />
+When this happened, the way to unstick it seemed to be to either dive into a few hundred lines of json in the <code>.tfstate</code> file and remove the reference to the failed resource, or delete the resource manually (depending on the failure type).</p>
+
+<p>In some ways this is an improvement over CloudFormation, because when that happens with CloudFormation you just have to wait for the stack to fail, delete the <em>whole</em> stack including all the resources, then recreate it and respecify all the parameters. Whereas with Terraform you can actually see which resources it thinks it has and amend the <code>.tfstate</code> as necessary.</p>
+
+<p>That said however, this resultant disconnect between the actual state of the infrastructure and the state as Terraform understands it is something I was desperately hoping Terraform would <em>solve</em> coming from CloudFormation, rather than just give me an override for.</p>
+
+<p>This flaw in a lack of validation and parity with reality significantly detracts from one of the USPs of Terraform that I was most excited about. The <code>plan</code> mode; which is supposed to give you confidence that you know what&rsquo;s going to happen when you hit <code>apply</code>. (This feature isn&rsquo;t even a USP any more as <a href="https://aws.amazon.com/about-aws/whats-new/2016/03/aws-cloudformation-adds-change-sets-for-insight-into-stack-updates/">CloudFormation now has the same functionality</a>.)</p>
+
+<h1 id="terraform-conclusion">Terraform Conclusion</h1>
+
+<p>For me these issues sink Terraform for about 80% of the use cases I had in mind for it.</p>
+
+<p>I saw two major advantages:</p>
+
+<ol>
+<li>Allow engineers unfamiliar with the stack to deploy easily from a Terraform template (not really possible due to the Failed Application &amp; Arbitrary Scripting problems).</li>
+<li>Fast and flexible deployment of varying sizes of complex infrastructures (completely hobbled by the lack of Conditional Logic and Iteration)</li>
+</ol>
+
+<p>I want something that will allow me to repeatable generate the same basic infrastructure template with different sizes/options so that I can use the same Terraform modules in multiple regions/accounts and just tweak a few parameters to suit the specific requirements.</p>
+
+<p>And while this is technically possible, it&rsquo;s difficult, and it feels like you&rsquo;re working against the original vision for the tool (which I suspect you are). Terraform feels like a tool which was intended to map 1:1 resource definition to resource created. It feels like the tool that builds the infrastructure that supports flexible  and scalable solutions (e.g. AutoScaling Groups), rather than building the flexible and scalable solutions itself (e.g. EC2 instances).</p>
+
+<h1 id="excuses">Excuses</h1>
+
+<p>These points and opinions were formed from working with Terraform for about a week. I am not an expert in Terraform by any stretch of the imagination and although I&rsquo;ve attended a couple of HashiCorp User Groups I&rsquo;m not really familiar enough with the community to be sure that there&rsquo;s not something I&rsquo;ve missed that addresses these issues or renders them null and void.</p>
+
+<p>If some-one comments on this and tells me that there&rsquo;s a release coming that will fix all these problems, or that there&rsquo;s already another way of approaching them, I will be <strong>extremely</strong> happy! So&hellip; please?</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

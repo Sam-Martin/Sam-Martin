@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>Mondo, YNAB, and an Intro to Go // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mondo, YNAB, and an Intro to Go"/>
+<meta name="twitter:description" content="Go I&rsquo;ve been wanting to get into Go for a while. Despite the logo it&rsquo;s a very respectable open source project developed by a team at Google that &ldquo;makes it easy to build simple, reliable, and efficient software&rdquo;. Crucially, Go is a cross-platform, compiled language that&rsquo;s used notably by the HashiCorp suite of products. That means that if I want to contribute modules to say, Terraform (and I do) I need to know Go well enough to write decent, tested code that will get accepted in a pull request."/>
+
+    <meta property="og:title" content="Mondo, YNAB, and an Intro to Go" />
+<meta property="og:description" content="Go I&rsquo;ve been wanting to get into Go for a while. Despite the logo it&rsquo;s a very respectable open source project developed by a team at Google that &ldquo;makes it easy to build simple, reliable, and efficient software&rdquo;. Crucially, Go is a cross-platform, compiled language that&rsquo;s used notably by the HashiCorp suite of products. That means that if I want to contribute modules to say, Terraform (and I do) I need to know Go well enough to write decent, tested code that will get accepted in a pull request." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/mondo-ynab-and-an-intro-to-go/" />
+<meta property="article:published_time" content="2016-05-15T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2016-05-15T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Mondo, YNAB, and an Intro to Go</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 15, 2016
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://sammart.in/tags/go/">Go</a><a class="tag" href="https://sammart.in/tags/mondo/">Mondo</a><a class="tag" href="https://sammart.in/tags/ynab/">YNAB</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h1 id="go">Go</h1>
+
+<p>I&rsquo;ve been wanting to get into <a href="https://golang.org/">Go</a> for a while. Despite the logo it&rsquo;s a very respectable open source project developed by a team at Google that <em>&ldquo;makes it easy to build simple, reliable, and efficient software&rdquo;</em>.
+Crucially, Go is a cross-platform, compiled language that&rsquo;s used notably by the <a href="https://www.hashicorp.com/">HashiCorp</a> suite of products. That means that if I want to contribute modules to say, <a href="https://terraform.io">Terraform</a> (and I do) I need to know Go well enough to write decent, tested code that will get accepted in a pull request.</p>
+
+<h1 id="mondo">Mondo</h1>
+
+<p>Recently I received my <a href="https://getmondo.co.uk/">Mondo Card</a>.
+<img src="/images/2016/05/2016-05-15---GetMondo.png" alt="" />
+It&rsquo;s currently a pre-paid Mastercard (once they get their banking license they&rsquo;re supposed to release a full Current Account) that allows you to instantly see when your card&rsquo;s used with much more metadata about the transaction.<br />
+At the moment the advantage over standard banking is mostly shininess and instant transparency into foreign transaction costs (the latter being the <em>biggest</em> feature by far to me). But the big disadvantage is that it currently <em>only</em> has a phone app, no web app of any description. What that means is that it has no transaction export functionality.</p>
+
+<h1 id="ynab-ofx">YNAB &amp; OFX</h1>
+
+<p>I&rsquo;ve been using <a href="http://www.youneedabudget.com/">YNAB (You Need A Budget)</a> for a couple of years now, and am a huge fan of its budgeting methodology and workflow. They&rsquo;ve recently released a shiny new web version of the application which automatically imports transactions from banks, but there&rsquo;s a problem. It&rsquo;s pretty much only US banks, so I&rsquo;m still stuck on the older thick client until they allow manual transaction imports.</p>
+
+<p>To that end there&rsquo;s a standard XML banking transaction format called <a href="http://www.ofx.net/">OFX (Open Financial Exchange)</a> which YNAB recognises and most internet banking sites allow you to export your transactions into.</p>
+
+<p>Although Mondo doesn&rsquo;t offer native OFX export from its phone apps, it <strong>does</strong> <a href="https://getmondo.co.uk/docs/">have an API</a>. So in order to get my Mondo transactions into YNAB, all I need to do is extract the data from the API and format it in OFX! Simple!</p>
+
+<h1 id="creating-the-ofx-exporter-in-go">Creating the OFX Exporter in Go</h1>
+
+<p>I decided to create the tool to export the transactions to OFX in Go purely because I wanted to get my hands dirty with Go. I tried to use <a href="http://www.stephenwhitworth.com/">Stephen Whitworth&rsquo;s</a> <a href="https://github.com/sjwhitworth/go-mondo">Go Mondo Library</a> but couldn&rsquo;t get it to work as (at the time) it was using a password grant type, which no longer seems to be supported by the Mondo API.</p>
+
+<p>Because of that fact it would have made <em>way</em> more sense to make this as an AWS Lambda or Azure Functions app. Mondo&rsquo;s API is now built around the referral methodology of <a href="http://oauth.net/2/">oAuth 2.0</a>. This means that you can&rsquo;t authenticate against the API without having a referral page to ingest the access code once the user has granted the application access to their account.</p>
+
+<p>My initial toe-in-the-water with Go was <a href="https://tour.golang.org/welcome/1">Go&rsquo;s tour</a> which goes from hand-holding one second to asking you to complete a <a href="https://tour.golang.org/moretypes/26">Fibonacci Closure</a> the next. It actually gives a really concise introduction to the language, but if you (like me) are extremely rusty with the parlance and concepts of compiled languages it&rsquo;s very dense and pretty offputting. I eventually found <a href="http://golangbyexample">GoLangByExample</a> thanks to <a href="https://twitter.com/MachielMolenaar">@MachielMolenaar</a>, and this gave me a lot of good examples for achieving my goal.</p>
+
+<p>Fortunately with Go&rsquo;s <a href="https://golang.org/pkg/net/http/">net/http</a> module it is trivial to get your Go package to host a page for the referral. I&rsquo;m dead serious, this is the code to get a web server running in Go:</p>
+
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;net/http&quot;
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, &quot;Hi there, I love %s!&quot;, r.URL.Path[1:])
+}
+
+func main() {
+    http.HandleFunc(&quot;/&quot;, handler)
+    http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+</code></pre>
+
+<p>It&rsquo;s also extremely simple to write XML (OFX&rsquo;s data structure of choice) in Go, and the <a href="https://golang.org/src/encoding/xml/example_test.go">examples in Go&rsquo;s docs</a> are just what was required.</p>
+
+<pre><code>type Address struct {
+	City, State string
+}
+type Person struct {
+	XMLName   xml.Name `xml:&quot;person&quot;`
+	Id        int      `xml:&quot;id,attr&quot;`
+	FirstName string   `xml:&quot;name&gt;first&quot;`
+	LastName  string   `xml:&quot;name&gt;last&quot;`
+	Age       int      `xml:&quot;age&quot;`
+	Height    float32  `xml:&quot;height,omitempty&quot;`
+	Married   bool
+	Address
+	Comment string `xml:&quot;,comment&quot;`
+}
+
+v := &amp;Person{Id: 13, FirstName: &quot;John&quot;, LastName: &quot;Doe&quot;, Age: 42}
+v.Comment = &quot; Need more details. &quot;
+v.Address = Address{&quot;Hanga Roa&quot;, &quot;Easter Island&quot;}
+
+output, err := xml.MarshalIndent(v, &quot;  &quot;, &quot;    &quot;)
+if err != nil {
+	fmt.Printf(&quot;error: %v\n&quot;, err)
+}
+
+os.Stdout.Write(output)
+</code></pre>
+
+<p>While some of that syntax initially looks pretty esoteric to someone (like me) coming from PowerShell/Python/JavaScript/a-little-C#, once you get your head around it it&rsquo;s extremely elegant.
+The <code>struct</code> is (as I understand it) basically the Model part of <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a> in C#, or a <code>Prototype</code> of an object in JS, meaning you instantiate a copy of that struct and populate its values appropriately. While I have to profess I haven&rsquo;t totally got my head around the implications and applications of pointers (the <code>&amp;</code> and <code>*</code> denotations), it&rsquo;s easy enough to muddle through as you learn to get the hang of it.</p>
+
+<h2 id="testing-linting-continuous-integration">Testing, Linting &amp; Continuous Integration</h2>
+
+<p>As you might expect of a sexy cool hipster language, Go is very well equipped in the niceties of TDD, Linting, and CI.
+Tests (while not as natural language as rSpec, Pester, etc.) are pretty straightforward.
+The examples in <a href="https://golang.org/pkg/testing/">Go&rsquo;s docs</a> are a little thin, so I ended up plagiarising the <a href="https://github.com/sjwhitworth/go-mondo/blob/master/mondo_test.go">tests from the Mondo Go module</a> which introduced me to the <a href="https://github.com/stretchr/testify">Testify suite of packages</a> that provide a lot of useful functionality on top of what&rsquo;s bundled natively with Go.</p>
+
+<pre><code>import (
+  &quot;testing&quot;
+  &quot;github.com/stretchr/testify/assert&quot;
+)
+
+func TestSomething(t *testing.T) {
+
+  var a string = &quot;Hello&quot;
+  var b string = &quot;Hello&quot;
+
+  assert.Equal(t, a, b, &quot;The two words should be the same.&quot;)
+
+}
+</code></pre>
+
+<p>And to run it, it&rsquo;s as simple as <code>go test</code>. Love it!</p>
+
+<p>Linting is similarly straightforward, <code>gofmt -w .</code>, bam all your <code>.go</code> files are properly whitespaced, etc.</p>
+
+<p>As ever <a href="travis-ci.org">Travis CI</a> continues to impress and getting it to run the tests automatically was three lines of code in the <code>.travis.yml</code></p>
+
+<pre><code>language: go
+
+go:
+  - tip
+
+</code></pre>
+
+<h1 id="export-mondo-transactions">export-mondo-transactions</h1>
+
+<p><img src="/images/2016/05/2016-05-15---export-mondo-transactions.png" alt="" /></p>
+
+<p>With those building blocks in place, I was able to create a simple Go application which will run on any system, create a webserver locally on <code>8080</code>, and once it receives the authentication code on the referral URL, reaches out to the Mondo API, retrieves the latest transactions and saves them to an OFX file in the appropriate format!
+<img src="https://cloud.githubusercontent.com/assets/803607/15273116/8c8c2844-1a87-11e6-8207-8d79c600e1fd.png" alt="" /></p>
+
+<h2 id="usage">Usage</h2>
+
+<ol>
+<li>Create a <a href="https://developers.getmondo.co.uk/apps/home">client from Mondo&rsquo;s website</a> (redirect url doesn&rsquo;t matter, use google.com if you like).</li>
+<li>Identify the <code>client_id</code> and <code>client_secret</code> from the newly created client</li>
+<li>Download the <a href="https://github.com/Sam-Martin/export-mondo-transactions/releases/latest">latest release</a></li>
+<li>Run the downloaded executable and enter your <code>client_id</code> and <code>client_secret</code> when prompted</li>
+<li>Follow the instructions in the browser that opens to <code>localhost:8080</code> (don&rsquo;t close the application until you&rsquo;ve got your ofx!</li>
+</ol>
+
+<p>If you&rsquo;re not on Windows you&rsquo;ll need to replace step #4 with:</p>
+
+<ol>
+<li>Install <a href="http://golang.org">Go</a></li>
+<li>Populate the environment variable <code>GOPATH</code> with an absolute path to an empty directory</li>
+<li><code>go get github.com/sam-martin/export-mondo-transactions/export-mondo-transactions</code></li>
+<li><code>go get github.com/sam-martin/export-mondo-transactions/export-mondo-transactions</code></li>
+<li><code>%GOPATH%/bin/export-mondo-transactions</code></li>
+</ol>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

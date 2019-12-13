@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sam Martin</title>
+    <link>https://sammart.in/</link>
+    <description>Recent content on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 10 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Testing Submodules&#39; Commit  Path within Jenkins Pipeline</title>
+      <link>https://sammart.in/post/testing-submodules-commit-path-within-jenkins/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/testing-submodules-commit-path-within-jenkins/</guid>
+      <description>Submodules? I&amp;rsquo;ve never been a massive fan of submodules as they come with their own set of complexities and surprises, and embed dependency management within your SCM when really that should be the job of your packaging tool. But sometimes they are the right tool for the job when other tools are absent or your deploy is atypical.
+I&amp;rsquo;ve been using them recently to split out code that needed to be shared across repos but which wasn&amp;rsquo;t available to be distributed via a package repository of any kind.</description>
+    </item>
+    
+    <item>
+      <title>Automated Test Kitchen Checks on GitHub Pull Requests using Docker, TeamCity, and AWS Spot Instances</title>
+      <link>https://sammart.in/post/automated-test-kitchen-checks-on-github-pull-requests-using-docker-teamcity-and-aws-spot-instances/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/automated-test-kitchen-checks-on-github-pull-requests-using-docker-teamcity-and-aws-spot-instances/</guid>
+      <description>Scenario Being a model Chef user you&amp;rsquo;re using Test Kitchen to do integration testing of your Cookbooks. It works great on your machine using Vagrant! So let&amp;rsquo;s make sure these tests always run before code gets merged into Master in the GitHub repo.
+Why Docker? We&amp;rsquo;ll be using the chef/chefdk Docker container to run our Kitchen commands because what is the bane of a build agent&amp;rsquo;s life? Build dependencies! And what&amp;rsquo;s Docker good at?</description>
+    </item>
+    
+    <item>
+      <title>Creating your own PowerShell Repository with Nexus 3</title>
+      <link>https://sammart.in/post/creating-your-own-powershell-repository-with-nexus-3/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/creating-your-own-powershell-repository-with-nexus-3/</guid>
+      <description>Intro The introduction of PowerShell Gallery in PowerShell 5.0 is something that the Windows world has been craving for a long time (alongside Chocolatey, though I have somewhat mixed feelings about Chocolatey).
+The PowerShell equivilent to pip, gem, npm, it allows you to install community made PowerShell modules with a single command (Install-Module to be precise!).
+This is a great way to save yourself from spending hours re-inventing the wheel and easily consume code that someone else has slaved away to make work already.</description>
+    </item>
+    
+    <item>
+      <title>Reporting on PagerDuty call outs with Splunk</title>
+      <link>https://sammart.in/post/reporting-on-pagerduty-call-outs-with-splunk/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/reporting-on-pagerduty-call-outs-with-splunk/</guid>
+      <description>Pagerduty has a pretty kickass reporting feature, but my aim is to create a holistic dashboard for my team&amp;rsquo;s operational work, and to do that I need to have all my data in one place. That one place? Splunk!
+I love Splunk, have done ever since seeing a presentation on it years ago, but for a long time it stayed out of reach for mere mortals due to its price point.</description>
+    </item>
+    
+    <item>
+      <title>WinOps Conference London #2</title>
+      <link>https://sammart.in/post/winops-conference-london-2/</link>
+      <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/winops-conference-london-2/</guid>
+      <description>Intro WinOps is a conference in London aimed at addressing the fledgling audience of Windows people trying to DevOps. It&amp;rsquo;s also a monthly UserGroup which I attend regularly, so I was excited to see how the content translated from UG to conference.
+I don&amp;rsquo;t have slide decks for all of the talks (though I&amp;rsquo;ve added them where available), if you have one that I&amp;rsquo;m missing, please link to it in the comments!</description>
+    </item>
+    
+    <item>
+      <title>Mondo, YNAB, and an Intro to Go</title>
+      <link>https://sammart.in/post/mondo-ynab-and-an-intro-to-go/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/mondo-ynab-and-an-intro-to-go/</guid>
+      <description>Go I&amp;rsquo;ve been wanting to get into Go for a while. Despite the logo it&amp;rsquo;s a very respectable open source project developed by a team at Google that &amp;ldquo;makes it easy to build simple, reliable, and efficient software&amp;rdquo;. Crucially, Go is a cross-platform, compiled language that&amp;rsquo;s used notably by the HashiCorp suite of products. That means that if I want to contribute modules to say, Terraform (and I do) I need to know Go well enough to write decent, tested code that will get accepted in a pull request.</description>
+    </item>
+    
+    <item>
+      <title>A Week with Terraform</title>
+      <link>https://sammart.in/post/a-week-with-terraform/</link>
+      <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/a-week-with-terraform/</guid>
+      <description>As I mentioned in a previous post, AWS Config is an excellent tool for ensuring compliance across your AWS accounts, but can be challenging to set up consistently across large numbers of regions and accounts. To ease this pain I attempted to set up AWS Config using CloudFormation but found this challenging when using custom rules due to the necessity of uploading the Lambda functions to an S3 bucket in each region first.</description>
+    </item>
+    
+    <item>
+      <title>AWS Config Intro with CloudFormation</title>
+      <link>https://sammart.in/post/aws-config-intro-with-cloudformation/</link>
+      <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/aws-config-intro-with-cloudformation/</guid>
+      <description>AWS Config is a tool from Amazon designed to help you audit your AWS infrastructure for best practice and security adherence.
+It’s ideal for maintaining an overview across multiple accounts (especially Dev accounts) to ensure that people aren’t accidentally leaving 3389 or 22 open to the entire world, and similar security ‘faux pas’.
+Multiple account management for AWS is still quite a shaky experience. Managing users, billing, connectivity, etc. is a fractured and often confusing process, so anything that offers a helping hand for standardisation is extremely welcome.</description>
+    </item>
+    
+    <item>
+      <title>Creating HTTP Invoked PowerShell Azure Functions</title>
+      <link>https://sammart.in/post/creating-http-invoked-powershell-azure-functions/</link>
+      <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/creating-http-invoked-powershell-azure-functions/</guid>
+      <description>Azure Functions (introduced on the 31st of March 2016) is Azure’s answer to AWS Lambda, but boasts a much wider range of supported languages, particularly PowerShell which piqued my interest.
+It’s currently in Preview, and the documentation is a little light at the time of writing. In fact, it’s basically non-existent for PowerShell save for a single QueueTrigger – PowerShell example function for PS scripts triggered by a queue. So let’s work from this as our base script!</description>
+    </item>
+    
+    <item>
+      <title>Test Kitchen with a SQL Server Dependency</title>
+      <link>https://sammart.in/post/test-kitchen-with-a-sql-server-dependency/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/test-kitchen-with-a-sql-server-dependency/</guid>
+      <description>I want to be able to test my cookbooks/scripts without having to rely on independent testing infrastructure! I want to be able to do kitchen converge and have all my infrastructure ready to go without any further thought to the dependencies!
+This is why I’m such a huge fan of Matt Wrock’s Kitchen-Nodes. It’s a provisioner wrapper around Chef-Zero for Test Kitchen, which allows you to access some of the attributes from other nodes which you’re provisioning in Test Kitchen using Chef Search.</description>
+    </item>
+    
+    <item>
+      <title>Integration Testing AD Dependent Cookbooks and PowerShell Scripts with Test-Kitchen</title>
+      <link>https://sammart.in/post/integration-testing-ad-dependent-cookbooks-and-powershell-scripts-with-test-kitchen/</link>
+      <pubDate>Mon, 22 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/integration-testing-ad-dependent-cookbooks-and-powershell-scripts-with-test-kitchen/</guid>
+      <description>I remember a little while ago, well… over a couple of years ago now… that I’d just learned about Chef and Vagrant, and was introducing one of my co-workers to the ecosystem (somewhat over-enthusiastically), and wanted to help him perform his immediate deployment task using Chef. That deployment task happened to be to deploy and configure a Remote Desktop Gateway. So we spun up a Windows 2012R2 Vagrant box, use the Windows cookbook to add the appropriate Windows feature, ran it, and bam, brick wall.</description>
+    </item>
+    
+    <item>
+      <title>Configuration Management Camp 2016 Impressions</title>
+      <link>https://sammart.in/post/configuration-management-camp-2016-impressions/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/configuration-management-camp-2016-impressions/</guid>
+      <description>At the beginning of February I was lucky enough to attend Configuration Management Camp for the 3rd year running. The first year I attended (2013) it was my first introduction to the concept of configuration management, and god damn it was overwhelming. So many new concepts, new tools, new ideas, I left having been enlightened to a whole new world of automation.
+This year, having massively improved my knowledge of modern tools and practices around automation and infrastructure, and now having worked with Chef for a couple of years, I came to cfgmgmtcamp with the goal of learning more about Docker in production.</description>
+    </item>
+    
+    <item>
+      <title>Combating Passwords in Emails</title>
+      <link>https://sammart.in/post/combating-passwords-in-emails/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/combating-passwords-in-emails/</guid>
+      <description>Security is a thorny subject. One I stay away from making sweeping statements or recommendations about whenever possible. However, I’m willing to venture one assertion.
+ Plaintext passwords in emails are a BAD IDEA
+ Especially when they are the primary method of communicating an initial password to a user.
+Who would do that though? All sensible user management system allow the user to set the password themselves, or at worst send out a one-time password reset link.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with LogStash on Windows using Docker and nxlog</title>
+      <link>https://sammart.in/post/getting-started-with-logstash-on-windows-using-docker-and-nxlog/</link>
+      <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-logstash-on-windows-using-docker-and-nxlog/</guid>
+      <description>Summary Today we’re going to be doing the absolute bare minimum to get up and running using LogStash in an ELK (Elasticsearch, Logstash, Kibana) setup to aggregate Windows event logs.
+To do this we’re going to use:
+ Docker container willdurand/elk Boot2Docker (as we’re on Windows) nxLog (as a Windows log shipping agent)  Why nxLog instead of logstash-forwarder? Just simplicity at this stage, we’re doing the bare minimum to get up and running, and an installer and a plethora of predefined Windows nxLog configs made that easy.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus</title>
+      <link>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus/</guid>
+      <description>Introduction – HashiCorp Atlas It’s been a fair few months since my last post in this series (or at all for this matter) and I haven’t made anywhere near the progress with Chefifying (definitely a word) my environment as I would like due to new more urgent projects.
+Since my last post, HashiCorp has announced Atlas as a tech preview, which (in part) replaces VagrantCloud which I referenced in part 3.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with DSC and PowerShell 5.0 - Part 1 - Installing WordPress with Desired State Configuration</title>
+      <link>https://sammart.in/post/getting-started-with-dsc-and-windows-management-framework-5-0-part-1-installing-wordpress-with-desired-state-configuration/</link>
+      <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-dsc-and-windows-management-framework-5-0-part-1-installing-wordpress-with-desired-state-configuration/</guid>
+      <description>So we’ve checked out the basics of Chef on Windows in Part 1 and Part 2 of Chef On Windows, and with the recent release of the Windows Management Framework 5.0 Preview September 2014  I thought it was time to stick a toe into the water of the Desired State Configuration side of configuration management on Windows.
+As quite a lot of intros focus very heavily on the theory and don’t necessarily show a lot of results up front, I’m going to continue the precedent of the preview Chef articles and show you the shortest path to something tangible, hopefully gaining some familiarity with the tech involved along the way.</description>
+    </item>
+    
+    <item>
+      <title>Enforcing AWS Multi-Factor Authentication with IAM, PowerShell and PRTG</title>
+      <link>https://sammart.in/post/enforcing-aws-multi-factor-authentication-with-iam-powershell-and-prtg/</link>
+      <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/enforcing-aws-multi-factor-authentication-with-iam-powershell-and-prtg/</guid>
+      <description>Introduction: MFA Multi-Factor Authentication as utilised by AWS uses a TOTP (Time based One Time Password) setup with either a hardware or ‘virtual’ MFA device. The virtual device being the most commonly used, allowing you to use applications like Google Auth on your smartphone to generate passwords that are only viable for 60 seconds.
+This means that if you have MFA enabled, even if someone has your password, so long as they don’t also have access to your (hardware or virtual) MFA device, they’re unable to login to your account.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Chef on Windows Server - Part 2 - Chef Server &amp; Bootstrapping</title>
+      <link>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping/</link>
+      <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping/</guid>
+      <description>Now that we’ve donePart 1 – Configure a Package &amp;amp; Service, we can start getting a little more into the meat of Chef: centralisation. In the previous scenario we had defined a single recipe and applied it locally. Very simple, not very useful. In this part, we’re going to create a Chef Server, upload the recipe we created in the previous part to it, and then bootstrap another VM using it.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Chef on Windows Server - Part 1 Intro</title>
+      <link>https://sammart.in/post/getting-started-with-chef-on-windows-server/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-chef-on-windows-server/</guid>
+      <description>I’ve never had the opportunity to work with configuration management software, but a recent project has pushed me over the edge from “Wow, that sounds really cool in theory!” to “Well, I’d better get my feet wet!”.
+As the learnchef.com’s Windows page is currently under construction, I thought I’d write my efforts up to help anyone who might also be getting their feet wet for the first time in the configuration management space using Chef on Windows.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Chef on Windows Server – Part 3 – Vagrant, Windows, and Managed Chef</title>
+      <link>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef/</link>
+      <pubDate>Tue, 19 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef/</guid>
+      <description>In the previous two parts (Intro and Chef Server &amp;amp; Bootstrapping) we used a plain old VirtualBox VM with Windows 2012 R2 as our Chef client, which required downloading VHDs, registering them as individual VMs and then installing Chef manually. Part 2 even required that you still had your old VM from the first session lying around in order to start where you left off!
+This is not very chicken farm of us, and, I’ve since learned, really doing it the hard and old-fashioned way.</description>
+    </item>
+    
+    <item>
+      <title>LeanKit integration with ticketing system (using PowerShell)</title>
+      <link>https://sammart.in/post/leankit-integration-with-ticketing-system-using-powershell/</link>
+      <pubDate>Sun, 20 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/leankit-integration-with-ticketing-system-using-powershell/</guid>
+      <description>I’m no expert on Kanban by any means, but ever since reading The Phoenix Project, I’ve been dying to try it out in the workplace.
+For me, there are four key things that I think Kanban can help us do that our current tools can’t:
+ Identify queue time &amp;amp; bottlenecks Visualise Work In Process (WIP) Prioritise work (Queued or In Process) Promote mono-tasking by enforcing WIP limits  History However, we’ve recently come out the far side of a meta-project to improve the visibility and predicitability of project work by introducing a tool called Clarizen, which has resulted in the tool being scrapped.</description>
+    </item>
+    
+    <item>
+      <title>Using the LeanKit API with PowerShell</title>
+      <link>https://sammart.in/post/using-the-leankit-api-with-powershell/</link>
+      <pubDate>Sun, 20 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/using-the-leankit-api-with-powershell/</guid>
+      <description>As I alluded to in an earlier post&amp;rdquo;), I’ve been using PowerShell to interact with theLeanKit API. You can find the rationale and overarching methodology in the post linked above. Here we’ll be dealing with the nuts and bolts.
+Approach 1 – Using the .NET framework provided by LeanKit (FIXED by John Mathias) Initially I attempted to perform this task by importing the LeanKit API Client Library for .NET into PowerShell using [System.</description>
+    </item>
+    
+    <item>
+      <title>LogGrapher.com</title>
+      <link>https://sammart.in/post/loggrapher-com/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/loggrapher-com/</guid>
+      <description>It’s finally here!
+I started working on loggrapher.com at the beginning of last year after getting frustrated with vCenter’s tiny, inflexible charts and Excel’s inability to deal with values that were ‘per line’ rather than ‘per column’.
+It’s designed to deal with any line-graphable performance data (though I hope to add event-log graphing at a later date) that is formatted in CSV (UTF-8).
+Coding loggrapher.com proved something of a challenge.</description>
+    </item>
+    
+    <item>
+      <title>Scripting Backup Exec 2012 - P1 - Introduction, References &amp; Gotchas</title>
+      <link>https://sammart.in/post/scripting-backup-exec-2012-p1-introduction-references-gotchas/</link>
+      <pubDate>Sat, 09 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/scripting-backup-exec-2012-p1-introduction-references-gotchas/</guid>
+      <description>Preamble Introduction Over the past week, I’ve been trialling and implementing Backup Exec 2012 to replace an existing Backup Exec 2010 setup. Although Googling for Backup Exec 2012 reviews gets you a great deal of negativity and vitriol about the new interface, I have to say that I find it far more intuitive than the previous system. Where previously even something as simple as adding a backup client to the server required some headscratching and occasionally some swearing, Backup Exec 2012 now centres the interface around common tasks, rather than a semi-arbitrary architecture that probably made a great deal of sense to the programmers.</description>
+    </item>
+    
+    <item>
+      <title>Scripting Backup Exec 2012 - P2 - Creating a New Backup with Powershell</title>
+      <link>https://sammart.in/post/scripting-backup-exec-2012-p2-creating-a-new-backup-with-powershell/</link>
+      <pubDate>Sat, 09 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/scripting-backup-exec-2012-p2-creating-a-new-backup-with-powershell/</guid>
+      <description>Introduction In Part 2 of Scripting Backup Exec 2012, I’ll be illustrating how to create a Windows file backup from scratch using Powershell. For a basic rundown of the components, concepts and gotchas for this process, please see Part 1.
+Prerequisites:
+ A fully patched and up to date installation of Backup Exec 2012 Powershell and (advantageous) basic Powershell knowledge An unrestricted execution policy A pre-installed and trusted Windows Agent added to the Backup Exec server.</description>
+    </item>
+    
+    <item>
+      <title>Scripting Backup Exec 2012 - P3 - Customising and Adding Backup Tasks</title>
+      <link>https://sammart.in/post/scripting-backup-exec-2012-p3-customising-and-adding-backup-tasks/</link>
+      <pubDate>Sat, 09 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/scripting-backup-exec-2012-p3-customising-and-adding-backup-tasks/</guid>
+      <description>Introduction Part 3 will cover creating and customising backup tasks for our newly created backup definition. So far we’ve only accepted the defaults, so unless you’re happy with the predefined schedule, retention period and secondary backup type, you’re going to have to start customising your tasks!
+Customising and Adding Backup Tasks As we’ve already created a backup definition from the BackupToDisk defaults, we’ll have a new definition containing a full backup and an incremental backup.</description>
+    </item>
+    
+    <item>
+      <title>Adding internet shortcuts and Steam games to the start screen in Windows 8</title>
+      <link>https://sammart.in/post/adding-internet-shortcuts-and-steam-games-to-the-start-screen-in-windows-8/</link>
+      <pubDate>Sun, 18 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/adding-internet-shortcuts-and-steam-games-to-the-start-screen-in-windows-8/</guid>
+      <description>With most programs, in Windows 8 you can simply right click and “Pin to start”
+
+But with Steam games and internet shortcuts, you can’t do this.
+
+Instead, you simply move the shortcut to the following location:
+ C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+ Once you’ve moved it, go into the start screen, right click, hit “all apps” in the bottom right.
+
+And then find your newly added shortcut, right click, hit “pin to start”</description>
+    </item>
+    
+    <item>
+      <title>Allow log on through Terminal Services vs allow log on through Remote Desktop Services</title>
+      <link>https://sammart.in/post/allow-log-on-through-terminal-services-vs-allow-log-on-through-remote-desktop-services/</link>
+      <pubDate>Thu, 06 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/allow-log-on-through-terminal-services-vs-allow-log-on-through-remote-desktop-services/</guid>
+      <description>Long story short, I was looking for a way to allow a group of users access to specific member servers in active directory.
+Much googling brought up various references to “Allow log on through Terminal Services” and “Allow log on through Remote Desktop Services”, mostly references to the former which was not available on my server’s group policy.
+After much searching and heart rending, I discovered that these are** both names for the same setting, which has a machine name of *SeRemoteInteractiveL*ogonRight.</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 Domain Controllers unable to authenticate login requests.</title>
+      <link>https://sammart.in/post/windows-server-2008-domain-controllers-unable-to-authenticate-login-requests/</link>
+      <pubDate>Tue, 07 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/windows-server-2008-domain-controllers-unable-to-authenticate-login-requests/</guid>
+      <description>Recently I was faced with a problem. My Window Server 2003 DCs could authenticate logins fine, but my Windows Server 2008 DCs didn’t work at all.
+Naturally, in this situation you run good old DCDIAG against the servers in question.
+In my case, it came back with:
+dsbindwithspnex() failed with error 1753  Which, with a brief google, leads you to Troubleshooting RPC Endpoint Mapper errors (KB839880).
+As two servers worked (2k3) and two didn’t (2k8), it seemed likely to be a simple firewall misconfiguration.</description>
+    </item>
+    
+    <item>
+      <title>Enabling Resolutions in Ubuntu 12.04 &amp; Lubuntu 12.04</title>
+      <link>https://sammart.in/post/enabling-resolutions-in-ubuntu-12-04-lubuntu-12-04/</link>
+      <pubDate>Tue, 29 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/enabling-resolutions-in-ubuntu-12-04-lubuntu-12-04/</guid>
+      <description>Earlier I was setting up a new Lubuntu powered computer which was to be connected to a TV via HDMI as its primary display. When I set it up with my TV it recognised 1920×1080 as a viable resolution no problem at all.
+When I went to set it up on its destination display it refused to display anything above 1280×720.
+“What gives?” I thought to myself. Well, I never found out what gave, but here’s how to fix it:</description>
+    </item>
+    
+    <item>
+      <title>TEDxOxford 2011</title>
+      <link>https://sammart.in/post/tedxoxford-2011/</link>
+      <pubDate>Tue, 27 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/tedxoxford-2011/</guid>
+      <description>Yesterday I had the great pleasure of attending TEDxOxford 2011.
+The Event I’ve been a fan of TED.com for many years. Essentially it’s a conference where people from all fields of expertise get together and exchange interesting ideas.
+The format is that of a series of talks, each time-limited to between 5 and 20 minutes, and the subject must be an idea worth sharing.
+TEDxOxford 2011 is an independently organised TED event, organised as it is by students from Oxford University.</description>
+    </item>
+    
+    <item>
+      <title>Gmail advanced upload won&#39;t work in Chrome with non administrative users.</title>
+      <link>https://sammart.in/post/gmail-advanced-upload-wont-work-in-chrome-with-non-administrative-users/</link>
+      <pubDate>Mon, 29 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/gmail-advanced-upload-wont-work-in-chrome-with-non-administrative-users/</guid>
+      <description>The other day some of my users complained of a very strange issue when using Gmail at work. When composing a new email, they could not upload attachments using the “Advanced Upload” function. When they clicked “Add File” to upload a new document, nothing happened, no error, nothing, it just sat there and refused to work.
+Naturally it worked *fine* when I tried it. It seemed to happen only when the user did not have administrative access on their computer.</description>
+    </item>
+    
+    <item>
+      <title>Spiceworks Computer, Software &amp; Antivirus Assetting &#43; Event Log Management. For.. Free?!</title>
+      <link>https://sammart.in/post/spiceworks-computer-software-antivirus-assetting-event-log-management-for-free/</link>
+      <pubDate>Thu, 14 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/spiceworks-computer-software-antivirus-assetting-event-log-management-for-free/</guid>
+      <description>Nearly 7 years ago, at the tender age of 18 I spent about 6 months coding and perfecting a VBScript/WMI software &amp;amp; computer assetting tool for Sysmex UK, the company I was working for at the time.
+I was coding it myself because the asset management systems at the time were either incredibly poorly featured, labour intensive, expensive or all three.
+I would have given my right arm for something along the lines of SpiceWorks</description>
+    </item>
+    
+    <item>
+      <title>Twittering (and texting) Server Stats With Windows Server 2008</title>
+      <link>https://sammart.in/post/twittering-and-texting-server-stats-with-windows-server-2008/</link>
+      <pubDate>Mon, 04 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/twittering-and-texting-server-stats-with-windows-server-2008/</guid>
+      <description>Even though the RAM usage issue is hopefully resolved, I’m not taking any chances. So I decided to set it so that the server will direct message me on Twitter when the RAM usage reaches a certain threshold.
+Step 1: Perfmon To start the performance monitor, simply type ‘perfmon’ in the run command or open it up from ‘administrative tools’
+You’ll need to create a user defined Data Collector Set</description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2008 Cache Management</title>
+      <link>https://sammart.in/post/windows-server-2008-cache-management/</link>
+      <pubDate>Mon, 28 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/windows-server-2008-cache-management/</guid>
+      <description>Or, “How explorer.exe used all my server’s RAM and caused it to die” One of my clients was experiencing slowdown of their AD server due to explorer.exe consuming 100% of the RAM.
+I say slowdown, with that sort of RAM usage the thing ground to a halt and had to either be restarted or have explorer.exe killed (if we were lucky enough to be able to get to the task manager).</description>
+    </item>
+    
+    <item>
+      <title>Rooting and Cleaning out the Orange crap - Orange San Francisco</title>
+      <link>https://sammart.in/post/rooting-and-cleaning-out-the-orange-crap-orange-san-francisco/</link>
+      <pubDate>Tue, 22 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/rooting-and-cleaning-out-the-orange-crap-orange-san-francisco/</guid>
+      <description>WARNING Please check whether your phone is a G1 San Fran or a G2. You can do this by downloading Ask Mr Pigfish from the Android market.
+If it’s a G2, following the instructions below will brick your phone. So don’t skip this part ok?
+The Rooting I used this excellent guide to root and clean out my Orange San Francisco.
+Basically it takes place in three parts:
+ Unlock your San Â Francisco (Ridiculously easy) Root your San Francisco using Universal Androot (in the guide above).</description>
+    </item>
+    
+    <item>
+      <title>New Scientist article limit</title>
+      <link>https://sammart.in/post/new-scientist-article-limit/</link>
+      <pubDate>Fri, 19 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/new-scientist-article-limit/</guid>
+      <description>The New Scientist website has recently started imposing an article limit for non-paying users.
+As anyone with any familiarity with JS and jQuery (which, the New Scientist webmasters kindly already supplied) would do, I coded a little bookmarklet to get rid of this annoyance.
+ javascript:$(&amp;lsquo;#haasOverlay&amp;rsquo;).hide();javascript:$(&amp;lsquo;#fadeBackground&amp;rsquo;).hide();
+ To use it, just create a new bookmark in your browser and paste the text above as the URL.
+When presented with the article limit block, simply open the bookmark and the block will vanish!</description>
+    </item>
+    
+    <item>
+      <title>Brookes PIP skin</title>
+      <link>https://sammart.in/post/brookes-pip-skin/</link>
+      <pubDate>Sun, 07 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/brookes-pip-skin/</guid>
+      <description>I got bored of how the Brookes Personal Information Portal looked.
+So I decided to code a little plugin for Google Chrome to make it look a bit prettier.
+Took about 6 hours as the page was so old that it was done with no CSS or XHTML whatsoever; tables and in-line formatting all the way. Still, with the help of jQuery’s traversing functions I was able to overhaul it quite easily.</description>
+    </item>
+    
+    <item>
+      <title>First Semester&#39;s Results</title>
+      <link>https://sammart.in/post/first-semesters-results/</link>
+      <pubDate>Mon, 25 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/first-semesters-results/</guid>
+      <description>**U23101 Democracy: the Individual and Society:** 61 (B+)**U73100 Introduction to Philosophy:** 74 (A)**U73103 Academic Literacy: Philosophy:** 75 (A)**U73602 Introduction to Religions, Culture and Ethics:** 65 (B+)As one might conclude, Politics was not my favourite subject!Incidentally, [here’s the coursework](http://dl.dropbox.com/u/542251/Blog/Is%20the%20mind-brain%20identity%20theory%20a%20defensible%20position.pdf &#34;Is the mind/brain identity theory a defensible position?&#34;) for Intro to Philosophy,which counted for, I think, 40%, (rest being an essay-exam). </description>
+    </item>
+    
+    <item>
+      <title>Oxford Brookes: Academic Literacy - Assignment #1</title>
+      <link>https://sammart.in/post/oxford-brookes-academic-literacy-assignment-1/</link>
+      <pubDate>Sat, 07 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/oxford-brookes-academic-literacy-assignment-1/</guid>
+      <description>500 word summary of the following article:
+Strawson – Self Mind and Body
+My Summary (PDF Version)</description>
+    </item>
+    
+    <item>
+      <title>Reading list for Oxford Brookes Philosophy 09</title>
+      <link>https://sammart.in/post/reading-list-for-oxford-brookes-philosophy-09/</link>
+      <pubDate>Mon, 05 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/reading-list-for-oxford-brookes-philosophy-09/</guid>
+      <description>I figured this was as good a place as any for me to post random crap about my first year of Philosophy at Brookes.
+There are four modules in each semester of the first year, two core philosophy and two which can be anything you like.
+I went with the basic setup of Philosophy, Religion and Politics, though I dare say I’ll switch Politics to Psychology at some point as it’s boring the tits off me so far.</description>
+    </item>
+    
+    <item>
+      <title>Streaming multiple UK Freeview channels on a single Ubuntu computer</title>
+      <link>https://sammart.in/post/streaming-multiple-uk-freeview-channels-on-a-single-ubuntu-computer/</link>
+      <pubDate>Fri, 07 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/streaming-multiple-uk-freeview-channels-on-a-single-ubuntu-computer/</guid>
+      <description>I was recently given the challenge of setting up an IP-TV system for a school’s accommodation block, approximately 40 rooms.
+Initially I was very skeptical about the whole affair, even working on the assumption that all the kids had laptops (which was a fair one as they’re all rich kids) my last soireÃ© into streaming video was back in 2003 using the then embryonic shoutcast video support at approximately 160kbps.</description>
+    </item>
+    
+    <item>
+      <title>DevOps Conference Videos</title>
+      <link>https://sammart.in/devops-conference-videos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/devops-conference-videos/</guid>
+      <description>Recorded Meetups DevOps London:Â https://www.youtube.com/user/dataloopio/videos
+2015 Monitorama 2015:Â https://vimeo.com/channels/933981
+ChefConf 2015:Â https://www.youtube.com/playlist?list=PL11cZfNdwNyO9CpTWH2qjYfzysEtpfOCd
+OSCon 2015:Â https://www.youtube.com/playlist?list=PL055Epbe6d5YhDchEvY3O4nIuSLYyrx7K
+Velocity 2015:Â https://www.youtube.com/playlist?list=PL055Epbe6d5Y86GSg3nhUH3o_v62FGpCI
+AWS Summits 2015:Â https://www.youtube.com/playlist?list=PLhr1KZpdzukeD0iBeDI9WqZLYtuaFaaGc
+AWS Re:Invent 2015:Â https://www.youtube.com/user/AmazonWebServices/playlists?sort=dd&amp;amp;shelf_id=15&amp;amp;view=50
+2014 Monitorama 2014:Â https://vimeo.com/channels/740885
+ChefConf 2014:Â https://www.youtube.com/playlist?list=PL11cZfNdwNyMmx0msapJfuGsLV43C7XsA
+Velocity 2014:Â https://www.youtube.com/playlist?list=PL055Epbe6d5Zhob9o9AsrVagvstAptwQK
+PuppetConf (registration required):Â https://puppetlabs.com/puppetconf-2014-videos-and-presentations</description>
+    </item>
+    
+    <item>
+      <title>DevOps Conferences</title>
+      <link>https://sammart.in/devops-conferences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/devops-conferences/</guid>
+      <description>  Conference Location(s)   DevOps Days Global   ASE DevOps Bulgaria   DevOps Enterprise Summit (DOES) San Francisco/London   WinOps London   Puppet Conf San Diego   Chef Conf Austin, Texas   Monitorama Portland   Velocity Conf Santa Clara, New York, Amsterdam, Beijing   AWS Re:Invent Las Vegas   Config Management Camp Ghent, Belgium   </description>
+    </item>
+    
+    <item>
+      <title>DevOps Podcasts</title>
+      <link>https://sammart.in/devops-podcasts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/devops-podcasts/</guid>
+      <description>The Ship Show  The Ship Show is a twice-monthly podcast, featuring discussion on everything from build engineering to devops to release management, plus interviews, new tools and techniques, and reviews.
+ Arrested DevOps  Arrested DevOps is a high-level, bi-weekly panel discussion of DevOps concepts. We give our listeners a tantalizing taste of the basic technologies and ideas of DevOps to entice them to try more.
+ The Food Fight Show  Food Fight is a bi-weekly podcast for the Chef community.</description>
+    </item>
+    
+  </channel>
+</rss>

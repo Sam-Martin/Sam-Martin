@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus"/>
+<meta name="twitter:description" content="Introduction – HashiCorp Atlas It’s been a fair few months since my last post in this series (or at all for this matter) and I haven’t made anywhere near the progress with Chefifying (definitely a word) my environment as I would like due to new more urgent projects.
+Since my last post, HashiCorp has announced Atlas as a tech preview, which (in part) replaces VagrantCloud which I referenced in part 3."/>
+
+    <meta property="og:title" content="Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus" />
+<meta property="og:description" content="Introduction – HashiCorp Atlas It’s been a fair few months since my last post in this series (or at all for this matter) and I haven’t made anywhere near the progress with Chefifying (definitely a word) my environment as I would like due to new more urgent projects.
+Since my last post, HashiCorp has announced Atlas as a tech preview, which (in part) replaces VagrantCloud which I referenced in part 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus/" />
+<meta property="article:published_time" content="2015-01-25T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-01-25T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 25, 2015
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          6 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://sammart.in/tags/chef/">Chef</a><a class="tag" href="https://sammart.in/tags/devops/">devops</a><a class="tag" href="https://sammart.in/tags/packer/">Packer</a><a class="tag" href="https://sammart.in/tags/vagrant/">Vagrant</a><a class="tag" href="https://sammart.in/tags/windows/">Windows</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="introduction-hashicorp-atlas">Introduction – HashiCorp Atlas</h2>
+
+<p>It’s been a fair few months since my last post in this series (or at all for this matter) and I haven’t made anywhere near the progress with Chefifying (definitely a word) my environment as I would like due to new more urgent projects.</p>
+
+<p>Since my last post, <a href="https://hashicorp.com/blog/atlas.html" title="Atlas Announcement Post">HashiCorp has announced Atlas</a> as a tech preview, which (in part) replaces VagrantCloud which I referenced in <a href="/2014/10/19/getting-started-with-chef-on-windows-server-part-3-vagrant-windows-and-managed-chef/" title="Getting Started with Chef on Windows Server &amp;#128;&amp;#147; Part 3 &amp;#128;&amp;#147; Vagrant, Windows, and Managed Chef">part 3</a>. HashiCorp are placing Atlas as a solution to a large portion of your DevOps deployment lifecycle.</p>
+
+<p><a href="/images/2015/01/how-it-works-4a283ee2.png"><img src="/images/2015/01/how-it-works-4a283ee2.png?w=660" alt="how-it-works-4a283ee2" /></a></p>
+
+<p>This is powered by four components:</p>
+
+<ul>
+<li><a href="https://consul.io/" title="Consul">Consul</a> (monitoring &amp; service discovery)</li>
+<li><a href="https://packer.io/" title="Packer">Packer</a> (VM template management)</li>
+<li><a href="https://www.vagrantup.com/" title="Vagrant">Vagrant</a> (Repeatable development environment creation)</li>
+<li><a href="https://terraform.io/" title="Terraform">Terraform </a>(Cloud agnostic infrastructure-as-code)</li>
+</ul>
+
+<p>Atlas looks to be the wrapper that ties all these together to make it easy to manage vagrant boxes, terraform deployments, packer images and consul configurations in a single place as a coherent pipeline.</p>
+
+<p>Terraform looks <em>very</em> interesting to me as it’s placed in a CloudStack style space but looks much lighter weight. But currently we’re only interested in Vagrant and by extension Vagrant boxes and Vagrant Cloud.</p>
+
+<p>So what happened to <a href="http://vagrantcloud.com" title="Vagrant Cloud">Vagrant Cloud</a>?</p>
+
+<p><a href="/images/2015/01/vagrantcloudandatlas.png"><img src="/images/2015/01/vagrantcloudandatlas.png?w=660" alt="vagrantcloudandatlas" /></a></p>
+
+<p>Well the good news is that all existing VagrantCloud Boxes and URLs still work, so in theory Part 3 will still work for everyone!</p>
+
+<p>However, for some reason, when you search Atlas for “Windows” the <em>kensykora/windows_2012_r2_standard</em> box we were using <a href="https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&amp;sort=&amp;provider=&amp;q=windows" title="Windows search on HashiCorp Atlas">no longer shows up!</a></p>
+
+<p><a href="/images/2015/01/windows-search-on-hasicorp-atlas.png"><img src="/images/2015/01/windows-search-on-hasicorp-atlas.png?w=660" alt="windows search on hasicorp atlas" /></a></p>
+
+<p>No idea why <a href="https://atlas.hashicorp.com/kensykora/boxes/windows_2012_r2_standard" title="kensykora/windows_2012_r2_standard">as it still exists</a>, but <em>anyway</em> this gave me a good excuse to play with Packer!</p>
+
+<h2 id="rolling-your-own-windows-2012-r2-trial-vagrant-box-with-packer-joe-fitzgerald">Rolling your own Windows 2012 R2 Trial Vagrant box with Packer &amp; Joe Fitzgerald</h2>
+
+<p>Why? Well, initially I thought kensykora’s Vagrant box had disappeared which was what caused me to look into this in the first place, but there are a few additional reasons:</p>
+
+<ol>
+<li>kensykora’s box took a <em>very</em> long time to download (I imagine because the chap was dutifully hosting it on his own hardware in which case power to him and we shouldn’t complain about conveniences we get for free!)</li>
+<li>Packer allows you to roll your own boxes from the Windows Trial ISOs, meaning you’re not dependent on other people keeping their boxes up-to-date with fresh trials</li>
+<li>Packer is a useful tool in its own right. It allows you to create your own golden images (even if they’re just Windows with the latest updates installed) and deploy them pretty much anywhere, AWS, VMWare, VirtualBox, Azure, you name it.</li>
+</ol>
+
+<p>Like pretty much every tool in this space it has its origins in in the nix world, but fortunately all the hard work of creating Windows packages has been done for us already by <a href="http://joefitzgerald.org/" title="Joe Fitzgerald">Joe Fitzgerald</a> in his freaking awesome <a href="https://github.com/joefitzgerald/packer-windows" title="Packer Windows">Windows Packer GitHub repo</a>.</p>
+
+<p>There’s a lot of stuff going on with Packer, but we’re not trying to explore Packer in depth just yet. All we’re trying to do is roll a Windows 2012 R2 trial Vagrant box with the minimum amount of fuss.</p>
+
+<h3 id="you-will-need">You will need</h3>
+
+<ol>
+<li>VirtualBox</li>
+<li>Vagrant</li>
+<li>Some knowledge of the above two (the previous two parts of this blog series would be helpful! :))</li>
+</ol>
+
+<h3 id="step-1-install-packer">Step 1) Install Packer</h3>
+
+<p>Well… I say install, more like extract and add to your path environment variable.</p>
+
+<p>Download the windows version from <a href="https://packer.io/downloads.html" title="Download Packer">https://packer.io/downloads.html</a> and extract it anywhere you like, and add that path to your PATH environment variable like so:</p>
+
+<p>Where “C:\Users\smartin\Documents\packer” is the path you extracted packer to.<br />
+ You could of course set it using the GUI like a normal person if you prefer!</p>
+
+<h3 id="step-2-download-and-extract-joe-s-packer-windows-repo">Step 2) Download and extract Joe’s Packer-Windows repo</h3>
+
+<p>Go to <a href="https://github.com/joefitzgerald/packer-windows" title="Joe FitzGerald's Packer Windows">https://github.com/joefitzgerald/packer-windows</a> and hit the “Download Zip” button.</p>
+
+<p><a href="/images/2015/01/download-zip-github.png"><img src="/images/2015/01/download-zip-github.png?w=660" alt="download zip github" /></a></p>
+
+<p>Then extract the Zip to wherever you like (though preferably on a hard disk with some space as this directory will be where the ISO is downloaded to AND where the resultant box file is created).</p>
+
+<h3 id="step-3-disable-windows-updates-enable-head-and-build">Step 3)  Disable Windows Updates, Enable Head, and Build</h3>
+
+<p>Okay you don’t <em>have </em> to disable Windows updates, in fact, if you’re building a golden image for a production environment you absolutely should not do this step. However, if you’re just trying to get a 2012 R2 Vagrant box built as fast as possible (i.e. in less than an hour!) then follow Joe’s steps to disable Windows Updates, which are:</p>
+
+<p>Open the directory to which you <em>extracted packer-windows-master</em>.</p>
+
+<p><a href="/images/2015/01/packer-windows-master.png"><img src="/images/2015/01/packer-windows-master.png?w=660" alt="packer-windows-master" /></a></p>
+
+<p>Find <em>answer_files2012_r2Autounattend.xml</em> and uncomment the section that starts “WITHOUT WINDOWS UPDATES” and comment <em>out</em> the section that says “WITH WINDOWS UPDATES”. It should look like the following screenshot once you’re done:</p>
+
+<p><a href="/images/2015/01/comment-out-windows-updates.png"><img src="/images/2015/01/comment-out-windows-updates.png?w=660" alt="comment out windows updates" /></a></p>
+
+<p>This will cut out a lot of time for the packer build!</p>
+
+<p>Next, open up <code>packer-windows-masterwindows\_2012\_r2.json</code> and change the <code>virtualbox-iso</code> <code>headless</code> value to false. This isn’t strictly necessary, but helps you see what’s going on and appreciate how awesome it is that you don’t have to do all this by hand!</p>
+
+<p><a href="/images/2015/01/headless-false.png"><img src="/images/2015/01/headless-false.png?w=660" alt="headless false" /></a></p>
+
+<p>Save, that, open a PowerShell window and CD to your packer-windows-master directory and run:</p>
+
+<pre><code>packer validate windows_2012_r2.json
+</code></pre>
+
+<p>then once that returns successfully</p>
+
+<pre><code>packer build windows_2012_r2.json
+</code></pre>
+
+<p>This will take a while to run as it does the following:</p>
+
+<ol>
+<li>Downloads the Windows 2012 R2 Trial ISO</li>
+<li>Installs Windows 2012 R2 Trial to a temporary VirtualBox VM</li>
+<li>Packages that VM up into a Vagrant box and dumps it into your *packer-windows-master *directory</li>
+</ol>
+
+<p><img src="/images/2015/01/packer-build.png?w=660" alt="packer build" /></p>
+
+<p><em>snore</em></p>
+
+<p><a href="/images/2015/01/finished-building-vagrant-box.png"><img src="/images/2015/01/finished-building-vagrant-box.png?w=660" alt="finished building vagrant box" /></a></p>
+
+<p>This will throw errors about VMwareapplication not existing, but that’s fine, we don’t want a VMware template.</p>
+
+<p>Finished? Then let’s proceed to register it.</p>
+
+<h3 id="step-4-register-the-box-with-vagrant">Step 4) Register the box with Vagrant</h3>
+
+<p>Now, you’ve not had to do this in any of the previous guides because we always used Vagrant Cloud for our Vagrant boxes. But this time we need to tell Vagrant about the new box we’ve just created!</p>
+
+<pre><code>vagrant box add C:\Users\smartin\Downloads\packer-windows-masterwindows_2012_r2_virtualbox.box --name &quot;smartin-2012r2&quot;
+</code></pre>
+
+<p><a href="/images/2015/01/add-vagrant-box.png"><img src="/images/2015/01/add-vagrant-box.png?w=660" alt="add vagrant box" /></a></p>
+
+<p>The name is completely arbitrary, do change it for your purposes, and the location obviously has to be amended to reflect where your <em>packer-windows-master</em> directory is!</p>
+
+<h3 id="step-5-install-vagrant-omnibus-and-create-a-vagrant-project"> Step 5) Install Vagrant Omnibus and Create a Vagrant Project</h3>
+
+<p><a href="https://github.com/chef/vagrant-omnibus" title="Vagrant Omnibus">Vagrant Omnibus</a> is a Vagrant Plugin that ensures Chef is installed on your Vagrant box as part of the provisioning process (much neater than my messy PowerShell script in Part 3).</p>
+
+<pre><code>vagrant plugin install vagrant-omnibus
+</code></pre>
+
+<p><a href="/images/2015/01/install-vagrant-omnibus.png"><img src="/images/2015/01/install-vagrant-omnibus.png?w=660" alt="install vagrant omnibus" /></a></p>
+
+<p>With that done you can create a new folder (wherever you like) for your vagrant project. Mine’s called <em>vagrant-base-2012R2</em> but it really doesn’t matter.</p>
+
+<p>In that new folder, create a file named <em>VagrantFile</em> (no extension) and paste the following into it:</p>
+
+<pre><code># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = '2'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # All Vagrant configuration is done here. The most common configuration
+  # options are documented and commented below. For a complete reference,
+  # please see the online documentation at vagrantup.com.
+
+  config.vm.provider 'virtualbox' do |v|
+    v.gui = true
+    v.memory = 1024
+    v.cpus = 1
+  end
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = 'smartin-2012r2'
+
+  # Install the latest chef
+  config.omnibus.chef_version = :latest
+end
+
+</code></pre>
+
+<p>Most of this should be familiar from previous parts, but the important bit to change is the name in <em>config.vm.box</em> as this must match whatever name you passed as part of <em>vagrant box add</em>.</p>
+
+<p>Once that’s created, VAGRANT UP!</p>
+
+<p><a href="/images/2015/01/vagrant-up-1.png"><img src="/images/2015/01/vagrant-up-1.png?w=660" alt="vagrant up #1" /></a> <a href="/images/2015/01/vagrant-up-2.png"><img src="/images/2015/01/vagrant-up-2.png?w=660" alt="vagrant up #2" /></a>Et Voila! One repeatable build from ISO &gt; Vagrant Box with Chef installed!</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

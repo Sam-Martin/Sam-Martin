@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ephemera on Sam Martin</title>
+    <link>https://sammart.in/categories/ephemera/</link>
+    <description>Recent content in Ephemera on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 06 Feb 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/categories/ephemera/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Combating Passwords in Emails</title>
+      <link>https://sammart.in/post/combating-passwords-in-emails/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/combating-passwords-in-emails/</guid>
+      <description>Security is a thorny subject. One I stay away from making sweeping statements or recommendations about whenever possible. However, I’m willing to venture one assertion.
+ Plaintext passwords in emails are a BAD IDEA
+ Especially when they are the primary method of communicating an initial password to a user.
+Who would do that though? All sensible user management system allow the user to set the password themselves, or at worst send out a one-time password reset link.</description>
+    </item>
+    
+  </channel>
+</rss>

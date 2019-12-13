@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server 2003 on Sam Martin</title>
+    <link>https://sammart.in/categories/server-2003/</link>
+    <description>Recent content in Server 2003 on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 07 Aug 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/categories/server-2003/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows Server 2008 Domain Controllers unable to authenticate login requests.</title>
+      <link>https://sammart.in/post/windows-server-2008-domain-controllers-unable-to-authenticate-login-requests/</link>
+      <pubDate>Tue, 07 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/windows-server-2008-domain-controllers-unable-to-authenticate-login-requests/</guid>
+      <description>Recently I was faced with a problem. My Window Server 2003 DCs could authenticate logins fine, but my Windows Server 2008 DCs didn’t work at all.
+Naturally, in this situation you run good old DCDIAG against the servers in question.
+In my case, it came back with:
+dsbindwithspnex() failed with error 1753  Which, with a brief google, leads you to Troubleshooting RPC Endpoint Mapper errors (KB839880).
+As two servers worked (2k3) and two didn’t (2k8), it seemed likely to be a simple firewall misconfiguration.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hashicorp on Sam Martin</title>
+    <link>https://sammart.in/tags/hashicorp/</link>
+    <description>Recent content in hashicorp on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 15 Feb 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/tags/hashicorp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Configuration Management Camp 2016 Impressions</title>
+      <link>https://sammart.in/post/configuration-management-camp-2016-impressions/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/configuration-management-camp-2016-impressions/</guid>
+      <description>At the beginning of February I was lucky enough to attend Configuration Management Camp for the 3rd year running. The first year I attended (2013) it was my first introduction to the concept of configuration management, and god damn it was overwhelming. So many new concepts, new tools, new ideas, I left having been enlightened to a whole new world of automation.
+This year, having massively improved my knowledge of modern tools and practices around automation and infrastructure, and now having worked with Chef for a couple of years, I came to cfgmgmtcamp with the goal of learning more about Docker in production.</description>
+    </item>
+    
+  </channel>
+</rss>

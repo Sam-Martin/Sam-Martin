@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Sam Martin</title>
+    <link>https://sammart.in/categories/</link>
+    <description>Recent content in Categories on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 30 May 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pagerduty</title>
+      <link>https://sammart.in/categories/pagerduty/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/pagerduty/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://sammart.in/categories/python/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>splunk</title>
+      <link>https://sammart.in/categories/splunk/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/splunk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://sammart.in/categories/go/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mondo</title>
+      <link>https://sammart.in/categories/mondo/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/mondo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>YNAB</title>
+      <link>https://sammart.in/categories/ynab/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/ynab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Infrastructure as Code</title>
+      <link>https://sammart.in/categories/infrastructure-as-code/</link>
+      <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/infrastructure-as-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terraform</title>
+      <link>https://sammart.in/categories/terraform/</link>
+      <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws</title>
+      <link>https://sammart.in/categories/aws/</link>
+      <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://sammart.in/categories/azure/</link>
+      <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chef</title>
+      <link>https://sammart.in/categories/chef/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/chef/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://sammart.in/categories/windows/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ms sql</title>
+      <link>https://sammart.in/categories/ms-sql/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/ms-sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sql server</title>
+      <link>https://sammart.in/categories/sql-server/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/sql-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test kitchen</title>
+      <link>https://sammart.in/categories/test-kitchen/</link>
+      <pubDate>Fri, 04 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/test-kitchen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>powershell</title>
+      <link>https://sammart.in/categories/powershell/</link>
+      <pubDate>Mon, 22 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cfgmgmtcamp</title>
+      <link>https://sammart.in/categories/cfgmgmtcamp/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/cfgmgmtcamp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://sammart.in/categories/devops/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hashicorp</title>
+      <link>https://sammart.in/categories/hashicorp/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/hashicorp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>juju</title>
+      <link>https://sammart.in/categories/juju/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/juju/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vault</title>
+      <link>https://sammart.in/categories/vault/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/vault/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API Gateway</title>
+      <link>https://sammart.in/categories/api-gateway/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/api-gateway/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ephemera</title>
+      <link>https://sammart.in/categories/ephemera/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/ephemera/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lambda</title>
+      <link>https://sammart.in/categories/lambda/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://sammart.in/categories/security/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ELK</title>
+      <link>https://sammart.in/categories/elk/</link>
+      <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/elk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://sammart.in/categories/docker/</link>
+      <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logtash</title>
+      <link>https://sammart.in/categories/logtash/</link>
+      <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/logtash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Packer</title>
+      <link>https://sammart.in/categories/packer/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/packer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vagrant</title>
+      <link>https://sammart.in/categories/vagrant/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/vagrant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kanban</title>
+      <link>https://sammart.in/categories/kanban/</link>
+      <pubDate>Sun, 20 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/kanban/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leankit</title>
+      <link>https://sammart.in/categories/leankit/</link>
+      <pubDate>Sun, 20 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/leankit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows 8</title>
+      <link>https://sammart.in/categories/windows-8/</link>
+      <pubDate>Sun, 18 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/windows-8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Active Directory</title>
+      <link>https://sammart.in/categories/active-directory/</link>
+      <pubDate>Tue, 07 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/active-directory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server 2003</title>
+      <link>https://sammart.in/categories/server-2003/</link>
+      <pubDate>Tue, 07 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/server-2003/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server 2008</title>
+      <link>https://sammart.in/categories/server-2008/</link>
+      <pubDate>Tue, 07 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/server-2008/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>university</title>
+      <link>https://sammart.in/categories/university/</link>
+      <pubDate>Mon, 25 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/categories/university/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

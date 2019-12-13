@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Sam Martin</title>
+    <link>https://sammart.in/tags/go/</link>
+    <description>Recent content in Go on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 15 May 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mondo, YNAB, and an Intro to Go</title>
+      <link>https://sammart.in/post/mondo-ynab-and-an-intro-to-go/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/mondo-ynab-and-an-intro-to-go/</guid>
+      <description>Go I&amp;rsquo;ve been wanting to get into Go for a while. Despite the logo it&amp;rsquo;s a very respectable open source project developed by a team at Google that &amp;ldquo;makes it easy to build simple, reliable, and efficient software&amp;rdquo;. Crucially, Go is a cross-platform, compiled language that&amp;rsquo;s used notably by the HashiCorp suite of products. That means that if I want to contribute modules to say, Terraform (and I do) I need to know Go well enough to write decent, tested code that will get accepted in a pull request.</description>
+    </item>
+    
+  </channel>
+</rss>

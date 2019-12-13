@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on Sam Martin</title>
+    <link>https://sammart.in/tags/devops/</link>
+    <description>Recent content in devops on Sam Martin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 15 Feb 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sammart.in/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Configuration Management Camp 2016 Impressions</title>
+      <link>https://sammart.in/post/configuration-management-camp-2016-impressions/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/configuration-management-camp-2016-impressions/</guid>
+      <description>At the beginning of February I was lucky enough to attend Configuration Management Camp for the 3rd year running. The first year I attended (2013) it was my first introduction to the concept of configuration management, and god damn it was overwhelming. So many new concepts, new tools, new ideas, I left having been enlightened to a whole new world of automation.
+This year, having massively improved my knowledge of modern tools and practices around automation and infrastructure, and now having worked with Chef for a couple of years, I came to cfgmgmtcamp with the goal of learning more about Docker in production.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Chef on Windows Server - Part 3a - Packer, Vagrant, and Vagrant Omnibus</title>
+      <link>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/getting-started-with-chef-on-windows-server-part-3a-packer-vagrant-and-vagrant-omnibus/</guid>
+      <description>Introduction – HashiCorp Atlas It’s been a fair few months since my last post in this series (or at all for this matter) and I haven’t made anywhere near the progress with Chefifying (definitely a word) my environment as I would like due to new more urgent projects.
+Since my last post, HashiCorp has announced Atlas as a tech preview, which (in part) replaces VagrantCloud which I referenced in part 3.</description>
+    </item>
+    
+    <item>
+      <title>LeanKit integration with ticketing system (using PowerShell)</title>
+      <link>https://sammart.in/post/leankit-integration-with-ticketing-system-using-powershell/</link>
+      <pubDate>Sun, 20 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://sammart.in/post/leankit-integration-with-ticketing-system-using-powershell/</guid>
+      <description>I’m no expert on Kanban by any means, but ever since reading The Phoenix Project, I’ve been dying to try it out in the workplace.
+For me, there are four key things that I think Kanban can help us do that our current tools can’t:
+ Identify queue time &amp;amp; bottlenecks Visualise Work In Process (WIP) Prioritise work (Queued or In Process) Promote mono-tasking by enforcing WIP limits  History However, we’ve recently come out the far side of a meta-project to improve the visibility and predicitability of project work by introducing a tool called Clarizen, which has resulted in the tool being scrapped.</description>
+    </item>
+    
+  </channel>
+</rss>

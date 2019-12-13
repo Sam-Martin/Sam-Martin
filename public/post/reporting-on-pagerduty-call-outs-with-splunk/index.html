@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>Reporting on PagerDuty call outs with Splunk // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Reporting on PagerDuty call outs with Splunk"/>
+<meta name="twitter:description" content="Pagerduty has a pretty kickass reporting feature, but my aim is to create a holistic dashboard for my team&rsquo;s operational work, and to do that I need to have all my data in one place. That one place? Splunk!
+I love Splunk, have done ever since seeing a presentation on it years ago, but for a long time it stayed out of reach for mere mortals due to its price point."/>
+
+    <meta property="og:title" content="Reporting on PagerDuty call outs with Splunk" />
+<meta property="og:description" content="Pagerduty has a pretty kickass reporting feature, but my aim is to create a holistic dashboard for my team&rsquo;s operational work, and to do that I need to have all my data in one place. That one place? Splunk!
+I love Splunk, have done ever since seeing a presentation on it years ago, but for a long time it stayed out of reach for mere mortals due to its price point." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/reporting-on-pagerduty-call-outs-with-splunk/" />
+<meta property="article:published_time" content="2016-05-30T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2016-05-30T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Reporting on PagerDuty call outs with Splunk</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 30, 2016
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://sammart.in/tags/splunk/">splunk</a><a class="tag" href="https://sammart.in/tags/pagerduty/">pagerduty</a><a class="tag" href="https://sammart.in/tags/python/">python</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>Pagerduty has a pretty kickass reporting feature, but my aim is to create a holistic dashboard for my team&rsquo;s operational work, and to do that I need to have all my data in one place. That one place? Splunk!</p>
+
+<p>I love Splunk, have done ever since seeing a presentation on it years ago, but for a long time it stayed out of reach for mere mortals due to its price point. However, that seems to have dropped <em>massively</em> while I wasn&rsquo;t looking. Where previously it seemed like Splunk wouldn&rsquo;t get out of bed for less than quarter of a million a year, now you can get a hosted solution ingesting tens of gigabytes a day for only a few tens of thousand pounds a year.</p>
+
+<h1 id="the-plan">The Plan</h1>
+
+<p>Ultimately what I want to build is a one-stop shop for Team Metrics, and this is just the first (and possibly most important) step towards that.
+I considered using <a href="https://github.com/etsy/opsweekly">Etsy&rsquo;s Ops Weekly</a> tool, but didn&rsquo;t want to introduce a manual logging component at this early stage in a new team. Also one of the major design drivers behind OpsWeekly is integration with sleep-tracking tools which while <em>awesomely cool</em> for a data nerd like me, is a little Orwellian and not something I wanted to float so early into a new job.</p>
+
+<p>Our objective with this overarching project of capturing, consolidating, and displaying &lsquo;Team Metrics&rsquo; is to fulfil one of the most important principles of LEAN: making things visible. If it&rsquo;s not visible you can&rsquo;t measure your improvement, and if you can&rsquo;t measure your improvement you&rsquo;re relegated to guesswork rather than experimentation. Failing fast and often is only good if you can learn from it, and to learn we need Metrics!</p>
+
+<p>I chose PagerDuty as a good place to start as it&rsquo;s a great warning factor for burnout risk and counter indicator of individual health/wellbeing. If your team isn&rsquo;t getting enough sleep it&rsquo;s not going to be long before they start becoming extremely unhappy, checking out mentally and starting to look for a less stressful job.</p>
+
+<p>Anyway, to get the overview we&rsquo;re looking for we&rsquo;ll need three components:</p>
+
+<ol>
+<li>An event driven RESTful endpoint that PagerDuty will call out to add new events</li>
+<li>A tool to bulk-import our PagerDuty history</li>
+<li>Some defined reports to show us our data</li>
+</ol>
+
+<p>I&rsquo;ve created #2 and #3 already (#1 I&rsquo;ll do another blog post on later), and that&rsquo;s enough for us to start ingesting and reporting on data, so let&rsquo;s get cracking!</p>
+
+<h1 id="setup">Setup</h1>
+
+<p>You&rsquo;ll need to get API keys for both PagerDuty and Splunk.
+You can find instructions on Splunk&rsquo;s website for <a href="http://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector">Using the HTTP Event Collector</a>. Make sure you create a new index with an appropriate size and age limit like I have:
+<img src="/images/2016/05/2016-05-30---Create-Index.png" alt="" /></p>
+
+<p>You&rsquo;ll also need to make sure you give the new HTTP Event access to this index and set it as its default like so:
+<img src="/images/2016/05/2016-05-30---New-Token-Settings.png" alt="" /></p>
+
+<p>PagerDuty&rsquo;s API requires less setup as we&rsquo;re only reading data, just refer to this document on their site: <a href="https://support.pagerduty.com/hc/en-us/articles/202829310-Generating-an-API-Key">Generating an API Key</a>.
+<strong>Make sure you create a V2 API key otherwise it won&rsquo;t work!</strong></p>
+
+<h2 id="importing-the-data">Importing the Data</h2>
+
+<p>With that out the way, you can download tool I&rsquo;ve created: <a href="https://github.com/Sam-Martin/PagerDuty2Splunk/">PagerDuty2Splunk</a>.
+You&rsquo;ll need <a href="https://www.python.org/downloads/">Python</a> (probably 2.7 is most compatible), and once installed run:</p>
+
+<pre><code>pip install pagerduty2splunk
+</code></pre>
+
+<p>Now all you need do is execute it, passing the details of your Splunk and PagerDuty APIs.</p>
+
+<pre><code>pagerduty2splunk --log=INFO --start=2016-01-01 --end=2015-01-05 --splunk-token=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX  --splunk-instance-id=prd-X-XXXXX --pagerduty-token=XXX-XXXXXXXXXXXXXXXX
+</code></pre>
+
+<p><code>splunk-token</code> and <code>pagerduty-token</code> are pretty self-explanatory as the API keys that you generated in <em>Setup</em> earlier, <code>splunk-instance-id</code> is the subdomain of your Splunk Cloud url (i.e. the bit that comes before <code>cloud.splunk.com</code> when you go to access your Splunk instance).
+<code>start</code> and <code>end</code> are the YYYY-MM-DD formatted dates that you want to pull logs from PagerDuty between. (You can also use number of days relative to today if you wish, see the <a href="https://github.com/Sam-Martin/PagerDuty2Splunk/">GitHub page</a> for more examples.)</p>
+
+<p><img src="/images/2016/05/2016-05-30---PagerDuty2Splunk.png" alt="" /></p>
+
+<p>Once that&rsquo;s complete (it will take a while if you&rsquo;ve selected a large number of days!), you should be able to search your index in Splunk with a query like:</p>
+
+<pre><code>index=pagerduty
+</code></pre>
+
+<p>Which should show everything that you&rsquo;ve just imported.
+<img src="/images/2016/05/Splunk.png" alt="" /></p>
+
+<p>Wonderful!</p>
+
+<h1 id="building-a-dashboard">Building a Dashboard</h1>
+
+<p>I&rsquo;m pretty new to Splunk, so probably some-one else can come up with something much better than what I&rsquo;ve created here, but this is a start for you:
+<img src="/images/2016/05/2016-05-30---Splunk-Dashboard.png" alt="" /></p>
+
+<p>The exported code for the dashboard is pretty long so I&rsquo;ve popped it in Gist: <a href="https://gist.github.com/Sam-Martin/ad57f7b9d851ca314a653b16278fa66b">PagerDuty Operational Dashboard in Splunk</a>.</p>
+
+<p>You can paste this code into any new Dashboard you&rsquo;ve created by going to the top right of the dashboard and clicking &ldquo;Edit&rdquo; &gt; &ldquo;Edit Source&rdquo;.</p>
+
+<p>And that&rsquo;s it! I&rsquo;m going to do a follow-up post when I&rsquo;ve created an Azure Function to receive new events (I&rsquo;d rather not to manual exports regularly!). But this should get you started to see what sort of power is available when you bring your PagerDuty metrics into Splunk.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

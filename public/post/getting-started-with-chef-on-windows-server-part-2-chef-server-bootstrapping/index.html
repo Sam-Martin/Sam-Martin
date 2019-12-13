@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <title>Getting Started with Chef on Windows Server - Part 2 - Chef Server &amp; Bootstrapping // Sam Martin</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sam Martin" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://sammart.in/css/main.min.8f7e3c0c9f0c2cebf87b5d3e8337bd3236fe0de71f07c3af70bae2eb50399ddb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Getting Started with Chef on Windows Server - Part 2 - Chef Server &amp; Bootstrapping"/>
+<meta name="twitter:description" content="Now that we’ve donePart 1 – Configure a Package &amp; Service, we can start getting a little more into the meat of Chef: centralisation. In the previous scenario we had defined a single recipe and applied it locally. Very simple, not very useful. In this part, we’re going to create a Chef Server, upload the recipe we created in the previous part to it, and then bootstrap another VM using it."/>
+
+    <meta property="og:title" content="Getting Started with Chef on Windows Server - Part 2 - Chef Server &amp; Bootstrapping" />
+<meta property="og:description" content="Now that we’ve donePart 1 – Configure a Package &amp; Service, we can start getting a little more into the meat of Chef: centralisation. In the previous scenario we had defined a single recipe and applied it locally. Very simple, not very useful. In this part, we’re going to create a Chef Server, upload the recipe we created in the previous part to it, and then bootstrap another VM using it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sammart.in/post/getting-started-with-chef-on-windows-server-part-2-chef-server-bootstrapping/" />
+<meta property="article:published_time" content="2014-08-25T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-08-25T00:00:00&#43;00:00"/>
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://sammart.in/"><img class="app-header-avatar" src="/avatar.jpg" alt="Sam Martin" /></a>
+      <h1>Sam Martin</h1>
+      <p>Adventures in IT</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Getting Started with Chef on Windows Server - Part 2 - Chef Server &amp; Bootstrapping</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Aug 25, 2014
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          9 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>Now that we’ve done<a href="http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/"> Part 1 – Configure a Package &amp; Service</a>, we can start getting a little more into the meat of Chef: centralisation. In the previous scenario we had defined a single recipe and applied it locally. Very simple, not very useful. In this part, we’re going to create a Chef Server, upload the recipe we created in the previous part to it, and then bootstrap another VM using it.</p>
+
+<p>This is a relatively long winded setup, and if you’re itching to get started I highly recommend running through the <a href="http://learn.getchef.com/rhel/">LearnChef.com Redhat Enterprise Linux tutorial</a> which even provides you with the VMs and hosted Chef Server, which will get your feet wet and started on the road to Chef. If, however, you’re interested in getting slightly deeper into Chef, step right this way.</p>
+
+<h1 id="requirements">Requirements</h1>
+
+<ol>
+<li>Ubuntu Server VM</li>
+<li><strong>IMPORTANT:</strong> The 2012 R2 VM you made in <a href="http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/">the previous part of this series</a></li>
+<li>Powershell Understanding <a href="http://www.microsoftvirtualacademy.com/training-courses/getting-started-with-powershell-3-0-jump-start">Basic: Microsoft Virtual Academy Getting Started With PowerShell</a></li>
+<li>Basic understanding of <a href="http://docs.getchef.com/chef_overview.html">what Chef is</a> (ideal, but not required).</li>
+<li>Basic Linux knowledge</li>
+</ol>
+
+<h1 id="1-setting-up-the-chef-server">1) Setting up the Chef Server</h1>
+
+<p>“Wait, what? Ubuntu Server? What happened to the “On Windows” part of this? I thought that was the whole point!”</p>
+
+<p>Unfortunately at the time of writing Chef Server is only available on Linux. So in order to manage our Windows servers we’re going to need an Ubuntu Server VM on which we can install Chef Server. Don’t worry, Chef Server isn’t really the focus here, we just need it for configuration centralisation and user management.</p>
+
+<p>There are a couple of alternatives to self-hosting a Chef Server including: <a href="https://manage.opscode.com/signup">Opscode Hosted Chef</a>, and <a href="http://aws.amazon.com/opsworks/">OpsWorks </a>(and probably others). The former looks pretty sexy if you’ve got the cash to splash, and their free trial is crucial in the<a href="http://learn.getchef.com/rhel/get-ready-to-add-another-server/"> learnchef.com examples which we’re blatantly ripping off</a>.</p>
+
+<ol>
+<li>Spin up an Ubuntu Server instance, make sure it has its own IP, can talk to our old 2012 VM, and access to the internet</li>
+<li>Visit <a href="http://www.getchef.com/chef/install">http://www.getchef.com/chef/install</a>, <strong>ensure you click “<em>Open Source</em> Chef Server 11″</strong> and select the latest version of Chef, copy the URL the link provides you with into notepad.</li>
+<li>In your Ubuntu Server VM enter: <code>wget [downloadURL]</code></li>
+</ol>
+
+<p>e.g. <code>wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chef-server_11.1.3-1_amd64.deb</code></p>
+
+<p>This will download the chef-server installation file to your current directory.
+4. Once that’s complete, execute the installer using: <code>sudo dpkg -i chef-server*.deb</code>
+5. Setup Chef Server using the following command (you won’t be asked for any details <code>sudo chef-server-ctl reconfigure</code>
+6. Once the configuration is complete, you’re done! You can visit the server in your browsing on https://<ip if your ubuntu server></p>
+
+<h1 id="2-log-on-to-the-chef-server-and-download-credentials">2) Log on to the Chef Server and Download Credentials</h1>
+
+<p>You will need the following private keys in order to set up the workstation we previously created on our 2012 VM to talk to our new Chef Server.</p>
+
+<ol>
+<li>An administrative user (in our case, admin)</li>
+<li>A validator user (in our case, chef-validator)</li>
+</ol>
+
+<p>To get these credentials, login to your new Chef Server (<a href="https://&lt;ip of ubuntu server">https://<ip of ubuntu server></a>) using the default credentials:</p>
+
+<p><strong>Username:</strong> admin<br />
+<strong>Password:</strong> p@ssw0rd1</p>
+
+<p>Note the lowercase p in the password, this is not an MS educational sample!
+<a href="/images/2014/08/chef-server.png"><img src="/images/2014/08/chef-server.png" alt="chef-server" /></a></p>
+
+<p>You will be immediately prompted to save the ‘admin’ user’s private key, save this to your desktop as chef-admin.psm.</p>
+
+<p><a href="/images/2014/08/private-key.png"><img src="/images/2014/08/private-key.png" alt="private-key" /></a></p>
+
+<p>Now navigate to</p>
+
+<p><em>Clients &gt; chef-validator &gt; Edit &gt; Regenerate Private Key</em></p>
+
+<p><a href="/images/2014/08/chef-validator.png"><img src="/images/2014/08/chef-validator.png" alt="chef-validator" /></a></p>
+
+<p>To download the validator’s private key. Save it into a text file called <em>chef-validator.pem</em> on your desktop.</p>
+
+<h1 id="3-setup-the-development-kit-in-your-2012-vm-to-talk-to-chef-server">3) Setup the Development Kit in your 2012 VM to Talk to Chef Server</h1>
+
+<p>Now we’re going to highlight a distinction that we did not draw in our <a href="http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/">previous article</a> (mostly because I didn’t really know it existed). That is the difference between a <em>Workstation</em> and a <em>Chef Client</em>.</p>
+
+<p>You’ll remember that we installed both the Development Kit and the Chef Client on to our VM previously, well, as you might imagine, the devkit isn’t something you need on every server, as it is that which we were using to create our recipes and templates. The Development Kit is something you’d (I’d guess) install on a bastion server or RD Gateway allowing you to author your recipes and then upload them to your Chef Server to be deployed elsewhere.</p>
+
+<p>One of the big advantages configuration management is the fact that you can version control your configuration, and to this end we’re going to place our existing recipes into a repository based on the <a href="https://github.com/opscode/chef">Github Chef repo</a>. Why exactly the repo needs to based on the full Chef repo from OpsCode I’m not sure, but I’m not inclined to contest the<a href="http://docs.getchef.com/install_workstation.html"> official documentation</a>!</p>
+
+<p><strong>On your 2012 VM</strong> from the <a href="http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/">previous article</a>, download GIT from <a href="http://www.git-scm.com/download/win">http://www.git-scm.com/download/win</a> ensuring you tick “Use GIT from the Windows Command Prompt” when asked.</p>
+
+<p><a href="/images/2014/08/git-install.png"><img src="/images/2014/08/git-install.png" alt="git install" /></a></p>
+
+<p>Once installed, open Powershell and CD into your Documents folder and run:</p>
+
+<pre><code>git clone git://github.com/opscode/chef-repo.git
+</code></pre>
+
+<p><a href="/images/2014/08/clone-opscode-chef-repo.png"><img src="/images/2014/08/clone-opscode-chef-repo.png" alt="clone-opscode-chef-repo" /></a></p>
+
+<p>This will pull down the latest copy of the Chef repo from Github and form the basis of our new working directory.</p>
+
+<p>Once complete, create a folder inside the new ‘chef-repo’ folder called *.chef*  (you’ll probably need to use mkdir as the Windows UI won’t let you create a folder starting with a ‘.’) and copy the two pem files you downloaded from the Chef server earlier into it:</p>
+
+<p><a href="/images/2014/08/chef1.png"><img src="/images/2014/08/chef1.png" alt=".chef" /></a></p>
+
+<p>Because these files are secret, we don’t want to sync them with our source repo, so open up <em>.gitignore</em> and check that the *.chef* folder is already ignored.</p>
+
+<p><strong>Important:</strong> Because I didn’t have a domain available to me, I lacked the FQDNs required for communication with the Chef Server. To workaround this for my test environment. I simply added an entry to the hostfile on my 2012 VM with the IP of the Chef Server and named it <em>chef-server.fakedomain</em>, which worked fine. (You will also need to do this on the machine you’re bootstrapping later.)</p>
+
+<p>Now we can configure Knife to talk to our new Chef Server by running</p>
+
+<pre><code>knife configure --initial
+</code></pre>
+
+<p>Which will prompt for the following info:</p>
+
+<p><strong>Location of Config File:</strong> <code>&lt;accept default&gt;</code><br />
+<strong>Chef Server URL:</strong> <a href="https://&lt;ubuntu server IP">https://<ubuntu server IP></a><br />
+<strong>Name for New User:</strong> w2k12a<br />
+<strong>Existing Admin Name:</strong> admin<br />
+<strong>Location of Existing Admin’s Private Key:</strong> <code>C:\users\&lt;yourname&gt;\documents\chef-repo\.chef\chef-admin.pem</code><br />
+<strong>Validation Client Name:</strong> chef-validator<br />
+<strong>Location of Validation Key:</strong> <code>C:\users\&lt;yourname&gt;\documents\chef-repo\.chef\chef-validator.pem</code><br />
+<strong>Path to Chef Repo</strong>: <code>C:\Users\&lt;yourname&gt;\Documents\chef-repo</code><br />
+<strong>Password for New User:</strong> <code>&lt;your choice&gt;</code></p>
+
+<p><a href="/images/2014/08/knife-configure-initial.png"><img src="/images/2014/08/knife-configure-initial.png" alt="knife configure --initial" /></a></p>
+
+<p>And you’re done! Your workstation is now setup to talk to your Chef Server. Next we need to upload the recipe we created previously and bootstrap an <del>unwitting victim</del> server.</p>
+
+<h1 id="4-upload-recipe-bootstrap-a-new-server">4) Upload Recipe &amp; Bootstrap a New Server</h1>
+
+<p>In the <a href="http://samuelmartin.wordpress.com/2014/08/24/getting-started-with-chef-on-windows-server/">previous article</a> we created a basic recipe which installed IIS and amended the <em>default.htm</em> to say “Hello World!”, which is perfect for an illustration of how to take a completely blank server and bootstrap it with a specific recipe.</p>
+
+<h2 id="upload-recipe-to-chef-server">Upload Recipe to Chef Server</h2>
+
+<p>Now that your workstation (old 2012 VM) is setup to talk to our Chef server, we can upload the ‘webserver’ recipe we created locally last time.</p>
+
+<p>Copy the &ldquo;webserver&rdquo; directory from* C:\chef\cookbooks* into the repo we just created <em>C:\users&lt;yourname&gt;\documents\chef-repo\cookbooks</em> (if the cookbooks subfolder doesn’t exist, create it).</p>
+
+<p>On the same server, run:</p>
+
+<pre><code>knife cookbook upload webserver
+</code></pre>
+
+<p><a href="/images/2014/08/knife-cookbook-upload-webserver.png"><img src="/images/2014/08/knife-cookbook-upload-webserver.png" alt="knife cookbook upload webserver" /></a></p>
+
+<p>Bam, simple as that! Your webserver recipe is now available to any server configured to talk to our Chef server.</p>
+
+<h2 id="bootstrap-a-new-server">Bootstrap a New Server</h2>
+
+<p>Go off and spin yourself up a new 2012 server, I’ll wait.</p>
+
+<p>Once you’re done, we’ll need to</p>
+
+<ol>
+<li>Add your chef server’s FQDN (e.g. chef-server.fakedomain) to the new server’s host file if like me you didn’t have a DNS server to hand.</li>
+<li>Enable Windows Remote Management on the new server</li>
+<li>Install a <a href="http://docs.getchef.com/plugin_knife_windows.html">plugin for Knife</a> on our workstation (the old VM).</li>
+</ol>
+
+<h3 id="enable-windows-remote-management">Enable Windows Remote Management</h3>
+
+<p>On your fresh 2012 server run the following to allow remote access and set the<a href="http://docs.getchef.com/plugin_knife_windows.html"> recommended remoting settings from Chef</a> (I neglected the MaxMemoryPerShellMB setting because W2012’s is higher than 300MB already).</p>
+
+<pre><code>
+Enable-PSRemoting -force Set-Item WSMan:\localhost\MaxTimeoutms 1800000 
+Set-Item WSMan:\localhost\Service\AllowRemoteAccess $true 
+Set-Item WSMan:\localhost\Service\Auth\Basic $true 
+Set-item WSMan:\localhost\Service\AllowUnencrypted $true
+</code></pre>
+
+<p>Why <a href="http://technet.microsoft.com/en-us/library/hh849694.aspx">Enable-PSRemoting </a>and not  <a href="http://technet.microsoft.com/en-us/library/hh849867.aspx">Set-WSManQuickConfig</a>? Simply because using <a href="http://technet.microsoft.com/en-us/library/hh849719.aspx">Invoke-Command </a>from the workstation to the Chef Client is an easy way to troubleshoot connectivity issues.</p>
+
+<p><strong>Important:</strong> Do <em>not</em> copy this and use it in your production environment! Use it for testing and PoC and take the time to use proper encrypted auth in your production environment.</p>
+
+<p>On your workstation (old 2012 server) run the following to allow the server to reach out and remote on to the server we’re going to bootstrap.</p>
+
+<pre><code>Set-Item wsman:\localhost\Client\TrustedHosts -value *
+</code></pre>
+
+<p><strong>Important:</strong> Again, don’t copy this straight into production, use a value like *.contoso.com to allow your AD domain’s computers only.</p>
+
+<h3 id="install-knife-windows-and-bootstrap-server">Install Knife-Windows and Bootstrap Server</h3>
+
+<p>Hop back onto your old 2012 VM (the one we configured as a workstation with <a href="http://downloads.getchef.com/chef-dk/">Chef DK</a>) and run the following:</p>
+
+<pre><code>gem install knife-windows
+</code></pre>
+
+<p>This will call out and download the <a href="https://github.com/opscode/knife-windows">knife-windows</a> plugin which allows bootstrapping via WinRM instead of the default SSH.</p>
+
+<p>Once that’s done, it’s one simple command (well, kinda) to call out and install Chef Client and execute your Recipe on your new VM!</p>
+
+<pre><code>knife bootstrap windows winrm [new 2012 server ip] -x [windows admin username] -P [password] --node-name node1 --run-list 'recipe[webserver]' -V
+</code></pre>
+
+<p>(I’ve included -V for verbose because this took nearly ten minutes on my ageing-laptop-powered VMs and wanted some feedback during.)</p>
+
+<p><a href="/images/2014/08/start-bootstrap1.png"><img src="/images/2014/08/start-bootstrap1.png" alt="start bootstrap" /></a></p>
+
+<p>Some time later…<a href="/images/2014/08/finish-bootstrap.png"><img src="/images/2014/08/finish-bootstrap.png" alt="finish bootstrap" /></a></p>
+
+<p>Knife has now reached out to your blank 2012 VM, downloaded the MSI for Chef Client, installed it, and applied your ‘webserver’ recipe, which in turn installed IIS and populated Default.htm.</p>
+
+<p>Did it work? The moment of truth… put <a href="http://&lt;ip%20of your new server">http://ip of your new server</a>into your browser</p>
+
+<p><a href="/images/2014/08/it-worked.png"><img src="/images/2014/08/it-worked.png" alt="it worked!" /></a></p>
+
+<p>Holy crap it actually worked!</p>
+
+<h1 id="synopsis">Synopsis</h1>
+
+<p>So what have we actually achieved here? We’ve taken a recipe for installing IIS and an extremely basic custom website that was previously only applicable locally, and uploaded it to our own locally hosted Chef Server, allowing us to execute it remotely even when Chef isn’t already installed.</p>
+
+<p>We’ve only scratched the surface of Chef here, and there are loads of questions to ask and answer, e.g.:</p>
+
+<ol>
+<li>How does Chef benefit from Desired State Configuration?</li>
+<li>How do I define per-server or per-environment settings like connection strings?</li>
+<li>How do I manage databases?</li>
+<li>How do I manage service account credentials?</li>
+<li>How do I deal with my existing executable installers?</li>
+<li>How do I manage upgrades?</li>
+</ol>
+
+<p>And so on ad infinitum. Some of these may be answered in upcoming posts about OneGet and Desired State Configuration, others may be the subject of a further introduction-to-concepts blog post, depending on how well I get on with Chef. All are, I’m sure, answerable with appropriate research though. If you know of any useful conceptual introductions on Chef, please share them in the comments!</p>
+
+<h1 id="further-reading">Further Reading</h1>
+
+<p><a href="http://docs.getchef.com/install_server_scenario_vm.html">Install the Server on a Virtual Machine</a></p>
+
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-a-chef-server-workstation-and-client-on-ubuntu-vps-instances">How to Install a Chef Server, Workstation, and Client on Ubuntu VPS Instances</a></p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ee309371(v=vs.85).aspx">Managed Reference for WinRM Windows PowerShell Command Classes</a></p>
+
+<p><a href="http://technet.microsoft.com/en-us/magazine/ff700227.aspx">Enable and Use Remote Commands in Windows PowerShell</a></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
