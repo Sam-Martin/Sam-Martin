@@ -1,20 +1,17 @@
+services:
+  - docker
 before_install:
 - git submodule update --init --recursive
-- |
-  echo -e "travis_fold:start:$1\033[33;1m$2\033[0m"
-  wget https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_0.61.0_Linux-64bit.deb -O /tmp/hugo.deb &> /dev/null
-  sudo dpkg -i /tmp/hugo.deb &> /dev/null
-  hugo version
-  echo -e "\ntravis_fold:end:$1\r"
+- docker pull klakegg/hugo:0.64.0
 script:
-- ls -lha assets/css
-- hugo -D --debug --verbose
-- find . -name \*css\* | xargs -I '{}' shasum {}
-- echo $PWD
-- ls -lha /home/travis/build/Sam-Martin/Sam-Martin/public 
+- | 
+  docker run --rm -it \
+  -v $(pwd):/src \
+  -v $(pwd)/output:/target \
+  klakegg/hugo:0.64.0
 deploy:
   provider: pages
-  local_dir: public
+  local_dir: output
   github_token: "$GITHUB_TOKEN"
   verbose: true
   skip_cleanup: true
