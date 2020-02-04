@@ -3,7 +3,7 @@ services:
 before_install:
   - docker pull klakegg/hugo:0.64.0
 script:
-  - git submodule update --init --recursive
+  - git clone https://github.com/Sam-Martin/hugo-theme-m10c.git themes/m10c
   - |
     docker run --rm -it \
     -v $(pwd):/src \
