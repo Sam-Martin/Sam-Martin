@@ -1,7 +1,7 @@
 services:
   - docker
 before_install:
-  - docker pull klakegg/hugo:0.64.0
+  - docker pull klakegg/hugo:0.64.0-ext
 script:
   - git clone https://github.com/Sam-Martin/hugo-theme-m10c.git themes/m10c
   - |
