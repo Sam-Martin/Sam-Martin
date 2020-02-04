@@ -8,7 +8,7 @@ script:
     docker run --rm -it \
     -v $(pwd):/src \
     -v $(pwd)/output:/target \
-    klakegg/hugo:0.64.0
+    klakegg/hugo:0.64.0-ext
 deploy:
   provider: pages
   local_dir: output
