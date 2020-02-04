@@ -1,14 +1,14 @@
 services:
   - docker
 before_install:
-- git submodule update --init --recursive
-- docker pull klakegg/hugo:0.64.0
+  - docker pull klakegg/hugo:0.64.0
 script:
-- | 
-  docker run --rm -it \
-  -v $(pwd):/src \
-  -v $(pwd)/output:/target \
-  klakegg/hugo:0.64.0
+  - git submodule update --init --recursive
+  - |
+    docker run --rm -it \
+    -v $(pwd):/src \
+    -v $(pwd)/output:/target \
+    klakegg/hugo:0.64.0
 deploy:
   provider: pages
   local_dir: output
