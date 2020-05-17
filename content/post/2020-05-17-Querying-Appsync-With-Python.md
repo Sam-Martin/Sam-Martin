@@ -199,6 +199,25 @@ $ python AppSyncExample.py
 
 There's so much more you can do with AppSync, and honestly the some of coolest features are the AWS owned client libraries for React and React Native that do client side caching for offline data and optimistic submissions.
 
+# Query Creation
+
+I highly recommend the [Insomnia](https://insomnia.rest/download/) tool to make your life easier when writing GraphQL queries. It allows you to browse the schema, gives you autocomplete. Flags missing/incomplete fields, etc.
+
+Once you've installed it, create a new query
+
+![Insomnia Create a GraphQL Query](/images/2020/05/2020-05-17-Insomnia-GraphQL.png)
+
+Then pop to headers and populate your credentials
+
+![Insomnia Populate Credentials](/images/2020/05/2020-05-17-Insomnia-API-Key.png)
+
+Then you can refresh the schema.
+![Insomnia Refresh Schema](/images/2020/05/2020-05-17-Insomnia-RefreshSchema.png)
+
+After which you're free to browse the API schema (Schema > Show Documentation), write queries, submit them, and see the way the payloads are passed around and what headers are expected/received.
+
+![Insomnia Write Queries](/images/2020/05/2020-05-17-Insomnia-WriteQueries.png)
+
 # Further Reading
 If you want to learn more about AppSync's capabilities I suggest you check out this introductory video from AWS here: 
-* [Introduction to AWS AppSync and GraphQL - AWS Online Tech Talks - Richard Threlkeld -2018](https://www.youtube.com/watch?v=olAPj6EIlag)
+* [Introduction to AWS AppSync and GraphQL - AWS Online Tech Talks - Richard Threlkeld - 2018](https://www.youtube.com/watch?v=olAPj6EIlag)
