@@ -1,5 +1,5 @@
 ---
-title: "2020 05 17 Querying Appsync With Python"
+title: "Querying Appsync With Python"
 date: 2020-05-17T16:08:25+01:00
 image: /images/2020/05/2020-05-17-AppSync-Getting-Started.png
 summary: "AWS AppSync is a really easy way to quickly assemble a GraphQL API to interact with data from DynamoDB, Lambda, ElasticSearch, RDS, or other HTTP endpoints.
