@@ -1,24 +1,81 @@
 ---
-title: "Blamelessness and Personal Improvement"
+title: "TeamPersonal Improvement: Identifying areas of improvement without blame"
 date: 2020-10-03T16:59:08+01:00
 draft: true
 ---
 
-In my first Ops role I was blown away by my boss, who took the attitude of:
-
-> If there's an incident of any kind, it is never any individual's fault, it is always the process' fault. If it's possible for someone to screw up enough to cause an outage, then the process is broken.  
-
-Coming from an Internal IT background this was amazing to me, not only could I openly talk about the mistakes I made without risking being put on a disciplinary plan, I would have a group of people in the blameless post-mortem helping me figure out how to make it impossible for the same scenario to happen again.  
-Reading books like The Phoenix Project cemented the idea, and blamelessness became part of my core values.  
-My everyday thinking went from "ugh, why did x make y mistake" to "how do we build an environment in which x succeeds and flourishes?"
-
-Trust, and emotional safety underpin pretty much everything in a well functioning team. You cannot pair program if you're scared to make typos. You can't save some-one time who's hunting down a bug you caused if you're afraid to admit you wrote bad code. Getting people to that place, especially those who have been in abusive work environments before, can take a huge amount of time, honesty, and personal vulnerability from the people who are trying to engender that ethos in the work environment. 
+Trust and emotional safety underpin pretty much everything in a well functioning team. You cannot pair program if you're scared to make typos. You can't save some-one time who's hunting down a bug you caused if you're afraid to admit you wrote bad code. Getting people to that place, especially those who have been in abusive work environments before, can take a huge amount of time, honesty, and personal vulnerability from the people who are trying to engender that ethos in the work environment. 
 
 Setting a foot wrong in this regard is _unthinkable_. As hard as it is to gain, it's twice as easy as that to lose it. One snarky remark, one roll of the eyes and *poof* that trust is gone, the sharing evaporates, and everyone is back to being scared to admit that they made a mistake.
 
-I see it as a personal failing when I have thoughts that run counter to this. When I'm frustrated with someone with a proven track record of negligence I'll always catch myself and repeat the mantra: "Don't blame the individual, blame the system which compels them to act this way."
+# Identifying areas of improvement
 
-I eventually realised, that the system that compelled them to act this way, was me.
+There are two streams which lead you to start identifying areas of improvement, and two streams that lead out.
+
+Inbound streams: Proactive and reactive
+Outbound streams: Process and Personal
+
+If you're riding in on the proactive stream, you might have identified some code smells in peer review, or noticed that no-one on the team has started work on the super-critical deliverable that needs to be finished by the end of the sprint.
+If you're riding in on the reactive stream, that code smell never got identified and became a bug report from a user, and that deliverable never got worked on, and your users got disappointed when the feature wasn't delivered that they were expecting.
+
+Whether you're investigating areas of improvement as a result of the proactive stream or reactive streams, your first port of call should always be the process outbound stream. Can we add linting, can we ensure new starters receive particular training if they're not too confident in language x or y; can we improve visibility of work items to their owners to ensure that things don't get lost? When you improve a suboptimal process, you fix the problem for everyone that process touches, it will be much more reliable, and much more repeatable that trying to address it on a personal level. If your answer to some-one not following the instructions on how to do a prod deployment properly is telling that person to "pay more attention" rather than fixing the process by automating it, then your fix is not a fix at all, it will reoccur, if not with that person, but with the next, and the next, until you fix your process.
+
+But what happens when there is no process fix? When the area that needs improving is not one that can be resolved by looking at the system in which it resides? First off, if you're new to the process of fixing the system not the person, you probably need to look again, as I'll bet that there is a systemic fix for your issue. Secondly, we need to consider what could possibily fall under this category, and why a systemic fix might not be possible.
+
+# Should YOU give feedback?
+
+Deciding whether to give feedback starts with an introspection of who you are.
+
+## 1. Are you in a good place mentally to provide the feedback? 
+
+Providing feedback is a fraught and stressful process. If you don't have the mental energy to take this on, don't. If you can, talk to the person's performance manager (if they are a safe person to talk to) and let them take it from there.
+
+## 2. Are you in a good place organisationally to deliver the feedback?
+
+Depending on the type of feedback, it may not matter in the least what your level of experience or authority is, but if there is a _large_ gap consider how it will affect you, or the (depending on whether they or you are more senior respectively) if the feedback is poorly received. Fumbling feedback to somebody who is significantly junior to you can _utterly_ destroy their confidence. If you provide much-needed perspective to somebody significantly senior than you (even if it _absolutely_ has to be said) ensure that you are in a sound mental/social/financial place lest the person reacts poorly and retalliates.
+
+Also if you're giving _technical_ feedback to somebody who is significantly more senior than you, and you are a privileged individual (e.g. a cis-het-white-dude) maybe consider not talking and instead think about why you think you know more than that person with so much more experience than you.
+
+## 3. Are you the right person to deliver the feedback?
+
+This is not just about the other person's reaction, but about who you are as a person and how that impacts your ability to assess the needs of other people. Are you letting your preconceptions of race, gender, nationality, etc. influence your assessment of what the other person needs to know/do/own? Before you say "Oh god no, I'm not a bigot, that's unthinkable" take a step back and reframe the other person's actions as _your_ actions, and consider how other people would regard them, and how you would regard those actions yourself.
+
+Do you have a good relationship with the person? If you're not close then consider that you may be wrong in your estimation of their area of improvement as you likely haven't spent enough time with them to come to a conclusion. If you have a negative relationship with the person, e.g. you get on each others nerves or exchange cross words regularly, then they're unlikely to take your feedback seriously, and will likely be more hostile to other people providing that same feedback, even if they're people they trust. You may do more harm than good.
+
+## 4. Do you have the skills to provide the feedback effectively?
+
+Providing constructive feedback in a way the person will listen to requires a great deal of nuance and articulateness. If you're likely to get flustered while providing the feedback and say the wrong thing, you may come across as 
+
+# Compassion comes first
+
+None of the 'problems' listed below are to be extrapolated from isolated incidents. Everyone has more going on in their life than work, everyone is human, and humans are mercurial beasts with emotions that they often do their best to surpress, and which come out in often seemingly unrelated ways. 
+
+Find your compassion first before providing feedback, and find out their side of the story first. They don't owe you any details about what's going on in their private life. You're not their therapist, don't try to fix anything, don't pry, but in every step of your plan on providing feedback you need to make sure you're treating them as fully rounded human beings, and not just an errant computer that you're trying to get to 'perform right'.
+
+# What is a valid type of personal improvement feedback?
+
+## 1. The problem is an asshole.
+
+If the problem is that you have an asshole on your team, some-one who does not respect the other people onboard the team and serves to glorify themselves and/or sabotage the self-esteem/efficacy of other team members, your first responsibility is to speak up, protect the people who are being bullied, and make it clear the behaviour is not okay. The second is the removal of that person from the team. The third is to ensure your team doesn't hire (or grow) anymore assholes through systemic change.
+
+## 2. The problem is knowledge
+
+If the problem is that some-one lacks a particular set of knowledge, then this is one of the best problems to have as it is incredibly fixable. 
+
+## 3. The problem is attitude
+
+This problem sounds like it's related to the asshole problem, due to the overuse of the word 'attitude' as a euphemism for assholeishness. In reality this problem describes any behaviours that are maladaptive to the smooth running of the team, whether that's cynicism.
+
+## 4. The problem is responsibility
+
+If the problem is that you feel some-one isn't taking enough responsibility you need to be really really sure that you have an ironclad grasp of what their responsibilities actually are, and what their workload is. They may be struggling under the weight of unseen work.
+
+# What isn't a valid type of personal improvement feedback?
+
+1. They rub you the wrong way
+2. They made a mistake
+3. They have different values to you
+4. They don't volunteer for extra work
 
 # The feedback cycle
 
