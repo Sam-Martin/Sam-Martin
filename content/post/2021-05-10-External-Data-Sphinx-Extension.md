@@ -353,4 +353,3 @@ You can find the full code [on GitHub](https://github.com/Sam-Martin/sphinx-read
 * [Sphinx Extension Tutorial: Hello World](https://www.sphinx-doc.org/en/master/development/tutorials/helloworld.html)
 * [Sphinx Extension Tutorial: Todo Extension](https://www.sphinx-doc.org/en/master/development/tutorials/todo.html)
 * [Sphinx Extension Tutorial: Recipe Extension](https://www.sphinx-doc.org/en/master/development/tutorials/recipe.html)
-*
