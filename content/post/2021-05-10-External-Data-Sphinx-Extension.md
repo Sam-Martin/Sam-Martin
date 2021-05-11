@@ -24,7 +24,7 @@ Here's how I did it.
 
 Grab yourself an empty folder and let's install and initialise a new Sphinx project.
 
-```
+{{< highlight bash >}}
 $ pip install sphinx sphinx_rtd_theme
 $ sphinx-quickstart
 
@@ -40,24 +40,24 @@ Selected root path: .
 Creating file ...
 
 Finished: An initial directory structure has been created.
-```
+{{< /highlight >}}
 
 Great! Now open up the `conf.py` that's been created and change
-```
+{{< highlight python>}}
 extensions = []
-```
+{{< /highlight >}}
 to
-```
+{{< highlight python>}}
 extensions = ["sphinx_rtd_theme"]
-```
+{{< /highlight >}}
 and
-```
+{{< highlight python>}}
 html_theme = "alabaster"
-```
+{{< /highlight >}}
 to
-```
+{{< highlight python>}}
 html_theme = "sphinx_rtd_theme"
-```
+{{< /highlight >}}
 
 This will replace the slightly old school default theme with the read the docs theme and make us feel a bit more like we're in 2021!
 
@@ -67,17 +67,17 @@ Now you can build and open the html
 
 ### MacOS
 
-```
+{{< highlight bash>}}
 $ make html
 $ open _build/html/index.html
-```
+{{< /highlight >}}
 
 ### PowerShell on Windows
 
-```
+{{< highlight powershell>}}
 > ./make.bat html
 > ii _build/html/index.html
-```
+{{< /highlight >}}
 
 ### Voila! A newly built Sphinx documentation page!
 
@@ -87,10 +87,10 @@ $ open _build/html/index.html
 
 Open up `index.rst` and remove everything under:
 
-```
+{{< highlight rst>}}
 Welcome to Test's documentation!
 ================================
-```
+{{< /highlight >}}
 
 ---
 
@@ -106,21 +106,21 @@ Once you've saved your `index.rst` with your new text, run `make html` or `./mak
 
 # Writing an extension.
 
-Sphinx has a bunch of built in extensions, the most often used ones being things like [autodoc](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html) and [doctest](https://www.sphinx-doc.org/en/master/usage/extensions/doctest.html) which respectively automatically generate documentation from your code's docstrings and allow you test the example code snippets you write into your documentation.
+Sphinx has a bunch of built in extensions, the most often used ones being things like [autodoc](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html) and [doctest](https://www.sphinx-doc.org/en/master/usage/extensions/doctest.html) which respectively automatically generate documentation from your code's docstrings and allow you test the example code snippets you write into your documentation. Both of these are MIND blowingly awesome and you should check them out.
 
-The tutorial I'm outlining here is based heavily on [the tutorial from the official Sphinx documentation](https://www.sphinx-doc.org/en/master/development/tutorials/todo.html), streamlined a bit for my learning style, with a few extra bit sprinkled in to answer some of the things I found difficult to track down and understand when I went through it the first time.
+The tutorial I'm outlining here is based heavily on [the tutorial from the official Sphinx documentation](https://www.sphinx-doc.org/en/master/development/tutorials/todo.html), streamlined a bit for my learning style, with a few extra bits sprinkled in to answer some of the things I found difficult to track down and understand when I went through it the first time.
 
 ## Use Case
 
-This pattern is *hugely* powerful, and we're going to use it to bring data in from JSON files and make them part of our documentation in a useful fashion.
+Sphinx's extensions are *hugely* powerful, and we're going to use it to bring data in from JSON files and make them part of our documentation in a useful fashion.
 
 ## Create a base extension
 
 Start off by creating a folder called `_ext` with a file `my_first_sphinx_extension.py` inside it.
 Your folder structure should now look a little like this.
 
-```
-tree -L 2
+{{< highlight bash>}}
+$ tree -L 2
 .
 ├── Makefile
 ├── _build
@@ -133,11 +133,11 @@ tree -L 2
 ├── conf.py
 ├── index.rst
 └── make.bat
-```
+{{< /highlight >}}
 
 Open up your `my_first_sphinx_extension.py` file and enter in the following:
 
-```
+{{< highlight python>}}
 from docutils import nodes
 from sphinx.util.docutils import SphinxDirective
 
@@ -151,29 +151,29 @@ class ShowJsonDirective(SphinxDirective):
 
 def setup(app: object) -> dict:
     app.add_directive("show-json", ShowJsonDirective)
-```
+{{< /highlight >}}
 
 
 Now update `conf.py` to change
 
-```
+{{< highlight python>}}
 extensions = ["sphinx_rtd_theme"]
-```
+{{< /highlight >}}
 
 to include your new extension
 
-```
+{{< highlight python>}}
 extensions = ["sphinx_rtd_theme", "my_first_sphinx_extension"]
-```
+{{< /highlight >}}
 
 and also add
 
-```
+{{< highlight python>}}
 import sys
 import os
 
 sys.path.append(os.path.abspath("./_ext"))
-```
+{{< /highlight >}}
 
 anywhere in your `conf.py` so that it can find your new extension
 
@@ -181,33 +181,33 @@ Then add a reference to your new directive into `index.rst`
 
 e.g.
 
-```
+{{< highlight rst>}}
 Welcome to Test's documentation!
 ================================
 
 
 .. show-json ::
 
-```
+{{< /highlight >}}
 
 And there we go!
 ![Hello World](/images/2021/05/hello-world.png)
-Well... that's a bit underwhelming, let's get started with styling our output at least!
+Well... that's a bit underwhelming, let's get started with formatting our output at least!
 
 
-## Styling
+## Formatting
 
 This is the bit I could not for the life of me figure out how to do when I read the official tutorial.
 You'll notice that we added our `Hello World` in a `docutils.nodes.paragraph` object.
 So where do we find other semantic objects for us to place into our content?
 
-So far as I can tell the official canonical reference is here: [Docutils docs](https://docutils.sourceforge.io/docs/ref/doctree.html) but as it's ironically littered with `to be completed` I found it incredibly hard to build out the elements I needed in the style I wanted.
+So far as I can tell the official canonical reference is here: [Docutils docs](https://docutils.sourceforge.io/docs/ref/doctree.html) but as it's ironically littered with `to be completed` I found it incredibly hard to find and understand the formatting elements I needed.
 
 So let's just use RST! Screw creating the objects themselves, let's just build out some RST markup and we'll let Sphinx handle the rest!
 
 To do that we need to add the following `parse_rst` method to our `ShowJsonDirective` class
 
-```
+{{< highlight python>}}
     def parse_rst(self, text):
         parser = RSTParser()
         parser.set_application(self.env.app)
@@ -219,22 +219,23 @@ To do that we need to add the following `parse_rst` method to our `ShowJsonDirec
         document = new_document("<rst-doc>", settings=settings)
         parser.parse(text, document)
         return document.children
-```
+{{< /highlight >}}
 
-This method expects us to supply 1 argument which is a multi-line string of RST markdown and will return the
-rendered docutils elements such that we can return them from our extension.
+This method expects us to supply 1 argument which is a multi-line string of RST markup and will return the
+corresponding docutils objects so we can return them from our extension's `run` method.
 
 To use this, we can change our content to look like this:
 
-```
+{{< highlight python>}}
     def run(self) -> list:
         return self.parse_rst("\n* hello\n* world")
-```
-This uses the `*` RST markdown to render an unordered list with two elemenents (hello and world).
+{{< /highlight >}}
 
-Our whole extension file now looks like:
+This uses the `*` RST markup to render an unordered list with two elements (hello and world).
 
-```
+Our whole extension file now looks like (note the new `new_document` import):
+
+{{< highlight python>}}
 from sphinx.parsers import RSTParser
 from docutils.frontend import OptionParser
 from sphinx.util.docutils import SphinxDirective
@@ -263,7 +264,7 @@ class ShowJsonDirective(SphinxDirective):
 
 def setup(app: object) -> dict:
     app.add_directive("show-json", ShowJsonDirective)
-```
+{{< /highlight >}}
 
 And if we run `make html` and refresh the page again we get...
 
@@ -271,7 +272,7 @@ And if we run `make html` and refresh the page again we get...
 
 ---
 
-**Tip:** If you run `make html` after change your extension and nothing seems to have changed, it may be because Sphinx hasn't detected any change in the doc source (because, well, there hasn't been one!). You can force Sphinx to generate it again by running `rm -rf _build && make html`
+**Tip:** If you run `make html` after editing your extension and nothing seems to have changed, it may be because Sphinx hasn't detected any change in the doc source (because, well, there hasn't been one!). You can force Sphinx to generate it again by removing the `_build` directory with `rm -rf _build && make html`
 
 ---
 
@@ -280,17 +281,17 @@ And if we run `make html` and refresh the page again we get...
 Now the easy part! Let's make this dynamic!
 
 Write a file called `airports.json` inside the base directory (alongside `conf.py`) and place the following inside it.
-```
+{{< highlight json>}}
 [
     {"Name": "Heathrow", "Url": "https://www.heathrow.com/"},
     {"Name": "Gatwick", "Url": "https://www.gatwickairport.com/"},
     {"Name": "Luton", "Url": "https://www.london-luton.co.uk/"}
 ]
-```
+{{< /highlight >}}
 
 Now update your extension's file to the following:
 
-```
+{{< highlight python>}}
 import json
 
 from sphinx.parsers import RSTParser
@@ -327,15 +328,15 @@ class ShowJsonDirective(SphinxDirective):
 
 def setup(app: object) -> dict:
     app.add_directive("show-json", ShowJsonDirective)
-```
+{{< / highlight >}}
 
 This will take our JSON, and convert it into the following RST:
 
-```
+{{< highlight rst >}}
 * `Heathrow <https://www.heathrow.com>`_
 * `Gatwick <https://www.gatwickairport.com/>`_
 * `Luton <https://www.london-luton.co.uk/>`_
-```
+{{< / highlight >}}
 
 Which creates a list of links as per the standard RST link syntax!
 The `print` will also make the above appear so that we can see the RST before it's rendered when we run `make html`.
