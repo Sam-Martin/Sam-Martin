@@ -5,6 +5,8 @@ theme = "m10c"
 googleAnalytics = "UA-66377745-1"
 pygmentsUseClasses=true
 
+disqusShortname="sammartin"
+
 [params]
     description = "Adventures in IT"
     author = "Sam Martin"
