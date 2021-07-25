@@ -16,6 +16,9 @@ While reading the excellent ["Programming TypeScript: Making Your JavaScript App
 
 {{<tweet 1418896064434905092>}}
 
+I **still wasn't right** in my half-earned 'oooh' moment. It's not about functions being subtypes of other functions, it's about functions being *arguments* to other functions!
+
+
 To sum it up, the question is: Why does the following not throw an error?
 
 {{< highlight typescript >}}
