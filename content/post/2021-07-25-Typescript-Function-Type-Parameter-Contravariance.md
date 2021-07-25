@@ -18,7 +18,7 @@ draft: false
 ## My Contravariance Rabbit Hole
 
 {{% note %}}
-**Tip:** Skip to [Understanding the Question]({{< relref "#understanding-the-question" >}}) if this bit is intimidating/boring as I explain all the terms you need to know after this introduction. Yes it's like a recipe blog, in that respect, don't judge me too harshly.
+**Tip:** Skip to [Understanding the Question]({{< relref "#understanding-the-question" >}}) if this bit is intimidating/boring as I explain all the terms you need to know after this introduction. Yes it's like a recipe blog in that respect, don't judge me too harshly.
 {{% /note %}}
 
 While reading the excellent ["Programming TypeScript: Making Your JavaScript Applications Scale"](https://www.amazon.co.uk/Programming-TypeScript-Making-JavaScript-Applications/dp/1492037656/) by [@bcherny](https://twitter.com/bcherny) I managed to confuse myself utterly.
@@ -50,13 +50,13 @@ nonsenseExample(new SuperType)
 // Argument of type 'SuperType' is not assignable to parameter of type 'SubType'.
 {{</highlight>}}
 
-Of course, it's not. It's complete nonsense. So that lead me down a rabbit hole re-reading the previous pargraphs over and over thinking I'd misunderstood something until eventually...
+Of course, it's not. It's complete nonsense. So that lead me down a rabbit hole re-reading the previous paragraphs over and over thinking I'd misunderstood something until eventually...
 
 {{<tweet 1418896064434905092>}}
 
 I'd successfully identified that we were talking about function types, but my journey was far from over. It was only after writing the entirety of this blog post that I felt like I had a good grasp on what was really being discussed.
 
-We are, very simply, talking about where one function type can be assigned to another.
+We are, very simply, talking about whether one function type can be assigned to another (is it a subtype of the other function?).
 
 {{< highlight typescript >}}
 class SuperType {
@@ -83,11 +83,12 @@ testCallbackFunction = callbackFunction
 
 The above example highlights what the sentence was actually talking about. 
 
-> A function type `A` is not assignable to function type `B` if `A` has a parameter that is a subtype of `B`'s corresponding parameter's type.
+> A function is assignable to (is a subtype of) another function if all of the source parameters are supertypes of the target functions corresponding parameters.
+
 
 or to put it another way
 
-> When comparing the types of function parameters, assignment succeeds if the target parameter is assignable to the source parameter.  
+> A function is assignable to (is a subtype of) another function if all of the *target* parameters are assignable to the corresponding *source* parameters.  
 
 This is because function type parameter assignments are evaluated *contra* variantly not *co* variantly like other complex types.
 
@@ -95,15 +96,16 @@ This is because function type parameter assignments are evaluated *contra* varia
 
 The original wording in the book was absolutely correct: function parameter type assignments are evaluated contravariantly.  
 This is because function parameter type assignment is evaluated during an assignment of one function type to another function type.  
-You can never (as far as I know) assign a function parameter type to any other type other than another function parameter type.
+You can never (as far as I know) assign a function parameter type to any type other than another function parameter type.   
+You *can* assign argument types to parameter types, but that is evaluated covariantly.
 
-What I  wholly misread into the original statement was that argument type assignments are evaluated contravariantly, which is not true in the slightest as shown above.
+What I  wholly misread into the original statement was that argument type assignments to parameter types are evaluated contravariantly, which is obviously not true in the slightest as shown above.
 
-Understanding what the all this means and why it is the case will be the subject of this blog post.
+Understanding what all this means and why it is the case will be the subject of this blog post.
 
 {{% note %}}
 **Note:**   
-I'm going to keep using the phrase "function type parameter" as opposed to "function parameter type" as to my untrained ear the second still sounds like we're talking about the types of the arguments that a function will accept.  
+I'm going to keep using the phrase "function type parameter" as opposed to "function parameter type" as although they mean the same thing and the difference is actually in what is being assigned to what, it may help avoid confusion along our way.
 {{% /note %}}
 
 ## Understanding the Question
@@ -147,6 +149,9 @@ An **argument** is the value that is sent to the function when it is called.
 
 
 ### Subtypes and Supertypes
+
+> Type compatibility in TypeScript is based on structural subtyping. Structural typing is a way of relating types based solely on their members. This is in contrast with nominal typing.  
+> \- [Type Compatibility - TypeScriptLang](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)
 
 Because TypeScript is structurally typed, `A` is a subtype of `B` if all of `B`'s members are found in `A`.  
 This is perhaps more intuitive if you think of `A` as extending `B`, as `A` will then naturally have *at least* all the members `B` does.
