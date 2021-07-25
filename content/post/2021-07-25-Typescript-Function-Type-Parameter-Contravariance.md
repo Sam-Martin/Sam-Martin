@@ -287,9 +287,13 @@ Oops, I should have mentioned that, this only applies if you're using `"strict":
 }
 {{</highlight>}}
 
+If you're wondering why function type parameters are byvariant unless you enable the strict flag, you can read more here: [Why are function parameters bivariant?](https://github.com/Microsoft/TypeScript/wiki/FAQ#why-are-function-parameters-bivariant) and [the PR in which `--strictFunctionTypes` was introduced](https://github.com/microsoft/TypeScript/pull/18654).
+
 ## Further Reading
 
 * [What are covariance and contravariance? - Stephan Boyer](https://www.stephanboyer.com/post/132/what-are-covariance-and-contravariance)
 * [More on Functions - TypeScriptLang](https://www.typescriptlang.org/docs/handbook/2/functions.html)
 * [Type Compatibility - TypeScriptLang](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)
 * [TypeScript 2.6 - Strict function types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html)
+* [Why are function parameters bivariant?](https://github.com/Microsoft/TypeScript/wiki/FAQ#why-are-function-parameters-bivariant)
+* [The PR where function parameter type contravariance was introduced](https://github.com/microsoft/TypeScript/pull/18654)
