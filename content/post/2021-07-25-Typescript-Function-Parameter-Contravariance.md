@@ -131,7 +131,7 @@ To restate it in the original terminology: TypeScript is complaining that functi
 ### Why are function type parameters contravariant?
 
 In this scenario TypeScript is still trying to do the same thing it always does, make our type assignment as safe as possible.  
-So the question is: "Why is it safer for function type parameter `b` to be contravarient to function type parameter `a`"?
+So the question is: "Why is it safer for function type parameter `b` to be contravariant to function type parameter `a`"?
 
 It's safer because the function `test` which accepts the function parameter `f` of type `TestCallbackType` is responsible for defining what argument (and therefore what type) gets passed into `f`.  
 This means that `test` is most likely passing a an object of type `SuperType` to `callbackFunction` as an argument, but `callbackFunction` is expecting a **`SubType`**, which will have methods/attributes that `SuperType` does not, and will therefore do all sorts of type unsafe things with our poor innocent `SuperType` object. 
