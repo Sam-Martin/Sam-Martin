@@ -1,6 +1,12 @@
 ---
 title: "Typescript Function Parameter Contravariance"
 date: 2021-07-25T10:13:40Z
+image: /images/2021/07/confusion_tweet.png
+summary: |
+    While reading the excellent ["Programming TypeScript: Making Your JavaScript Applications Scale"](https://www.amazon.co.uk/Programming-TypeScript-Making-JavaScript-Applications/dp/149203765) by [@bcherny](https://twitter.com/bcherny) I managed to confuse myself utterly.  
+    What does it mean for for function parameter types to be contravariant in Typescript?  
+    Let's find out!
+
 draft: false
 ---
 
