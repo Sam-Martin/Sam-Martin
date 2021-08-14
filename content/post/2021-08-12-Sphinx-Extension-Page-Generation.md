@@ -24,7 +24,7 @@ If you're confused about what Sphinx is, why you would want to write an extensio
 
 My basis for writing this example in this fashion is by following along the approximate process of the built in [autosummary extension](https://www.sphinx-doc.org/en/master/usage/extensions/autosummary.html) provided by Sphinx.
 
-You can see the full code for this extension [on GitHub](https://github.com/sphinx-doc/sphinx/tree/4.x/sphinx/ext/autosummary). Any mistakes I make in this implementation are my own, and you should defer to the autosummary extension as the canonical example of how to do this if you want a more complete sample.
+You can see the full code for this extension [on GitHub](https://github.com/sphinx-doc/sphinx/tree/4.x/sphinx/ext/autosummary). Any mistakes I make in this implementation are my own, and you should defer to the autosummary extension as the canonical way to do this if you want a more complete example.
 
 ## Writing the extension
 
@@ -54,14 +54,15 @@ The `setup` function and `<something>Directive` class we've seen before, so what
 
 ### The `WritePages` class
 
-This is the class that is actually going to write our `.rst` files to disk so that Sphinx can discover them and render the rst into html/pdf/whatever. 
-This needs to be seperate from our directive because it needs to run on the [`builder-inited`](https://www.sphinx-doc.org/en/master/extdev/appapi.html#event-builder-inited) event which we will subscribe to with `app.connect()` and does not provide the arguments required to instantiate our directive.  
+This is the class that is going to write our `.rst` files to disk so that Sphinx can discover them and render the rst within into html/pdf/whatever. 
+This needs to be seperate from our directive because it needs to run on the [`builder-inited`](https://www.sphinx-doc.org/en/master/extdev/appapi.html#event-builder-inited) event which we will subscribe to with `app.connect()` and which does not provide the arguments required to instantiate our directive.  
 We also use it as the source of truth for our list of files.  
 
-[autosummary does its own parsing of `.rst` files](https://github.com/sphinx-doc/sphinx/blob/1acdf4f8735d40b875161a94c1e0124aceb14217/sphinx/ext/autosummary/generate.py#L463) in order to pull in the list of files to create from its `.. autosummary::` directives inside `.rst` files. It does this, presumably, because it wants to create `.rst` files, which needs to be done before the `.rst` files are read by Sphinx, otherwise they won't get included in the final output.  
+#### Getting lists of files from directives
+[autosummary does its own parsing of `.rst` files](https://github.com/sphinx-doc/sphinx/blob/1acdf4f8735d40b875161a94c1e0124aceb14217/sphinx/ext/autosummary/generate.py#L463) in order to pull in the list of files to create from its `.. autosummary::` directives. It does this, presumably, because it wants to create `.rst` files, which needs to be done before the `.rst` files are read by Sphinx, otherwise they won't get included in the final output.  
 If it waited until Sphinx had found all instances of its directives in the other `.rst` files it would be too late to write its own `.rst` files to be read by Sphinx.
 
-This is well outside the scope of this tutorial, so we'll be using a simple list as a class property on `WritePages` as our source list of files to create.
+Creating custom directive parsing is well outside the scope of this tutorial, so we'll be using a simple list as a class property on `WritePages` as our source list of files to create.
 
 
 ### The `main` function
@@ -73,12 +74,16 @@ In theory we could have the `main` function write the pages itself, but we need 
 ### The code
 
 {{< highlight python >}}
-import pathlib
+iimport pathlib
+from typing import List
 
+from docutils.nodes import Node
 from docutils.frontend import OptionParser
 from docutils.utils import new_document
 from sphinx.application import Sphinx
 from sphinx.parsers import RSTParser
+from docutils import parsers
+
 from sphinx.util.docutils import SphinxDirective
 
 
@@ -86,7 +91,7 @@ class WritePages:
     files = [f"file_{i}" for i in range(1, 10)]
     relative_path = pathlib.Path(__file__).parent.absolute() / ".."
 
-    def write_pages(self):
+    def write_pages(self) -> None:
         for file_name in self.files:
             with open(self.relative_path / f"{file_name}.rst", "w") as f:
                 f.write(f"Test - {file_name}\n==============")
@@ -95,36 +100,37 @@ class WritePages:
 class ListPagesDirective(SphinxDirective):
     has_content = True
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.pages = WritePages()
 
-    def run(self) -> list:
+    def run(self) -> List[Node]:
         rst = ".. toctree::\n"
         rst += "   :maxdepth: 2\n\n"
         for file_name in self.pages.files:
             rst += f"   {file_name}\n"
         return self.parse_rst(rst)
 
-    def parse_rst(self, text):
+    def parse_rst(self, text: str) -> List[Node]:
         ...
 
 
-def main(app: Sphinx):
+def main(app: Sphinx) -> None:
     w = WritePages()
     w.write_pages()
 
 
-def setup(app: object) -> dict:
+def setup(app: Sphinx) -> None:
     app.add_directive("list-pages", ListPagesDirective)
     app.connect("builder-inited", main)
+
 
 
 {{< /highlight>}}
 
 For brevity I've omitted the `parse_rst` method contents, again you can see the full implementation [in GitHub](https://github.com/Sam-Martin/sphinx-write-pages-tutorial/blob/main/_ext/write_pages.py).
 
-Let's step through this one at a time.
+Let's go through this one step at a time.
 
 1. Our `main` will be called, which will
 2. Call our `write_pages` method which will
