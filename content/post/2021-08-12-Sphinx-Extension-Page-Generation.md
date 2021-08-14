@@ -74,16 +74,14 @@ In theory we could have the `main` function write the pages itself, but we need 
 ### The code
 
 {{< highlight python >}}
-iimport pathlib
+import pathlib
 from typing import List
 
-from docutils.nodes import Node
 from docutils.frontend import OptionParser
+from docutils.nodes import Node
 from docutils.utils import new_document
 from sphinx.application import Sphinx
 from sphinx.parsers import RSTParser
-from docutils import parsers
-
 from sphinx.util.docutils import SphinxDirective
 
 
@@ -123,8 +121,6 @@ def main(app: Sphinx) -> None:
 def setup(app: Sphinx) -> None:
     app.add_directive("list-pages", ListPagesDirective)
     app.connect("builder-inited", main)
-
-
 
 {{< /highlight>}}
 
