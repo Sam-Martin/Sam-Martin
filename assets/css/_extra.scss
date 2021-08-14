@@ -13,7 +13,7 @@
 }
 
 // Make single backticks stand out more.
-p > code, li > code, strong > code {
+ *:not(.chroma) > code {
     background-color:rgba(27, 31, 35, 0.05);
     padding: .2em .4em;
 }
